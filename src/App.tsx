@@ -1,11 +1,12 @@
 import { AnimatePresence } from 'framer-motion';
-import { Route, Routes, useLocation } from 'react-router-dom';
+import { Navigate, Route, Routes, useLocation } from 'react-router-dom';
 import { Layout } from './components/Layout';
 import { ScrollToTop } from './components/ScrollToTop';
-import { AboutPage } from './pages/AboutPage';
 import { ContactPage } from './pages/ContactPage';
+import { EducationPage } from './pages/EducationPage';
 import { HomePage } from './pages/HomePage';
 import { ProjectsPage } from './pages/ProjectsPage';
+import { WorkPage } from './pages/WorkPage';
 
 function App() {
   const location = useLocation();
@@ -18,8 +19,10 @@ function App() {
           <Routes location={location} key={location.pathname}>
             <Route path="/" element={<HomePage />} />
             <Route path="/projects" element={<ProjectsPage />} />
-            <Route path="/about" element={<AboutPage />} />
+            <Route path="/work" element={<WorkPage />} />
+            <Route path="/education" element={<EducationPage />} />
             <Route path="/contact" element={<ContactPage />} />
+            <Route path="/about" element={<Navigate to="/work" replace />} />
           </Routes>
         </AnimatePresence>
       </Layout>

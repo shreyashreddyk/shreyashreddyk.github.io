@@ -16,9 +16,14 @@ export const routes: AppRoute[] = [
     description: 'Featured AI, data, analytics, and research projects.',
   },
   {
-    href: '/about',
-    label: 'About',
-    description: 'Background, education, experience, and public-safe resume highlights.',
+    href: '/work',
+    label: 'Work',
+    description: 'Experience highlights, public-safe resume bullets, and execution signal.',
+  },
+  {
+    href: '/education',
+    label: 'Education',
+    description: 'Academic background, coursework, and technical foundations.',
   },
   {
     href: '/contact',

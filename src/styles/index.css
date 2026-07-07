@@ -5,12 +5,12 @@
 @tailwind utilities;
 
 :root {
-  color-scheme: light;
+  color-scheme: dark;
   font-family: 'IBM Plex Sans', sans-serif;
   line-height: 1.5;
   font-weight: 400;
-  background-color: #f8f6f1;
-  color: #111827;
+  background-color: #07111f;
+  color: #f4f7fb;
   text-rendering: optimizeLegibility;
   font-synthesis: none;
   -webkit-font-smoothing: antialiased;
@@ -24,6 +24,12 @@ html {
 body {
   margin: 0;
   min-width: 320px;
+  min-height: 100vh;
+  background:
+    radial-gradient(circle at 15% 20%, rgba(34, 211, 238, 0.12), transparent 26%),
+    radial-gradient(circle at 85% 10%, rgba(59, 130, 246, 0.15), transparent 22%),
+    radial-gradient(circle at 50% 100%, rgba(14, 165, 233, 0.08), transparent 28%),
+    linear-gradient(180deg, #07111f 0%, #0a1627 52%, #07111f 100%);
 }
 
 * {
@@ -41,12 +47,91 @@ img {
 }
 
 ::selection {
-  background: rgba(217, 119, 6, 0.18);
-  color: #111827;
+  background: rgba(125, 211, 252, 0.28);
+  color: #f4f7fb;
+}
+
+#root {
+  min-height: 100vh;
+}
+
+@layer base {
+  body {
+    @apply font-body text-text;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    @apply font-display tracking-tight text-text;
+  }
+
+  p {
+    @apply text-muted;
+  }
+}
+
+@layer components {
+  .focus-ring {
+    @apply focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-focus/80 focus-visible:ring-offset-2 focus-visible:ring-offset-bg;
+  }
+
+  .surface-panel {
+    @apply rounded-card border border-border/70 bg-surface/[0.72] shadow-panel backdrop-blur-panel;
+  }
+
+  .surface-panel-strong {
+    @apply rounded-panel border border-white/10 bg-surface-strong/80 shadow-panel backdrop-blur-panel;
+  }
+
+  .section-spacing {
+    @apply mt-14 sm:mt-16;
+  }
+
+  .mesh-shell {
+    position: relative;
+    isolation: isolate;
+  }
+
+  .mesh-shell::before,
+  .mesh-shell::after {
+    content: '';
+    pointer-events: none;
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+  }
+
+  .mesh-shell::before {
+    background:
+      radial-gradient(circle at 10% 20%, rgba(56, 189, 248, 0.15), transparent 26%),
+      radial-gradient(circle at 90% 15%, rgba(45, 212, 191, 0.1), transparent 22%),
+      radial-gradient(circle at 50% 85%, rgba(96, 165, 250, 0.08), transparent 30%);
+    filter: blur(24px);
+  }
+
+  .mesh-shell::after {
+    background-image:
+      linear-gradient(rgba(148, 163, 184, 0.05) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(148, 163, 184, 0.05) 1px, transparent 1px);
+    background-position: center;
+    background-size: 72px 72px;
+    mask-image: radial-gradient(circle at center, black 36%, transparent 92%);
+    opacity: 0.18;
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
   }
 }

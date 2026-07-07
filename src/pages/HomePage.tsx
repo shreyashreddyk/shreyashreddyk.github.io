@@ -1,12 +1,16 @@
 import { motion } from 'framer-motion';
 import { ArrowRight, Bot, ChartColumn, ServerCog } from 'lucide-react';
-import { Link } from 'react-router-dom';
+import { Badge } from '../components/Badge';
+import { ButtonLink } from '../components/ButtonLink';
 import { ProjectCard } from '../components/ProjectCard';
-import { PageShell } from '../components/PageShell';
+import { PageTransition } from '../components/PageTransition';
+import { SEO } from '../components/SEO';
 import { SectionHeading } from '../components/SectionHeading';
+import { StatCard } from '../components/StatCard';
 import { featuredProjects } from '../data/projects';
 import { hero, siteMetadata, strengths } from '../data/profile';
 import {
+  createHeroGlowProps,
   createRevealProps,
   createStaggerChildVariants,
   createStaggerVariants,
@@ -38,59 +42,74 @@ const capabilityCards = [
 export function HomePage() {
   const reducedMotion = useMotionPreference();
   const counts = getProjectCounts();
+  const statCards = [
+    {
+      label: 'Based in',
+      value: siteMetadata.location,
+      description: 'Graduate work and portfolio projects grounded in production-minded AI and analytics delivery.',
+    },
+    {
+      label: 'Public repos',
+      value: `${counts.total}`,
+      description: 'Curated repositories surfaced with evidence-backed summaries and recruiter-friendly framing.',
+    },
+    {
+      label: 'Featured depth',
+      value: `${counts.featured}`,
+      description: 'The strongest AI systems, fraud analytics, and data engineering work surfaced first.',
+    },
+  ];
 
   return (
-    <PageShell ariaLabel="Homepage">
-      <section className="grid gap-6 lg:grid-cols-[1.3fr_0.9fr] lg:items-end">
+    <PageTransition ariaLabel="Homepage">
+      <SEO
+        title="Home"
+        description="Portfolio homepage for Shreyash Kondakindi featuring frontend care, AI systems, analytics work, and public-safe recruiter-facing highlights."
+      />
+
+      <section className="grid gap-6 lg:grid-cols-[1.2fr_0.8fr] lg:items-stretch">
         <motion.div
-          className="rounded-[36px] border border-white/80 bg-white/85 p-8 shadow-panel backdrop-blur sm:p-10"
+          className="surface-panel-strong relative overflow-hidden p-8 sm:p-10"
           {...createRevealProps(reducedMotion)}
         >
-          <p className="text-sm font-semibold uppercase tracking-[0.24em] text-spruce">{hero.eyebrow}</p>
-          <h1 className="mt-5 max-w-3xl font-display text-5xl font-semibold tracking-tight text-ink sm:text-6xl">
+          <motion.div
+            aria-hidden="true"
+            className="absolute -right-12 -top-12 h-40 w-40 rounded-full bg-accent/[0.16] blur-3xl"
+            {...createHeroGlowProps(reducedMotion)}
+          />
+          <motion.div
+            aria-hidden="true"
+            className="absolute bottom-0 left-0 h-32 w-32 rounded-full bg-cyan-400/10 blur-3xl"
+            {...createHeroGlowProps(reducedMotion)}
+          />
+          <Badge variant="accent">{hero.eyebrow}</Badge>
+          <h1 className="mt-5 max-w-3xl text-5xl font-semibold sm:text-6xl">
             {hero.title}
           </h1>
-          <p className="mt-6 max-w-prose text-lg leading-8 text-steel">{hero.summary}</p>
+          <p className="mt-6 max-w-prose text-lg leading-8 text-muted">{hero.summary}</p>
           <div className="mt-8 flex flex-wrap gap-3">
-            <Link
-              to={hero.primaryCta.href}
-              className="inline-flex items-center gap-2 rounded-full bg-ink px-5 py-3 text-sm font-medium text-mist transition hover:bg-ink/90 focus:outline-none focus:ring-4 focus:ring-ember/30"
-            >
+            <ButtonLink href={hero.primaryCta.href} className="px-5 py-3">
               {hero.primaryCta.label}
               <ArrowRight size={16} />
-            </Link>
-            <Link
-              to={hero.secondaryCta.href}
-              className="inline-flex items-center gap-2 rounded-full border border-clay bg-mist/70 px-5 py-3 text-sm font-medium text-ink transition hover:border-ember hover:text-ember focus:outline-none focus:ring-4 focus:ring-ember/30"
-            >
+            </ButtonLink>
+            <ButtonLink href={hero.secondaryCta.href} variant="secondary" className="px-5 py-3">
               {hero.secondaryCta.label}
-            </Link>
+            </ButtonLink>
           </div>
         </motion.div>
-        <motion.aside
-          className="rounded-[36px] border border-clay/70 bg-ink p-8 text-mist shadow-panel sm:p-10"
+        <motion.div
+          className="grid gap-5"
           {...createRevealProps(reducedMotion, 0.08)}
         >
-          <p className="text-sm uppercase tracking-[0.24em] text-clay">Current focus</p>
-          <dl className="mt-6 grid gap-5">
-            <div>
-              <dt className="text-sm text-clay">Based in</dt>
-              <dd className="mt-1 font-display text-2xl">{siteMetadata.location}</dd>
-            </div>
-            <div>
-              <dt className="text-sm text-clay">Portfolio scope</dt>
-              <dd className="mt-1 font-display text-2xl">{counts.total} public repositories curated</dd>
-            </div>
-            <div>
-              <dt className="text-sm text-clay">Featured depth</dt>
-              <dd className="mt-1 font-display text-2xl">{counts.featured} strongest AI and data projects surfaced first</dd>
-            </div>
-          </dl>
-        </motion.aside>
+          {statCards.map((card) => (
+            <StatCard key={card.label} {...card} />
+          ))}
+        </motion.div>
       </section>
 
-      <section className="mt-16">
+      <section className="section-spacing" aria-labelledby="optimize-heading">
         <SectionHeading
+          id="optimize-heading"
           eyebrow="What I Optimize For"
           title="Systems that can explain themselves."
           description="The through-line in my work is turning technical complexity into something measurable, reviewable, and useful to other people."
@@ -106,20 +125,21 @@ export function HomePage() {
             <motion.article
               key={title}
               variants={createStaggerChildVariants(reducedMotion)}
-              className="rounded-[30px] border border-clay/70 bg-white/75 p-6 shadow-panel"
+              className="surface-panel p-6"
             >
-              <div className="inline-flex rounded-2xl bg-ember/10 p-3 text-ember">
+              <div className="inline-flex rounded-2xl border border-accent/20 bg-accent/10 p-3 text-accent">
                 <Icon size={22} />
               </div>
-              <h2 className="mt-5 font-display text-2xl font-semibold tracking-tight">{title}</h2>
-              <p className="mt-3 text-base leading-7 text-steel">{description}</p>
+              <h2 className="mt-5 text-2xl font-semibold">{title}</h2>
+              <p className="mt-3 text-base leading-7 text-muted">{description}</p>
             </motion.article>
           ))}
         </motion.div>
       </section>
 
-      <section className="mt-16">
+      <section className="section-spacing" aria-labelledby="strengths-heading">
         <SectionHeading
+          id="strengths-heading"
           eyebrow="Selected Strengths"
           title="A blend of research rigor, deployment discipline, and frontend care."
         />
@@ -134,7 +154,7 @@ export function HomePage() {
             <motion.li
               key={strength}
               variants={createStaggerChildVariants(reducedMotion)}
-              className="rounded-[26px] border border-clay/70 bg-mist/80 px-5 py-5 text-base leading-7 text-steel"
+              className="surface-panel px-5 py-5 text-base leading-7 text-muted"
             >
               {strength}
             </motion.li>
@@ -142,20 +162,18 @@ export function HomePage() {
         </motion.ul>
       </section>
 
-      <section className="mt-16">
+      <section className="section-spacing" aria-labelledby="featured-heading">
         <div className="flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
           <SectionHeading
+            id="featured-heading"
             eyebrow="Featured Work"
             title="Recent projects with the strongest AI and data signal."
             description="These are the projects I would point a recruiter or collaborator to first."
           />
-          <Link
-            to="/projects"
-            className="inline-flex items-center gap-2 self-start rounded-full border border-clay bg-white/70 px-4 py-2 text-sm font-medium text-ink transition hover:border-ember hover:text-ember focus:outline-none focus:ring-4 focus:ring-ember/30"
-          >
+          <ButtonLink href="/projects" variant="secondary" className="self-start">
             See the full archive
             <ArrowRight size={16} />
-          </Link>
+          </ButtonLink>
         </div>
         <div className="mt-8 grid gap-6 xl:grid-cols-2">
           {featuredProjects.slice(0, 4).map((project) => (
@@ -163,6 +181,6 @@ export function HomePage() {
           ))}
         </div>
       </section>
-    </PageShell>
+    </PageTransition>
   );
 }

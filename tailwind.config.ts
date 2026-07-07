@@ -5,25 +5,34 @@ export default {
   theme: {
     extend: {
       colors: {
-        ink: '#111827',
-        mist: '#f5f3ee',
-        ember: '#d97706',
-        spruce: '#0f766e',
-        steel: '#475569',
-        clay: '#d6c5b3',
+        bg: '#07111f',
+        surface: '#0e1a2b',
+        'surface-strong': '#162338',
+        text: '#f4f7fb',
+        muted: '#93a4bd',
+        border: '#2b3c57',
+        accent: '#7dd3fc',
+        'accent-soft': '#14324d',
+        focus: '#bae6fd',
       },
       boxShadow: {
-        panel: '0 24px 60px rgba(15, 23, 42, 0.08)',
-      },
-      backgroundImage: {
-        'page-glow':
-          'radial-gradient(circle at top left, rgba(217, 119, 6, 0.16), transparent 34%), radial-gradient(circle at top right, rgba(15, 118, 110, 0.16), transparent 28%), linear-gradient(180deg, #f8f6f1 0%, #f3efe7 100%)',
+        panel: '0 24px 80px rgba(2, 10, 24, 0.44)',
+        lift: '0 20px 50px rgba(2, 10, 24, 0.3)',
+        glow: '0 0 0 1px rgba(255, 255, 255, 0.04)',
       },
       fontFamily: {
         display: ['"Space Grotesk"', 'sans-serif'],
         body: ['"IBM Plex Sans"', 'sans-serif'],
       },
+      borderRadius: {
+        card: '1.75rem',
+        panel: '2.25rem',
+      },
+      backdropBlur: {
+        panel: '20px',
+      },
       maxWidth: {
+        site: '78rem',
         prose: '72ch',
       },
     },

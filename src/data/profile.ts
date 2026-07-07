@@ -15,6 +15,8 @@ export const siteMetadata = {
   location: 'San Diego, California',
   email: 'kshreyashreddy@gmail.com',
   githubUrl: 'https://github.com/shreyashreddyk',
+  linkedinUrl: undefined,
+  resumeUrl: undefined,
 };
 
 export const hero = {

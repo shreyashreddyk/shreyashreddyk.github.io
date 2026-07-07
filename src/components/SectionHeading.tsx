@@ -1,19 +1,41 @@
+import { cn } from '../lib/utils';
+
 type SectionHeadingProps = {
+  id?: string;
   eyebrow?: string;
   title: string;
   description?: string;
+  align?: 'left' | 'center';
+  level?: 1 | 2 | 3;
+  className?: string;
 };
 
-export function SectionHeading({ eyebrow, title, description }: SectionHeadingProps) {
+export function SectionHeading({
+  id,
+  eyebrow,
+  title,
+  description,
+  align = 'left',
+  level = 2,
+  className,
+}: SectionHeadingProps) {
+  const HeadingTag = `h${level}` as const;
+
   return (
-    <div className="max-w-prose">
+    <div
+      className={cn(
+        'max-w-prose',
+        align === 'center' ? 'mx-auto text-center' : '',
+        className,
+      )}
+    >
       {eyebrow ? (
-        <p className="mb-3 text-sm font-semibold uppercase tracking-[0.24em] text-spruce">{eyebrow}</p>
+        <p className="mb-3 text-sm font-semibold uppercase tracking-[0.24em] text-accent">{eyebrow}</p>
       ) : null}
-      <h2 className="font-display text-3xl font-semibold tracking-tight text-ink sm:text-4xl">
+      <HeadingTag id={id} className="text-3xl font-semibold sm:text-4xl">
         {title}
-      </h2>
-      {description ? <p className="mt-4 text-base leading-7 text-steel">{description}</p> : null}
+      </HeadingTag>
+      {description ? <p className="mt-4 text-base leading-7 text-muted">{description}</p> : null}
     </div>
   );
 }
