@@ -1,0 +1,17 @@
+<svg width="1600" height="900" viewBox="0 0 1600 900" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1600" height="900" rx="48" fill="#0F1623" />
+  <rect width="1600" height="900" rx="48" fill="url(#bg)" />
+  <circle cx="1290" cy="190" r="210" fill="#67E8F9" fill-opacity="0.18" />
+  <circle cx="300" cy="750" r="260" fill="#FBBF24" fill-opacity="0.16" />
+  <rect x="116" y="120" width="360" height="48" rx="24" fill="rgba(255,255,255,0.14)" />
+  <text x="154" y="151" fill="#F8FAFC" font-family="'IBM Plex Sans', sans-serif" font-size="24" font-weight="600">Data Visualization / Analytics</text>
+  <text x="116" y="320" fill="#F8FAFC" font-family="'Space Grotesk', sans-serif" font-size="92" font-weight="700">Texas Weather</text>
+  <text x="116" y="422" fill="#F8FAFC" font-family="'Space Grotesk', sans-serif" font-size="92" font-weight="700">Data Analysis</text>
+  <text x="118" y="526" fill="#E0F2FE" font-family="'IBM Plex Sans', sans-serif" font-size="30">Spark ETL • seasonal analysis • climate classification</text>
+  <defs>
+    <linearGradient id="bg" x1="86" y1="72" x2="1480" y2="844" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#0F3C68" />
+      <stop offset="1" stop-color="#155E75" />
+    </linearGradient>
+  </defs>
+</svg>

@@ -1,0 +1,17 @@
+<svg width="1600" height="900" viewBox="0 0 1600 900" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1600" height="900" rx="48" fill="#19110F" />
+  <rect width="1600" height="900" rx="48" fill="url(#bg)" />
+  <circle cx="1300" cy="190" r="210" fill="#FCD34D" fill-opacity="0.14" />
+  <circle cx="320" cy="740" r="250" fill="#FB7185" fill-opacity="0.14" />
+  <rect x="116" y="120" width="318" height="48" rx="24" fill="rgba(255,255,255,0.14)" />
+  <text x="154" y="151" fill="#F8FAFC" font-family="'IBM Plex Sans', sans-serif" font-size="24" font-weight="600">Fraud / Risk Analytics</text>
+  <text x="116" y="312" fill="#F8FAFC" font-family="'Space Grotesk', sans-serif" font-size="84" font-weight="700">NYC Property</text>
+  <text x="116" y="410" fill="#F8FAFC" font-family="'Space Grotesk', sans-serif" font-size="84" font-weight="700">Fraud Detection</text>
+  <text x="118" y="510" fill="#FEF3C7" font-family="'IBM Plex Sans', sans-serif" font-size="30">1.07M records • PCA distance • autoencoder ensemble</text>
+  <defs>
+    <linearGradient id="bg" x1="84" y1="70" x2="1480" y2="846" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#422006" />
+      <stop offset="1" stop-color="#9F1239" />
+    </linearGradient>
+  </defs>
+</svg>
