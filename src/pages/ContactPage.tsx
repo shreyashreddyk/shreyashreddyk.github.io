@@ -15,14 +15,14 @@ export function ContactPage() {
     <PageTransition ariaLabel="Contact page">
       <SEO
         title="Contact"
-        description="Public contact paths for Shreyash Kondakindi, including email and GitHub, with a static recruiter-friendly contact surface."
+        description="Contact information for Shreyash Kondakindi, including email and GitHub, plus current role interests."
       />
       <motion.section {...createRevealProps(reducedMotion)}>
         <SectionHeading
           level={1}
           eyebrow="Contact"
-          title="Best reached through simple, public channels."
-          description="This site stays intentionally static, so there is no form backend here. Email or GitHub is the cleanest way to start a conversation."
+          title="Open to AI, data, and analytics opportunities."
+          description="Email is the best way to reach me for hiring conversations, project discussions, or portfolio follow-ups."
         />
       </motion.section>
 
@@ -55,8 +55,8 @@ export function ContactPage() {
           <h2 className="mt-5 text-3xl font-semibold">What I like working on</h2>
           <ul className="mt-6 grid gap-4 text-base leading-7 text-muted">
             <li>AI engineering work where evaluation and deployment matter as much as the model choice.</li>
-            <li>Data science roles that need strong feature thinking, business framing, and technical execution.</li>
-            <li>Product-minded projects where the interface should feel intentional, accessible, and clear.</li>
+            <li>Data and analytics engineering work that turns messy source systems into reliable decision-making inputs.</li>
+            <li>Applied modeling problems in fraud, risk, and finance where the system around the model matters too.</li>
           </ul>
         </div>
       </section>

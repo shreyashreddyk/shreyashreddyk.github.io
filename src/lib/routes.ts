@@ -8,26 +8,26 @@ export const routes: AppRoute[] = [
   {
     href: '/',
     label: 'Home',
-    description: 'Overview of strengths, selected work, and current focus.',
+    description: 'AI engineer profile, featured projects, and current focus areas.',
   },
   {
     href: '/projects',
     label: 'Projects',
-    description: 'Featured AI, data, analytics, and research projects.',
+    description: 'AI systems, data engineering, fraud analytics, and modeling work.',
   },
   {
     href: '/work',
     label: 'Work',
-    description: 'Experience highlights, public-safe resume bullets, and execution signal.',
+    description: 'Experience highlights across analytics, AI systems, and data delivery.',
   },
   {
     href: '/education',
     label: 'Education',
-    description: 'Academic background, coursework, and technical foundations.',
+    description: 'Academic background and technical foundations.',
   },
   {
     href: '/contact',
     label: 'Contact',
-    description: 'Public ways to connect and collaborate.',
+    description: 'Contact details and current role interests.',
   },
 ];

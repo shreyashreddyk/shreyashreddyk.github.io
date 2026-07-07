@@ -19,14 +19,14 @@ export function WorkPage() {
     <PageTransition ariaLabel="Work page">
       <SEO
         title="Work"
-        description="Experience highlights and public-safe resume bullets that foreground execution quality across AI systems, healthcare analytics, and research workflows."
+        description="Experience highlights across AI systems, healthcare analytics, financial data workflows, and applied modeling."
       />
       <motion.section {...createRevealProps(reducedMotion)}>
         <SectionHeading
           level={1}
           eyebrow="Work"
-          title="Execution signal across analytics, AI systems, and delivery."
-          description="A compact work page built for recruiters: factual, public-safe, and focused on the kinds of outcomes, systems, and responsibilities that show how I work."
+          title="Experience across analytics, AI systems, and data delivery."
+          description="Roles and project-adjacent work that show how I build, ship, and support data-intensive products."
         />
       </motion.section>
 
@@ -42,19 +42,19 @@ export function WorkPage() {
           </div>
         </div>
         <div className="surface-panel-strong p-7">
-          <h2 className="text-2xl font-semibold">What recruiters should expect to see here</h2>
+          <h2 className="text-2xl font-semibold">What I bring to a team</h2>
           <ul className="mt-5 grid gap-3 text-sm leading-6 text-muted">
             <li className="flex gap-3">
               <span aria-hidden="true" className="mt-2 h-2 w-2 rounded-full bg-accent" />
-              <span>Evidence-backed claims tied to public artifacts, documented workflows, or saved reports.</span>
+              <span>AI and data systems work that connects modeling, infrastructure, and product delivery.</span>
             </li>
             <li className="flex gap-3">
               <span aria-hidden="true" className="mt-2 h-2 w-2 rounded-full bg-accent" />
-              <span>Experience surfaced through responsibilities, systems thinking, and measurable execution signal.</span>
+              <span>Experience across healthcare analytics, financial data workflows, BI automation, and fraud analytics.</span>
             </li>
             <li className="flex gap-3">
               <span aria-hidden="true" className="mt-2 h-2 w-2 rounded-full bg-accent" />
-              <span>Clear separation between public-safe summaries and any private source material that stays out of the repo.</span>
+              <span>A practical style that values readable code, measurable behavior, and systems that other people can operate.</span>
             </li>
           </ul>
         </div>
@@ -88,8 +88,8 @@ export function WorkPage() {
       <section className="section-spacing" aria-labelledby="resume-heading">
         <SectionHeading
           id="resume-heading"
-          title="Selected public-safe resume bullets"
-          description="Summarized to stay web-appropriate while still showing technical range, ownership, and implementation depth."
+          title="Selected highlights"
+          description="A concise set of project and experience highlights across AI engineering, analytics, and research."
         />
         <motion.div
           className="mt-8 grid gap-5 lg:grid-cols-2"

@@ -534,3 +534,16 @@ const projects: Project[] = [
 export const featuredProjects = projects.filter((project) => project.featured);
 export const archiveProjects = projects.filter((project) => !project.featured);
 export const allProjects = projects;
+
+const homeCategoryPriority: Record<ProjectCategory, number> = {
+  'AI / LLM Systems': 0,
+  'Data Engineering': 1,
+  'Fraud / Risk Analytics': 2,
+  'Machine Learning': 3,
+  'Research / Statistical Modeling': 4,
+  'Data Visualization / Analytics': 5,
+};
+
+export const homeFeaturedProjects = [...featuredProjects].sort(
+  (left, right) => homeCategoryPriority[left.category] - homeCategoryPriority[right.category],
+);

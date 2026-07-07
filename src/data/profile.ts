@@ -9,9 +9,14 @@ export type ResumeHighlight = {
   statement: string;
 };
 
+export type SkillGroup = {
+  heading: string;
+  items: string[];
+};
+
 export const siteMetadata = {
   name: 'Shreyash Kondakindi',
-  role: 'AI/ML Engineer and Data Scientist',
+  role: 'AI Engineer · Data Systems',
   location: 'San Diego, California',
   email: 'kshreyashreddy@gmail.com',
   githubUrl: 'https://github.com/shreyashreddyk',
@@ -20,30 +25,34 @@ export const siteMetadata = {
 };
 
 export const hero = {
-  eyebrow: 'AI systems, analytics, and production-minded data work',
-  title: 'Building evidence-backed AI and data products that hold up outside the notebook.',
+  eyebrow: 'Shreyash Kondakindi',
+  title: 'AI Engineer building LLM and data systems for analytics-heavy products.',
   summary:
-    'I work across retrieval systems, LLM evaluation, model-serving performance, fraud analytics, and scalable data pipelines, with a focus on honest measurement, reproducible workflows, and polished user-facing delivery.',
+    'I build retrieval pipelines, evaluation workflows, scalable data infrastructure, and analytics applications across finance, fraud, and healthcare. My work blends AI engineering, data engineering, and applied modeling with a strong bias toward production-ready systems.',
   primaryCta: {
     label: 'View Projects',
     href: '/projects',
   },
   secondaryCta: {
-    label: 'Get in Touch',
-    href: '/contact',
+    label: 'View Resume',
+    href: '/work',
+  },
+  tertiaryCta: {
+    label: 'GitHub',
+    href: siteMetadata.githubUrl,
   },
 };
 
 export const strengths = [
-  'Production-oriented GenAI systems with retrieval, evaluation, observability, and deployment discipline.',
-  'Data products and analytics pipelines spanning healthcare, finance, fraud modeling, and large-scale distributed processing.',
-  'A bias toward truthful reporting: metrics stay tied to saved artifacts, documented workflows, or clearly stated assumptions.',
+  'AI systems work spanning retrieval, evaluation, serving, and deployment workflows.',
+  'Data engineering experience across analytics pipelines, cloud warehouses, streaming systems, and BI delivery.',
+  'Applied modeling experience in fraud, risk, experimentation, and statistical analysis.',
 ];
 
 export const aboutSummary = [
-  'I am an M.S. Data Science candidate at UC San Diego with professional experience in healthcare analytics and investment-bank research workflows, plus graduate project work across RAG, serving systems, fraud analytics, causal inference, and statistical modeling.',
-  'My recent work has centered on AI systems that need more than a demo: typed APIs, evaluation harnesses, CI-visible checks, deployment runbooks, and clear operational boundaries.',
-  'I enjoy projects where product polish and technical rigor have to coexist, especially when the outcome needs to be legible to both technical reviewers and hiring managers.',
+  'I am an M.S. Data Science candidate at UC San Diego with experience across healthcare analytics, financial research workflows, and graduate project work in AI systems, fraud modeling, and large-scale data processing.',
+  'My strongest work sits at the intersection of AI engineering, data infrastructure, and analytics, especially when a system needs reliable retrieval, scalable pipelines, or measurable model behavior.',
+  'I like building products that are technically rigorous, easy to explain, and useful to both operators and end users.',
 ];
 
 export const education = [
@@ -109,18 +118,69 @@ export const selectedResumeBullets: ResumeHighlight[] = [
   },
 ];
 
-export const skillGroups = [
+export const currentFocusAreas = [
+  'LLM systems',
+  'Data engineering',
+  'ML',
+  'Fraud / risk analytics',
+  'Scalable analytics',
+];
+
+export const homeCapabilityCards = [
   {
-    heading: 'AI Systems',
-    items: ['RAG', 'LLM evals', 'QLoRA / DPO', 'vLLM', 'FastAPI', 'Structured outputs'],
+    title: 'LLM and AI applications',
+    description:
+      'RAG systems, evaluation harnesses, post-training workflows, and inference performance work built for more than a single demo.',
   },
   {
-    heading: 'Data & Infra',
-    items: ['Python', 'SQL', 'React', 'TypeScript', 'Spark', 'Snowflake', 'Docker', 'GitHub Actions'],
+    title: 'Data platforms and pipelines',
+    description:
+      'Snowflake marts, Spark workflows, Kafka pipelines, and API-driven data systems designed to support downstream analytics and modeling.',
   },
   {
-    heading: 'Operations & Analytics',
-    items: ['Observability', 'Prometheus / Grafana', 'Power BI', 'Tableau', 'Causal inference', 'Fraud analytics'],
+    title: 'Analytics in finance and risk',
+    description:
+      'Hands-on work across fraud detection, financial data extraction, and business-facing analytics where technical choices need clear operational value.',
+  },
+];
+
+export const skillGroups: SkillGroup[] = [
+  {
+    heading: 'AI / ML',
+    items: ['RAG', 'LLM evals', 'QLoRA / DPO', 'vLLM', 'Structured outputs', 'Fraud modeling'],
+  },
+  {
+    heading: 'Data Engineering',
+    items: ['Spark', 'Kafka', 'Airflow', 'Snowflake', 'Cassandra', 'PostgreSQL'],
+  },
+  {
+    heading: 'Backend / Fullstack',
+    items: ['Python', 'FastAPI', 'React', 'TypeScript', 'Supabase', 'Docker'],
+  },
+  {
+    heading: 'Analytics',
+    items: ['SQL', 'Power BI', 'Tableau', 'Causal inference', 'Risk analytics', 'Feature engineering'],
+  },
+  {
+    heading: 'Tools',
+    items: ['GitHub Actions', 'Prometheus / Grafana', 'Matillion', 'CatBoost', 'XGBoost', 'Chroma'],
+  },
+];
+
+export const timelineTeasers = [
+  {
+    title: 'Work experience',
+    description:
+      'Healthcare analytics, financial data workflows, and delivery-focused experience across AI, BI, and data systems.',
+    href: '/work',
+    ctaLabel: 'View Work',
+  },
+  {
+    title: 'Education and foundations',
+    description:
+      'UC San Diego data science coursework and project work in machine learning, scalable systems, statistics, and optimization.',
+    href: '/education',
+    ctaLabel: 'View Education',
   },
 ];
 
@@ -138,4 +198,4 @@ export const contactLinks: ContactLink[] = [
 ];
 
 export const availabilityNote =
-  'Open to AI engineering, data science, ML systems, and analytics conversations where careful execution matters as much as the headline idea.';
+  'Open to AI engineering, data engineering, analytics engineering, and applied data science roles where strong systems execution matters.';

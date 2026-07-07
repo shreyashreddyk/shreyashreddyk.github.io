@@ -27,8 +27,8 @@ export function ProjectsPage() {
           id="projects-heading"
           level={1}
           eyebrow="Projects"
-          title="A portfolio organized around strong public evidence."
-          description="Featured projects lead with the clearest AI and data depth. Everything else remains visible in the archive grid so the portfolio reflects breadth without hiding the strongest signal."
+          title="Projects across AI systems, data engineering, and analytics."
+          description="Featured work leads with the strongest AI and data systems projects, with the broader archive showing additional range in modeling, visualization, and research."
         />
       </motion.section>
 
@@ -45,7 +45,7 @@ export function ProjectsPage() {
         <SectionHeading
           id="archive-heading"
           title="Archive grid"
-          description="Every listed public repository is included here with short, public-safe summaries and only evidence-backed highlights."
+          description="Additional projects across machine learning, fraud analytics, research, and data visualization."
         />
         <div className="mt-8 grid gap-8">
           {Object.entries(groupedProjects).map(([category, projects]) => (

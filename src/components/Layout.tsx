@@ -116,10 +116,10 @@ export function Layout({ children }: PropsWithChildren) {
           <div className="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
             <div>
               <p className="text-sm font-medium text-text">
-                {siteMetadata.name} · AI systems, data science, and analytics portfolio.
+                {siteMetadata.name} · AI engineering, data systems, and analytics.
               </p>
               <p className="mt-2 text-sm text-muted">
-                Built to foreground execution quality, accessible frontend fundamentals, and evidence-backed work.
+                LLM systems, scalable pipelines, and analytics products across finance, fraud, and healthcare.
               </p>
             </div>
             <div className="flex flex-wrap gap-3">
