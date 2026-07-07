@@ -63,21 +63,42 @@ src/
   styles/       Global styles and Tailwind entrypoint
 ```
 
-## Content Updates
+## Content Editing
 
-All public content lives in `src/data`.
+All public-facing copy is data-driven and lives in `src/data`.
 
 - Update biography, skills, and contact info in `src/data/profile.ts`
-- Update featured and archive projects in `src/data/projects.ts`
-- Keep content public-safe and evidence-backed
+- Update education entries in `src/data/education.ts`
+- Update work experience in `src/data/work.ts`
+- Keep content public-safe, evidence-backed, and suitable for a public recruiting portfolio
 - Do not commit raw resume PDFs, transcript PDFs, or private source documents
+
+## Project Data Updates
+
+Project metadata lives in `src/data/projects.ts`.
+
+- Keep every public GitHub repository represented on the Projects page or archive
+- Link each entry directly to its GitHub repository
+- Prefer evidence-backed bullets that mention tools, models, data sources, evaluation methods, and system design choices when supported
+- Use committed screenshots, diagrams, generated plots, or local SVG covers for project visuals
+
+## Add a New Project
+
+1. Add a new project object in `src/data/projects.ts`.
+2. Include the repository URL, summary, tech stack, and evidence-backed bullets.
+3. Add or reference a committed cover asset. If the repo has no public image, create a local SVG cover in `src/assets/project-covers/`.
+4. Decide whether the project should be featured or remain in the archive based on portfolio strength.
+5. Run `npm run lint` and `npm run build` to confirm the site still passes checks.
 
 ## GitHub Pages Deployment
 
 Deployment is handled by `.github/workflows/deploy.yml`.
 
 - Pushes to `main` trigger a production build
+- The workflow installs dependencies with `npm ci`
+- The workflow builds the site with `npm run build`
 - The workflow uploads the `dist/` artifact to GitHub Pages
+- Deployment uses `actions/configure-pages`, `actions/upload-pages-artifact`, and `actions/deploy-pages`
 - Routing uses `HashRouter`, so refreshes remain GitHub Pages safe
 - Vite `base` stays `/` because this is a user site at `https://shreyashreddyk.github.io`
 

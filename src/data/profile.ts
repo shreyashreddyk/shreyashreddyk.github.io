@@ -20,7 +20,7 @@ export const siteMetadata = {
   location: 'San Diego, California',
   email: 'kshreyashreddy@gmail.com',
   githubUrl: 'https://github.com/shreyashreddyk',
-  linkedinUrl: undefined,
+  linkedinUrl: 'https://linkedin.com/in/shreyashreddyk',
   resumeUrl: undefined,
 };
 
@@ -194,6 +194,11 @@ export const contactLinks: ContactLink[] = [
     label: 'GitHub',
     href: siteMetadata.githubUrl,
     value: 'github.com/shreyashreddyk',
+  },
+  {
+    label: 'LinkedIn',
+    href: siteMetadata.linkedinUrl,
+    value: 'linkedin.com/in/shreyashreddyk',
   },
 ];
 

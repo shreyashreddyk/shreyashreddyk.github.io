@@ -41,3 +41,38 @@
 ## Validation and Git
 - Do not commit unless checks pass.
 - Before any commit, verify that no private PDFs, transcripts, or raw source docs are staged.
+
+## Portfolio content rules
+
+This portfolio is for technical recruiting. Prioritize clarity, credibility, and evidence.
+
+### Project writing
+- Every public GitHub repo owned by `shreyashreddyk` should appear on the Projects page.
+- Stronger projects may be featured, but weaker or older projects must still appear in the archive.
+- Every project must link directly to its GitHub repository.
+- Prefer README screenshots, diagrams, reports, or generated plots as project covers.
+- If no image exists, create a tasteful generated SVG cover. Do not use random external images.
+- Write bullets in Google XYZ format when supported by evidence.
+- Never invent metrics. If no metric exists, use impact-style wording without numbers.
+- Mention tools, models, databases, pipelines, evaluation methods, and system design choices when supported by repo evidence.
+
+### Public safety
+- Do not commit anything under `inputs/`.
+- Do not publish raw transcripts.
+- Do not publish student IDs, PIDs, addresses, or scanned transcript pages.
+- Do not publish a full resume unless a sanitized public resume is explicitly placed in `public/resume.pdf`.
+
+### UI rules
+- The site should feel fluid, premium, and polished.
+- Avoid fragile animation complexity.
+- No Three.js/WebGL unless explicitly requested.
+- Use responsive layouts.
+- Support `prefers-reduced-motion`.
+- Use semantic HTML and accessible focus states.
+
+### Checks
+Before final response or commit:
+- `npm run lint`
+- `npm run build`
+- inspect for broken links/images
+- verify no private files were committed

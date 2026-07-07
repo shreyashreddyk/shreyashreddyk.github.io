@@ -135,3 +135,51 @@ img {
     transition-duration: 0.01ms !important;
   }
 }
+
+@media print {
+  :root {
+    color-scheme: light;
+    background: #ffffff;
+    color: #111827;
+  }
+
+  body {
+    background: #ffffff !important;
+    color: #111827 !important;
+  }
+
+  .mesh-shell::before,
+  .mesh-shell::after,
+  header,
+  footer {
+    display: none !important;
+  }
+
+  main {
+    padding-top: 0 !important;
+  }
+
+  .surface-panel,
+  .surface-panel-strong {
+    border: 1px solid #d1d5db !important;
+    background: #ffffff !important;
+    box-shadow: none !important;
+    backdrop-filter: none !important;
+    color: #111827 !important;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  p,
+  li,
+  span,
+  a {
+    color: #111827 !important;
+  }
+
+  a {
+    text-decoration: none !important;
+  }
+}

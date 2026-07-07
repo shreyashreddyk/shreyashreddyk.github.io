@@ -1,10 +1,15 @@
 import { motion } from 'framer-motion';
+import { ArrowRight, FileText, Mail } from 'lucide-react';
+import { Badge } from '../components/Badge';
+import { ButtonLink } from '../components/ButtonLink';
 import { PageTransition } from '../components/PageTransition';
 import { SEO } from '../components/SEO';
 import { SectionHeading } from '../components/SectionHeading';
-import { TimelineItem } from '../components/TimelineItem';
-import { aboutSummary, experienceHighlights, selectedResumeBullets } from '../data/profile';
+import { WorkTimelineEntry } from '../components/WorkTimelineEntry';
+import { siteMetadata } from '../data/profile';
+import { experienceThemes, resumeCta, workEntries } from '../data/work';
 import {
+  createHeroGlowProps,
   createRevealProps,
   createStaggerChildVariants,
   createStaggerVariants,
@@ -13,100 +18,172 @@ import {
 
 export function WorkPage() {
   const reducedMotion = useMotionPreference();
-  const intro = aboutSummary.slice(0, 2);
 
   return (
     <PageTransition ariaLabel="Work page">
       <SEO
         title="Work"
-        description="Experience highlights across AI systems, healthcare analytics, financial data workflows, and applied modeling."
+        description="Recruiter-focused work experience across AI systems, data engineering, healthcare analytics, and finance workflows."
+        path="/work"
       />
-      <motion.section {...createRevealProps(reducedMotion)}>
-        <SectionHeading
-          level={1}
-          eyebrow="Work"
-          title="Experience across analytics, AI systems, and data delivery."
-          description="Roles and project-adjacent work that show how I build, ship, and support data-intensive products."
-        />
-      </motion.section>
 
-      <section className="section-spacing grid gap-6 lg:grid-cols-[0.9fr_1.1fr]">
-        <div className="surface-panel p-7">
-          <h2 className="text-2xl font-semibold">How I approach the work</h2>
-          <div className="mt-5 grid gap-4">
-            {intro.map((paragraph) => (
-              <p key={paragraph} className="text-base leading-7 text-muted">
-                {paragraph}
-              </p>
+      <section className="grid gap-6 lg:grid-cols-[1.15fr_0.85fr] lg:items-stretch">
+        <motion.div
+          className="surface-panel-strong relative overflow-hidden p-8 sm:p-10"
+          {...createRevealProps(reducedMotion)}
+        >
+          <motion.div
+            aria-hidden="true"
+            className="absolute -right-12 -top-12 h-40 w-40 rounded-full bg-accent/[0.16] blur-3xl"
+            {...createHeroGlowProps(reducedMotion)}
+          />
+          <motion.div
+            aria-hidden="true"
+            className="absolute bottom-0 left-0 h-32 w-32 rounded-full bg-cyan-400/10 blur-3xl"
+            {...createHeroGlowProps(reducedMotion)}
+          />
+
+          <SectionHeading
+            level={1}
+            eyebrow="Work"
+            title="Experience that reads as production-ready AI, data, and analytics delivery."
+            description="The story here is systems execution: AI workflows, research-backed inference work, warehouse and pipeline delivery, and analytics products built for real operators and stakeholders."
+          />
+
+          <div className="mt-8 flex flex-wrap gap-2" aria-label="Work positioning">
+            {['AI engineering', 'Data engineering', 'Analytics engineering', 'Applied data science'].map((item) => (
+              <Badge key={item} variant="soft" className="border-accent/20 bg-accent/[0.08] text-text">
+                {item}
+              </Badge>
             ))}
           </div>
-        </div>
-        <div className="surface-panel-strong p-7">
-          <h2 className="text-2xl font-semibold">What I bring to a team</h2>
-          <ul className="mt-5 grid gap-3 text-sm leading-6 text-muted">
-            <li className="flex gap-3">
-              <span aria-hidden="true" className="mt-2 h-2 w-2 rounded-full bg-accent" />
-              <span>AI and data systems work that connects modeling, infrastructure, and product delivery.</span>
-            </li>
-            <li className="flex gap-3">
-              <span aria-hidden="true" className="mt-2 h-2 w-2 rounded-full bg-accent" />
-              <span>Experience across healthcare analytics, financial data workflows, BI automation, and fraud analytics.</span>
-            </li>
-            <li className="flex gap-3">
-              <span aria-hidden="true" className="mt-2 h-2 w-2 rounded-full bg-accent" />
-              <span>A practical style that values readable code, measurable behavior, and systems that other people can operate.</span>
-            </li>
-          </ul>
-        </div>
+        </motion.div>
+
+        <motion.aside
+          className="surface-panel relative overflow-hidden p-7"
+          {...createRevealProps(reducedMotion, 0.08)}
+          aria-labelledby="resume-cta-heading"
+        >
+          <div
+            aria-hidden="true"
+            className="absolute inset-x-6 top-0 h-px bg-gradient-to-r from-accent/0 via-accent/50 to-accent/0"
+          />
+          <div className="inline-flex rounded-2xl border border-accent/20 bg-accent/10 p-3 text-accent">
+            <FileText size={22} />
+          </div>
+          <h2 id="resume-cta-heading" className="mt-5 text-2xl font-semibold">
+            Resume status
+          </h2>
+          <p className="mt-3 text-base leading-7 text-muted">
+            This page carries the recruiter-facing experience summary now. The public-safe PDF version will be added once the final resume is ready to publish.
+          </p>
+          <div className="mt-6 flex flex-wrap gap-3">
+            {resumeCta.mode === 'download' && resumeCta.href ? (
+              <ButtonLink href={resumeCta.href}>
+                {resumeCta.label}
+                <ArrowRight size={16} />
+              </ButtonLink>
+            ) : (
+              <span className="inline-flex items-center rounded-full border border-border/80 bg-white/5 px-4 py-2.5 text-sm font-medium text-text">
+                {resumeCta.label}
+              </span>
+            )}
+          </div>
+          <p className="mt-4 text-sm leading-6 text-muted">{resumeCta.helperText}</p>
+        </motion.aside>
       </section>
 
       <section className="section-spacing" aria-labelledby="experience-heading">
         <SectionHeading
           id="experience-heading"
-          title="Experience highlights"
-          description="Selected roles and workstreams that show product-minded data and AI execution."
+          eyebrow="Timeline"
+          title="Work experience aligned to AI systems, data platforms, and measurable analytics delivery."
+          description="Each role highlights the parts of the work that matter most to technical recruiting: production ownership, grounded metrics, and systems that supported downstream decisions."
         />
-        <motion.div
-          className="mt-8 grid gap-5"
-          variants={createStaggerVariants(reducedMotion)}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, amount: 0.16 }}
-        >
-          {experienceHighlights.map((item, index) => (
-            <motion.div key={item.title} variants={createStaggerChildVariants(reducedMotion)}>
-              <TimelineItem
-                title={item.title}
-                dateLabel={index < 2 ? 'Professional work' : 'Applied analytics'}
-                body={item.statement}
-              />
-            </motion.div>
-          ))}
-        </motion.div>
+        {workEntries.length ? (
+          <motion.div
+            className="mt-8 grid gap-5"
+            variants={createStaggerVariants(reducedMotion)}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, amount: 0.16 }}
+          >
+            {workEntries.map((entry) => (
+              <motion.div key={`${entry.company}-${entry.role}`} variants={createStaggerChildVariants(reducedMotion)}>
+                <WorkTimelineEntry entry={entry} />
+              </motion.div>
+            ))}
+          </motion.div>
+        ) : (
+          <div className="surface-panel mt-8 p-7">
+            <h3 className="text-2xl font-semibold">Work details are being prepared.</h3>
+            <p className="mt-3 max-w-prose text-base leading-7 text-muted">
+              The page layout is ready, but resume-backed work entries have not been published yet. Use the project portfolio and contact page in the meantime.
+            </p>
+          </div>
+        )}
       </section>
 
-      <section className="section-spacing" aria-labelledby="resume-heading">
+      <section className="section-spacing" aria-labelledby="themes-heading">
         <SectionHeading
-          id="resume-heading"
-          title="Selected highlights"
-          description="A concise set of project and experience highlights across AI engineering, analytics, and research."
+          id="themes-heading"
+          eyebrow="Experience Themes"
+          title="The experience clusters around four recruiting-relevant strengths."
+          description="This is the higher-level read across the timeline: AI systems thinking, reliable data movement, measurable analytics, and cross-functional delivery."
         />
         <motion.div
           className="mt-8 grid gap-5 lg:grid-cols-2"
           variants={createStaggerVariants(reducedMotion)}
           initial="hidden"
           whileInView="visible"
-          viewport={{ once: true, amount: 0.16 }}
+          viewport={{ once: true, amount: 0.18 }}
         >
-          {selectedResumeBullets.map((item) => (
-            <motion.div key={item.title} variants={createStaggerChildVariants(reducedMotion)}>
-              <TimelineItem
-                title={item.title}
-                dateLabel="Selected work"
-                body={item.statement}
-              />
-            </motion.div>
+          {experienceThemes.map((theme) => (
+            <motion.article
+              key={theme.title}
+              variants={createStaggerChildVariants(reducedMotion)}
+              className="surface-panel p-6"
+            >
+              <p className="text-sm font-semibold uppercase tracking-[0.18em] text-accent">{theme.title}</p>
+              <p className="mt-4 text-base leading-7 text-muted">{theme.description}</p>
+              <div className="mt-5 flex flex-wrap gap-2" aria-label={`${theme.title} supporting points`}>
+                {theme.supportingPoints.map((point) => (
+                  <Badge key={point} variant="neutral">
+                    {point}
+                  </Badge>
+                ))}
+              </div>
+            </motion.article>
           ))}
+        </motion.div>
+      </section>
+
+      <section className="section-spacing" aria-labelledby="next-step-heading">
+        <motion.div
+          className="surface-panel-strong relative overflow-hidden p-8 sm:p-10"
+          {...createRevealProps(reducedMotion)}
+        >
+          <motion.div
+            aria-hidden="true"
+            className="absolute right-0 top-0 h-28 w-28 rounded-full bg-accent/[0.14] blur-3xl"
+            {...createHeroGlowProps(reducedMotion)}
+          />
+          <SectionHeading
+            id="next-step-heading"
+            eyebrow="Next Step"
+            title="Best aligned for AI engineering, data engineering, analytics engineering, and applied data science roles."
+            description="The strongest fit is where model behavior, data reliability, and stakeholder-facing delivery all matter. That includes LLM systems, ML-ready platforms, experimentation-heavy analytics, and production data products."
+          />
+          <div className="mt-8 flex flex-wrap gap-3">
+            <ButtonLink href="/projects">
+              View projects
+              <ArrowRight size={16} />
+            </ButtonLink>
+            <ButtonLink href={`mailto:${siteMetadata.email}`} variant="secondary" aria-label="Email Shreyash">
+              <Mail size={16} />
+              Contact
+            </ButtonLink>
+          </div>
         </motion.div>
       </section>
     </PageTransition>

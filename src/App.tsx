@@ -5,6 +5,7 @@ import { ScrollToTop } from './components/ScrollToTop';
 import { ContactPage } from './pages/ContactPage';
 import { EducationPage } from './pages/EducationPage';
 import { HomePage } from './pages/HomePage';
+import { NotFoundPage } from './pages/NotFoundPage';
 import { ProjectDetailPage } from './pages/ProjectDetailPage';
 import { ProjectsPage } from './pages/ProjectsPage';
 import { WorkPage } from './pages/WorkPage';
@@ -25,6 +26,7 @@ function App() {
             <Route path="/education" element={<EducationPage />} />
             <Route path="/contact" element={<ContactPage />} />
             <Route path="/about" element={<Navigate to="/work" replace />} />
+            <Route path="*" element={<NotFoundPage />} />
           </Routes>
         </AnimatePresence>
       </Layout>

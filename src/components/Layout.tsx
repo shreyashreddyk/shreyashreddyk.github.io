@@ -10,7 +10,11 @@ import { Container } from './Container';
 
 function FooterAction({ label, href, placeholder }: { label: string; href?: string; placeholder: string }) {
   if (!href) {
-    return <span className="rounded-full border border-border/70 bg-white/5 px-3 py-2 text-sm text-muted">{placeholder}</span>;
+    return (
+      <span className="rounded-full border border-border/70 bg-white/5 px-3 py-2 text-sm text-muted">
+        {placeholder}
+      </span>
+    );
   }
 
   return (
@@ -66,10 +70,10 @@ export function Layout({ children }: PropsWithChildren) {
                         end={route.href === '/'}
                         className={({ isActive }) =>
                           cn(
-                            'focus-ring rounded-full px-4 py-2 text-sm font-medium transition',
+                            'focus-ring rounded-full border px-4 py-2 text-sm font-medium transition',
                             isActive
-                              ? 'bg-accent text-slate-950'
-                              : 'text-muted hover:bg-white/5 hover:text-text',
+                              ? 'border-accent/40 bg-accent text-slate-950 shadow-lift'
+                              : 'border-transparent text-muted hover:border-white/10 hover:bg-white/5 hover:text-text',
                           )
                         }
                       >
@@ -93,10 +97,10 @@ export function Layout({ children }: PropsWithChildren) {
                       end={route.href === '/'}
                       className={({ isActive }) =>
                         cn(
-                          'focus-ring block rounded-card px-4 py-3 text-sm transition',
+                          'focus-ring block rounded-card border px-4 py-3 text-sm transition',
                           isActive
-                            ? 'bg-accent text-slate-950'
-                            : 'bg-white/5 text-muted hover:bg-accent-soft/70 hover:text-text',
+                            ? 'border-accent/40 bg-accent text-slate-950 shadow-lift'
+                            : 'border-transparent bg-white/5 text-muted hover:border-accent/20 hover:bg-accent-soft/70 hover:text-text',
                         )
                       }
                     >
@@ -129,12 +133,12 @@ export function Layout({ children }: PropsWithChildren) {
               <FooterAction
                 label="LinkedIn"
                 href={siteMetadata.linkedinUrl}
-                placeholder="LinkedIn placeholder"
+                placeholder="LinkedIn on request"
               />
               <ButtonLink href={`mailto:${siteMetadata.email}`} variant="ghost" className="px-3 py-2 text-sm">
                 Email
               </ButtonLink>
-              <FooterAction label="Resume" href={siteMetadata.resumeUrl} placeholder="Resume placeholder" />
+              <FooterAction label="Resume" href={siteMetadata.resumeUrl} placeholder="Resume available on request" />
             </div>
           </div>
         </footer>

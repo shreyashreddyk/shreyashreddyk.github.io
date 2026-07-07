@@ -28,6 +28,7 @@ export function ProjectsPage() {
       <SEO
         title="Projects"
         description="Projects spanning AI systems, data engineering, machine learning, fraud analytics, and statistical modeling."
+        path="/projects"
       />
 
       <motion.section className="surface-panel-strong p-8 sm:p-10" {...createRevealProps(reducedMotion)}>
@@ -148,10 +149,16 @@ export function ProjectsPage() {
           </motion.div>
         ) : (
           <div className="surface-panel mt-8 p-6">
-            <h3 className="text-xl font-semibold text-text">No projects match this search yet.</h3>
-            <p className="mt-3 text-base leading-7 text-muted">
-              Try a broader category or search for a tool name like `FastAPI`, `Spark`, `XGBoost`, or `causal`.
+            <p className="text-sm font-semibold uppercase tracking-[0.18em] text-accent">No matches</p>
+            <h3 className="mt-4 text-xl font-semibold text-text">No projects match this search yet.</h3>
+            <p className="mt-3 max-w-prose text-base leading-7 text-muted">
+              Try a broader category, remove a filter, or search for a tool name like `FastAPI`, `Spark`, `XGBoost`, or `causal` to surface related work.
             </p>
+            <div className="mt-5 flex flex-wrap gap-2">
+              <Badge variant="neutral">Broaden category</Badge>
+              <Badge variant="neutral">Search by tool</Badge>
+              <Badge variant="neutral">Search by problem area</Badge>
+            </div>
           </div>
         )}
       </section>

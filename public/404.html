@@ -1,0 +1,19 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Redirecting…</title>
+  </head>
+  <body>
+    <script>
+      (function redirectToHashRoute() {
+        var path = window.location.pathname || '/';
+        var search = window.location.search || '';
+        var hashRoute = path === '/' ? '/' : path;
+        var target = '/#' + hashRoute + search;
+        window.location.replace(target);
+      })();
+    </script>
+  </body>
+</html>

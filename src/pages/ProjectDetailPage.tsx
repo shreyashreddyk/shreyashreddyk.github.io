@@ -25,21 +25,26 @@ export function ProjectDetailPage() {
   if (!project) {
     return (
       <PageTransition ariaLabel="Project not found page">
-        <SEO
+      <SEO
           title="Project Not Found"
           description="Requested project detail page could not be found in the portfolio."
+          path="/projects"
         />
         <section className="surface-panel-strong p-8 sm:p-10">
           <SectionHeading
             level={1}
             eyebrow="Projects"
             title="Project not found."
-            description="The link may be outdated, or the project slug no longer exists in this portfolio."
+            description="The link may be outdated, the slug may be invalid, or the project may no longer be included in this public portfolio."
           />
-          <div className="mt-6">
+          <div className="mt-6 flex flex-wrap gap-3">
             <ButtonLink href="/projects">
               Back to Projects
               <ArrowLeft size={16} />
+            </ButtonLink>
+            <ButtonLink href="/" variant="secondary">
+              Portfolio Home
+              <ArrowRight size={16} />
             </ButtonLink>
           </div>
         </section>
@@ -53,7 +58,13 @@ export function ProjectDetailPage() {
 
   return (
     <PageTransition ariaLabel={`${project.title} project detail page`}>
-      <SEO title={project.title} description={project.shortDescription} />
+      <SEO
+        title={project.title}
+        description={project.shortDescription}
+        path={`/projects/${project.slug}`}
+        image={project.coverImage}
+        type="article"
+      />
 
       <section>
         <ButtonLink href="/projects" variant="ghost" className="px-0 pb-2 pt-0 text-sm">
