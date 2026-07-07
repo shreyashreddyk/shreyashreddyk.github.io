@@ -1,16 +1,18 @@
 import { motion } from 'framer-motion';
-import { ArrowUpRight, Sparkles } from 'lucide-react';
+import { ArrowRight, ArrowUpRight, Sparkles } from 'lucide-react';
 import type { Project } from '../data/projects';
 import { createHoverLiftProps, useMotionPreference } from '../lib/motion';
+import { cn, getProjectHref } from '../lib/utils';
 import { Badge } from './Badge';
 import { ButtonLink } from './ButtonLink';
+import { ProjectCover } from './ProjectCover';
 
 type ProjectCardProps = {
   project: Project;
-  variant?: 'featured' | 'archive';
+  variant?: 'featured' | 'default';
 };
 
-export function ProjectCard({ project, variant = 'archive' }: ProjectCardProps) {
+export function ProjectCard({ project, variant = 'default' }: ProjectCardProps) {
   const reducedMotion = useMotionPreference();
   const isFeatured = variant === 'featured';
   const bullets = isFeatured ? project.bullets.slice(0, 3) : project.bullets.slice(0, 2);
@@ -18,26 +20,21 @@ export function ProjectCard({ project, variant = 'archive' }: ProjectCardProps) 
 
   return (
     <motion.article
-      className={
-        isFeatured ? 'surface-panel-strong overflow-hidden p-6 sm:p-7' : 'surface-panel overflow-hidden p-5 sm:p-6'
-      }
+      className={cn(
+        'overflow-hidden',
+        isFeatured ? 'surface-panel-strong p-6 sm:p-7' : 'surface-panel p-5 sm:p-6',
+      )}
       {...createHoverLiftProps(reducedMotion)}
     >
-      <div className="overflow-hidden rounded-card border border-white/10 bg-bg/60">
-        <img
-          src={project.coverImage}
-          alt={`${project.title} project cover`}
-          className="aspect-[16/9] w-full object-cover"
-        />
-      </div>
+      <ProjectCover src={project.coverImage} title={project.title} category={project.category} />
 
       <div className="mt-5 flex items-start justify-between gap-4">
-        <div>
+        <div className="min-w-0">
           <p className="text-sm font-medium uppercase tracking-[0.2em] text-accent">{project.category}</p>
-          <h3 className="mt-3 text-2xl font-semibold">{project.title}</h3>
+          <h3 className="mt-3 text-2xl font-semibold text-text">{project.title}</h3>
         </div>
         {project.featured ? (
-          <span className="inline-flex items-center gap-2 rounded-full border border-accent/25 bg-accent/[0.12] px-3 py-1 text-xs font-semibold text-accent">
+          <span className="inline-flex shrink-0 items-center gap-2 rounded-full border border-accent/25 bg-accent/[0.12] px-3 py-1 text-xs font-semibold text-accent">
             <Sparkles size={14} />
             Featured
           </span>
@@ -46,17 +43,21 @@ export function ProjectCard({ project, variant = 'archive' }: ProjectCardProps) 
 
       <p className="mt-4 text-base leading-7 text-muted">{project.shortDescription}</p>
 
-      <ul className="mt-4 flex flex-wrap gap-2" aria-label={`${project.title} project highlights`}>
-        {highlights.map((highlight) => (
-          <li key={highlight}>
-            <Badge variant="accent">{highlight}</Badge>
-          </li>
-        ))}
-      </ul>
+      {highlights.length ? (
+        <ul className="mt-4 flex flex-wrap gap-2" aria-label={`${project.title} project highlights`}>
+          {highlights.map((highlight) => (
+            <li key={highlight}>
+              <Badge variant="accent">{highlight}</Badge>
+            </li>
+          ))}
+        </ul>
+      ) : null}
 
-      <p className="mt-5 rounded-card border border-white/10 bg-white/5 px-4 py-4 text-sm leading-6 text-muted">
-        {project.recruiterPitch}
-      </p>
+      {isFeatured ? (
+        <p className="mt-5 rounded-card border border-white/10 bg-white/5 px-4 py-4 text-sm leading-6 text-muted">
+          {project.recruiterPitch}
+        </p>
+      ) : null}
 
       <ul className="mt-5 flex flex-wrap gap-2" aria-label={`${project.title} technology stack`}>
         {project.tech.map((item) => (
@@ -66,18 +67,20 @@ export function ProjectCard({ project, variant = 'archive' }: ProjectCardProps) 
         ))}
       </ul>
 
-      <ul className="mt-6 grid gap-3 text-sm leading-6 text-muted">
-        {bullets.map((bullet) => (
-          <li key={bullet} className="flex gap-3">
-            <span aria-hidden="true" className="mt-2 h-2 w-2 rounded-full bg-accent" />
-            <span>{bullet}</span>
-          </li>
-        ))}
-      </ul>
+      {bullets.length ? (
+        <ul className="mt-5 grid gap-3 text-sm leading-6 text-muted">
+          {bullets.map((bullet) => (
+            <li key={bullet} className="flex gap-3">
+              <span aria-hidden="true" className="mt-2 h-2 w-2 shrink-0 rounded-full bg-accent" />
+              <span>{bullet}</span>
+            </li>
+          ))}
+        </ul>
+      ) : null}
 
       {project.links.length ? (
         <div className="mt-6 flex flex-wrap gap-2">
-          {project.links.map((link) => (
+          {project.links.slice(0, isFeatured ? project.links.length : 2).map((link) => (
             <ButtonLink
               key={`${link.kind}-${link.label}`}
               href={link.url}
@@ -92,9 +95,13 @@ export function ProjectCard({ project, variant = 'archive' }: ProjectCardProps) 
         </div>
       ) : null}
 
-      <div className="mt-6">
+      <div className="mt-6 flex flex-wrap gap-3">
+        <ButtonLink href={getProjectHref(project.slug)} variant="secondary" aria-label={`View details for ${project.title}`}>
+          Project Details
+          <ArrowRight size={16} />
+        </ButtonLink>
         <ButtonLink href={project.repoUrl} aria-label={`Open ${project.title} on GitHub`}>
-          View Repository
+          GitHub Repo
           <ArrowUpRight size={16} />
         </ButtonLink>
       </div>
