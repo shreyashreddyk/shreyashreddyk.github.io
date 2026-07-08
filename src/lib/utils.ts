@@ -19,7 +19,7 @@ export function matchesProjectQuery(project: Project, query: string) {
     project.title,
     project.category,
     project.shortDescription,
-    project.recruiterPitch,
+    project.projectSummary,
     project.problem,
     project.approach,
     project.impact,
@@ -85,7 +85,7 @@ export function createProjectCoverFallback(title: string, category: string) {
       <rect x="56" y="56" width="1488" height="788" rx="40" fill="url(#panel)" stroke="rgba(255,255,255,0.12)"/>
       <circle cx="1260" cy="198" r="156" fill="url(#glowA)" fill-opacity="0.52"/>
       <circle cx="290" cy="716" r="188" fill="url(#glowB)" fill-opacity="0.42"/>
-      <rect x="112" y="120" width="332" height="42" rx="21" fill="#0EA5E9" fill-opacity="0.16" stroke="#38BDF8" stroke-opacity="0.4"/>
+      <rect x="112" y="120" width="520" height="42" rx="21" fill="#0EA5E9" fill-opacity="0.16" stroke="#38BDF8" stroke-opacity="0.4"/>
       <text x="142" y="148" fill="#7DD3FC" font-family="IBM Plex Sans, sans-serif" font-size="24" font-weight="700" letter-spacing="0.18em">${safeCategory}</text>
       <text x="112" y="230" fill="#F8FAFC" font-family="Space Grotesk, sans-serif" font-size="88" font-weight="700">${titleTspans}</text>
       <text x="116" y="520" fill="#CBD5E1" font-family="IBM Plex Sans, sans-serif" font-size="32" font-weight="500">GitHub portfolio project with generated fallback cover</text>

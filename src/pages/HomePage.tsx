@@ -25,7 +25,7 @@ export function HomePage() {
     <PageTransition ariaLabel="Homepage">
       <SEO
         title="Home"
-        description="Shreyash Kondakindi is an AI engineer building LLM systems, data platforms, and analytics products across finance, fraud, and healthcare."
+        description="Shreyash Kondakindi is an AI engineer building LLM systems, data science workflows, and analytics products across finance, fraud, healthcare, and education."
       />
 
       <section className="grid gap-6 lg:grid-cols-[1.15fr_0.85fr] lg:items-stretch">
@@ -44,7 +44,6 @@ export function HomePage() {
             {...createHeroGlowProps(reducedMotion)}
           />
 
-          <Badge variant="accent">{hero.eyebrow}</Badge>
           <p className="mt-5 text-sm font-semibold uppercase tracking-[0.22em] text-accent/90">
             {siteMetadata.role}
           </p>
@@ -120,8 +119,8 @@ export function HomePage() {
           <SectionHeading
             id="featured-heading"
             eyebrow="Featured Projects"
-            title="Selected work in AI systems, data engineering, and analytics."
-            description="A focused slice of the portfolio that leads with LLM applications and data infrastructure, then moves into fraud and risk analytics."
+            title="Selected work in AI systems, data science, and analytics."
+            description="A cross-section of projects spanning LLM applications, streaming data platforms, fraud modeling, and statistical analysis."
           />
           <ButtonLink href="/projects" variant="secondary" className="self-start">
             See all projects
@@ -139,7 +138,7 @@ export function HomePage() {
         <SectionHeading
           id="skills-heading"
           eyebrow="Skills Snapshot"
-          title="A stack shaped around AI delivery, data movement, and analytics."
+          title="A stack shaped around AI delivery, data science, and systems execution."
           description="The emphasis stays on tools and workflows that show up repeatedly across projects and experience."
         />
         <motion.div
@@ -211,12 +210,12 @@ export function HomePage() {
             className="absolute right-0 top-0 h-28 w-28 rounded-full bg-accent/[0.14] blur-3xl"
             {...createHeroGlowProps(reducedMotion)}
           />
-          <SectionHeading
-            id="contact-cta-heading"
-            eyebrow="Contact"
-            title="Hiring for AI, data, or analytics roles that need strong systems execution?"
-            description="I am open to conversations about AI engineering, data engineering, analytics engineering, and applied data science roles, especially where LLM systems, scalable pipelines, and business-facing analytics all matter."
-          />
+        <SectionHeading
+          id="contact-cta-heading"
+          eyebrow="Contact"
+          title="Open to AI, data science, and analytics roles that need strong systems execution."
+          description="I am open to conversations about AI engineering, data science, analytics engineering, and applied ML roles, especially where LLM systems, scalable pipelines, and business-facing analytics all matter."
+        />
           <div className="mt-8 flex flex-wrap gap-3">
             <ButtonLink href={`mailto:${siteMetadata.email}`} className="px-5 py-3">
               Email Me

@@ -23,7 +23,7 @@ export function WorkPage() {
     <PageTransition ariaLabel="Work page">
       <SEO
         title="Work"
-        description="Recruiter-focused work experience across AI systems, data engineering, healthcare analytics, and finance workflows."
+        description="Work experience across AI systems, data science, healthcare analytics, and finance workflows."
         path="/work"
       />
 
@@ -46,12 +46,12 @@ export function WorkPage() {
           <SectionHeading
             level={1}
             eyebrow="Work"
-            title="Experience that reads as production-ready AI, data, and analytics delivery."
-            description="The story here is systems execution: AI workflows, research-backed inference work, warehouse and pipeline delivery, and analytics products built for real operators and stakeholders."
+            title="Experience across AI products, data science, and production systems."
+            description="The common thread is systems execution: AI workflows, research-backed inference work, cloud and warehouse delivery, and analytics products built for real operators and stakeholders."
           />
 
           <div className="mt-8 flex flex-wrap gap-2" aria-label="Work positioning">
-            {['AI engineering', 'Data engineering', 'Analytics engineering', 'Applied data science'].map((item) => (
+            {['AI engineering', 'Data science', 'Analytics engineering', 'Applied ML'].map((item) => (
               <Badge key={item} variant="soft" className="border-accent/20 bg-accent/[0.08] text-text">
                 {item}
               </Badge>
@@ -72,10 +72,10 @@ export function WorkPage() {
             <FileText size={22} />
           </div>
           <h2 id="resume-cta-heading" className="mt-5 text-2xl font-semibold">
-            Resume status
+            Resume
           </h2>
           <p className="mt-3 text-base leading-7 text-muted">
-            This page carries the recruiter-facing experience summary now. The public-safe PDF version will be added once the final resume is ready to publish.
+            The public resume PDF mirrors the experience highlights on this page and links directly from the site footer.
           </p>
           <div className="mt-6 flex flex-wrap gap-3">
             {resumeCta.mode === 'download' && resumeCta.href ? (
@@ -98,38 +98,29 @@ export function WorkPage() {
           id="experience-heading"
           eyebrow="Timeline"
           title="Work experience aligned to AI systems, data platforms, and measurable analytics delivery."
-          description="Each role highlights the parts of the work that matter most to technical recruiting: production ownership, grounded metrics, and systems that supported downstream decisions."
+          description="Each role highlights production ownership, grounded metrics, and systems that supported downstream decisions."
         />
-        {workEntries.length ? (
-          <motion.div
-            className="mt-8 grid gap-5"
-            variants={createStaggerVariants(reducedMotion)}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, amount: 0.16 }}
-          >
-            {workEntries.map((entry) => (
-              <motion.div key={`${entry.company}-${entry.role}`} variants={createStaggerChildVariants(reducedMotion)}>
-                <WorkTimelineEntry entry={entry} />
-              </motion.div>
-            ))}
-          </motion.div>
-        ) : (
-          <div className="surface-panel mt-8 p-7">
-            <h3 className="text-2xl font-semibold">Work details are being prepared.</h3>
-            <p className="mt-3 max-w-prose text-base leading-7 text-muted">
-              The page layout is ready, but resume-backed work entries have not been published yet. Use the project portfolio and contact page in the meantime.
-            </p>
-          </div>
-        )}
+        <motion.div
+          className="mt-8 grid gap-5"
+          variants={createStaggerVariants(reducedMotion)}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.16 }}
+        >
+          {workEntries.map((entry) => (
+            <motion.div key={`${entry.company}-${entry.role}`} variants={createStaggerChildVariants(reducedMotion)}>
+              <WorkTimelineEntry entry={entry} />
+            </motion.div>
+          ))}
+        </motion.div>
       </section>
 
       <section className="section-spacing" aria-labelledby="themes-heading">
         <SectionHeading
           id="themes-heading"
           eyebrow="Experience Themes"
-          title="The experience clusters around four recruiting-relevant strengths."
-          description="This is the higher-level read across the timeline: AI systems thinking, reliable data movement, measurable analytics, and cross-functional delivery."
+          title="The work clusters around four recurring strengths."
+          description="This is the higher-level view across the timeline: AI systems thinking, reliable data movement, measurable analytics, and cross-functional delivery."
         />
         <motion.div
           className="mt-8 grid gap-5 lg:grid-cols-2"
@@ -171,8 +162,8 @@ export function WorkPage() {
           <SectionHeading
             id="next-step-heading"
             eyebrow="Next Step"
-            title="Best aligned for AI engineering, data engineering, analytics engineering, and applied data science roles."
-            description="The strongest fit is where model behavior, data reliability, and stakeholder-facing delivery all matter. That includes LLM systems, ML-ready platforms, experimentation-heavy analytics, and production data products."
+            title="Interested in AI, data science, or analytics work with strong systems execution."
+            description="The best fit is work where model behavior, data reliability, and stakeholder-facing delivery all matter. That includes LLM systems, ML-ready platforms, experimentation-heavy analytics, and production data products."
           />
           <div className="mt-8 flex flex-wrap gap-3">
             <ButtonLink href="/projects">

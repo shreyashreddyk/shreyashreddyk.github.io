@@ -18,7 +18,7 @@ const variantClasses: Record<NonNullable<ButtonLinkProps['variant']>, string> = 
 };
 
 function isExternalHref(href: string) {
-  return /^(https?:|mailto:|tel:)/.test(href);
+  return /^(https?:|mailto:|tel:)/.test(href) || /\/[^?#]+\.[a-z0-9]+(?:[?#].*)?$/i.test(href);
 }
 
 export function ButtonLink({

@@ -1,25 +1,25 @@
-import { Menu, X } from 'lucide-react';
+import { FileText, Github, Linkedin, Mail, Menu, X } from 'lucide-react';
 import { useEffect, useState, type PropsWithChildren } from 'react';
 import { Link, NavLink, useLocation } from 'react-router-dom';
-import markUrl from '../assets/site-mark.svg';
 import { siteMetadata } from '../data/profile';
 import { routes } from '../lib/routes';
 import { cn } from '../lib/utils';
 import { ButtonLink } from './ButtonLink';
 import { Container } from './Container';
 
-function FooterAction({ label, href, placeholder }: { label: string; href?: string; placeholder: string }) {
-  if (!href) {
-    return (
-      <span className="rounded-full border border-border/70 bg-white/5 px-3 py-2 text-sm text-muted">
-        {placeholder}
-      </span>
-    );
-  }
-
+function IconLink({
+  href,
+  label,
+  children,
+}: PropsWithChildren<{ href: string; label: string }>) {
   return (
-    <ButtonLink href={href} variant="ghost" className="px-3 py-2 text-sm">
-      {label}
+    <ButtonLink
+      href={href}
+      variant="ghost"
+      className="h-10 w-10 rounded-full border border-border/70 bg-white/5 p-0 text-muted hover:border-accent/40 hover:text-text"
+      aria-label={label}
+    >
+      {children}
     </ButtonLink>
   );
 }
@@ -44,12 +44,9 @@ export function Layout({ children }: PropsWithChildren) {
         <header className="sticky top-4 z-40">
           <div className="surface-panel-strong px-4 py-4 md:px-6">
             <div className="flex items-center justify-between gap-4">
-              <Link to="/" className="focus-ring flex items-center gap-3 rounded-full pr-3" aria-label="Go to homepage">
-                <img src={markUrl} alt="" className="h-11 w-11 rounded-2xl border border-white/10 bg-white/5 p-1.5" />
-                <div>
-                  <p className="text-base font-semibold text-text">{siteMetadata.name}</p>
-                  <p className="text-sm text-muted">{siteMetadata.role}</p>
-                </div>
+              <Link to="/" className="focus-ring rounded-full px-1 py-0.5 pr-3" aria-label="Go to homepage">
+                <p className="text-base font-semibold text-text">{siteMetadata.name}</p>
+                <p className="text-sm text-muted">{siteMetadata.role}</p>
               </Link>
               <button
                 type="button"
@@ -119,26 +116,25 @@ export function Layout({ children }: PropsWithChildren) {
         <footer className="mt-14 border-t border-border/70 pt-6">
           <div className="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
             <div>
-              <p className="text-sm font-medium text-text">
-                {siteMetadata.name} · AI engineering, data systems, and analytics.
-              </p>
+              <p className="text-sm font-medium text-text">{siteMetadata.name} · AI engineering, data science, and analytics.</p>
               <p className="mt-2 text-sm text-muted">
-                LLM systems, scalable pipelines, and analytics products across finance, fraud, and healthcare.
+                LLM systems, scalable pipelines, and analytics products across finance, fraud, healthcare, and education.
               </p>
             </div>
-            <div className="flex flex-wrap gap-3">
-              <ButtonLink href={siteMetadata.githubUrl} variant="ghost" className="px-3 py-2 text-sm">
-                GitHub
+            <div className="flex flex-wrap items-center gap-3">
+              <IconLink href={siteMetadata.githubUrl} label="GitHub profile">
+                <Github size={18} />
+              </IconLink>
+              <IconLink href={siteMetadata.linkedinUrl} label="LinkedIn profile">
+                <Linkedin size={18} />
+              </IconLink>
+              <IconLink href={`mailto:${siteMetadata.email}`} label="Email Shreyash">
+                <Mail size={18} />
+              </IconLink>
+              <ButtonLink href={siteMetadata.resumeUrl} variant="secondary" className="px-4 py-2.5 text-sm">
+                <FileText size={16} />
+                Resume
               </ButtonLink>
-              <FooterAction
-                label="LinkedIn"
-                href={siteMetadata.linkedinUrl}
-                placeholder="LinkedIn on request"
-              />
-              <ButtonLink href={`mailto:${siteMetadata.email}`} variant="ghost" className="px-3 py-2 text-sm">
-                Email
-              </ButtonLink>
-              <FooterAction label="Resume" href={siteMetadata.resumeUrl} placeholder="Resume available on request" />
             </div>
           </div>
         </footer>

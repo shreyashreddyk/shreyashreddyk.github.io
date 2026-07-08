@@ -55,7 +55,7 @@ export function ProjectCard({ project, variant = 'default' }: ProjectCardProps) 
 
       {isFeatured ? (
         <p className="mt-5 rounded-card border border-white/10 bg-white/5 px-4 py-4 text-sm leading-6 text-muted">
-          {project.recruiterPitch}
+          {project.projectSummary}
         </p>
       ) : null}
 

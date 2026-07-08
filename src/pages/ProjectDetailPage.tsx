@@ -90,8 +90,8 @@ export function ProjectDetailPage() {
       </motion.section>
 
       <motion.section className="section-spacing surface-panel-strong p-7 sm:p-8" {...createRevealProps(reducedMotion, 0.08)}>
-        <p className="text-sm font-semibold uppercase tracking-[0.2em] text-accent">Recruiter Pitch</p>
-        <p className="mt-4 text-lg leading-8 text-text">{project.recruiterPitch}</p>
+        <p className="text-sm font-semibold uppercase tracking-[0.2em] text-accent">Project Summary</p>
+        <p className="mt-4 text-lg leading-8 text-text">{project.projectSummary}</p>
 
         <div className="mt-6 flex flex-wrap gap-3">
           <ButtonLink href={project.repoUrl} aria-label={`Open ${project.title} on GitHub`}>
@@ -142,7 +142,7 @@ export function ProjectDetailPage() {
       <section className="section-spacing" aria-labelledby="resume-bullets-heading">
         <SectionHeading
           id="resume-bullets-heading"
-          title="Resume-style highlights"
+          title="Project highlights"
           description="Outcome-oriented bullets pulled from the strongest public evidence available for this repository."
         />
         <motion.ul

@@ -34,7 +34,7 @@ export type Project = {
   repoName: string;
   repoUrl: string;
   shortDescription: string;
-  recruiterPitch: string;
+  projectSummary: string;
   problem: string;
   approach: string;
   impact: string;
@@ -72,8 +72,8 @@ const projects: Project[] = [
     repoUrl: githubRepo('sec-filing-intelligence-copilot'),
     shortDescription:
       'Production-oriented RAG system for SEC filings with live EDGAR ingestion, hybrid retrieval, explicit citations, evaluation artifacts, and a validated GKE plus Grafana deployment path.',
-    recruiterPitch:
-      'Strong AI engineer signal: built a source-grounded financial copilot with typed APIs, evaluation gates, deployment manifests, and observable runtime behavior instead of a notebook-only demo.',
+    projectSummary:
+      'I built this SEC filings copilot around live EDGAR ingestion, hybrid retrieval, citation-grounded answers, evaluation gates, and deployable APIs so the full system can be inspected end to end.',
     problem:
       'SEC filings are dense, time-sensitive documents that are difficult to search quickly without losing source fidelity or auditability.',
     approach:
@@ -121,8 +121,8 @@ const projects: Project[] = [
     repoUrl: githubRepo('prosody'),
     shortDescription:
       'AI coaching workspace with an authenticated React frontend, FastAPI agent service, Supabase persistence, source uploads, study artifacts, and Cloud Run deployment.',
-    recruiterPitch:
-      'Useful fullstack AI signal: combines product UX, agent and backend boundaries, auth, storage, deployment, and honest scoping around realtime voice.',
+    projectSummary:
+      'Prosody is a fullstack AI workspace that combines product UX, auth, storage, backend services, and deployment around persistent study and coaching workflows.',
     problem:
       'Study and coaching workflows need more than prompt calls; they need persistence, uploads, auth, and clear separation between the product surface and generation services.',
     approach:
@@ -165,14 +165,14 @@ const projects: Project[] = [
     repoUrl: githubRepo('json-extraction-qlora-dpo'),
     shortDescription:
       'Schema-constrained support-ticket extraction system spanning baseline evaluation, QLoRA SFT, DPO post-training, validation contracts, and resumable vLLM benchmarking.',
-    recruiterPitch:
-      'Strong LLMOps and post-training portfolio piece with explicit stage metrics, artifact-first reproducibility, and latency-quality tradeoff reporting.',
+    projectSummary:
+      'This project tracks structured extraction quality from baseline through SFT and DPO, with separate validity and semantic metrics plus saved artifacts for each stage.',
     problem:
       'Structured extraction projects often hide behind single metrics, making it hard to tell whether a model improved validity, schema adherence, or actual semantic quality.',
     approach:
       'Designed a schema-first training and evaluation pipeline covering baseline measurement, QLoRA supervised finetuning, DPO preference optimization, contract validation, and serving benchmarks.',
     impact:
-      'Produced a portfolio piece with measurable post-training gains, saved artifacts for each stage, and clear latency-quality tradeoff evidence for recruiter review.',
+      'Produced measurable post-training gains, saved artifacts for each stage, and clear latency-quality tradeoff evidence across training and serving.',
     bullets: [
       'Designed a schema-first extraction pipeline and improved Micro F1 from 0.3030 at baseline to 0.7730 after SFT plus DPO, with saved stage metrics in-repo.',
       'Separated JSON validity, schema pass rate, and semantic quality so model gains are measurable instead of collapsed into a single vanity score.',
@@ -214,8 +214,8 @@ const projects: Project[] = [
     repoUrl: githubRepo('vllm-serving-performance-lab'),
     shortDescription:
       'vLLM serving lab that benchmarks latency-throughput tradeoffs under mixed prompt lengths, with fairness-oriented scheduling experiments and artifact-backed p50, p90, and p99 analysis.',
-    recruiterPitch:
-      'Good AI systems evidence for inference engineering: benchmarks a real serving stack, isolates head-of-line blocking, and tunes scheduler knobs against tail-latency SLOs.',
+    projectSummary:
+      'This serving lab focuses on how vLLM behaves under mixed prompt workloads, with explicit latency and throughput measurements plus scheduler tradeoffs.',
     problem:
       'Serving benchmarks often focus on average throughput and hide the prompt-mix interference that matters in real user-facing workloads.',
     approach:
@@ -263,10 +263,10 @@ const projects: Project[] = [
     repoUrl: githubRepo('api-data-streaming'),
     shortDescription:
       'End-to-end streaming pipeline that ingests API data through Kafka, processes streams with Spark, stores results in Cassandra and PostgreSQL, and orchestrates workflows with Airflow.',
-    recruiterPitch:
-      'Clear data engineering signal with multi-service orchestration, streaming topology, and hands-on infrastructure across ingestion, processing, storage, and scheduling.',
+    projectSummary:
+      'This project packages a streaming data stack across ingestion, processing, storage, and orchestration so the pipeline can be run and inspected end to end.',
     problem:
-      'Operational data systems need more than a batch script; they need an ingestion topology, stream processing, storage choices, and orchestration that can be explained end to end.',
+      'Operational data pipelines need more than a batch script; they need an ingestion topology, stream processing, storage choices, and orchestration that can be explained end to end.',
     approach:
       'Built a containerized Kafka, Spark, Cassandra, Airflow, and Postgres stack with documented workflows for ingestion, monitoring, downstream persistence, and service coordination.',
     impact:
@@ -302,8 +302,8 @@ const projects: Project[] = [
     repoUrl: githubRepo('noise-adaptive-spectral-embedding'),
     shortDescription:
       'From-scratch manifold-learning toolkit for choosing diffusion-map dimensionality under noise, with config-driven sweeps, seeded experiments, and reproducible metrics.',
-    recruiterPitch:
-      'Strong ML and research engineering signal: implements original methods from theory, packages them cleanly, and reports both wins and failure modes with reproducible artifacts.',
+    projectSummary:
+      'This is a from-scratch manifold-learning project that turns theory into a reproducible experimentation toolkit with clear wins and limitations.',
     problem:
       'Dimensionality reduction methods often look impressive on clean visuals but fail under noise, making method selection and truncation choices hard to trust.',
     approach:
@@ -346,14 +346,14 @@ const projects: Project[] = [
     repoUrl: githubRepo('Credit-Card-Transaction-Fraud-Analytics'),
     shortDescription:
       'Supervised fraud-detection pipeline for payment transactions with large-scale feature engineering, out-of-time validation, gradient-boosting model selection, and business-impact analysis.',
-    recruiterPitch:
-      'Strong data science and fraud-analytics project that ties model choice to operational review capacity and estimated savings rather than stopping at AUC.',
+    projectSummary:
+      'This fraud modeling project ties feature engineering and model selection to review-capacity and savings tradeoffs instead of stopping at offline scores.',
     problem:
       'Transaction fraud modeling needs temporal validation and review-capacity framing, not just a high offline score on a static split.',
     approach:
       'Built a large feature-engineering workflow, compared multiple ensemble families against out-of-time behavior, and tied model thresholds to business review volume.',
     impact:
-      'Presents a recruiter-friendly fraud modeling story that combines feature depth, model selection discipline, and business-impact interpretation.',
+      'Combines feature depth, model selection discipline, and business-impact interpretation in a review-oriented fraud workflow.',
     bullets: [
       'Engineered more than 2,000 candidate features spanning velocity windows, target encoding, anomaly indicators, and interaction histories across cards, merchants, and geography.',
       'Selected CatBoost after comparing baselines, neural models, and gradient-boosting ensembles against out-of-time validation behavior.',
@@ -379,8 +379,8 @@ const projects: Project[] = [
     repoUrl: githubRepo('oulad-causal-inference'),
     shortDescription:
       'Reproducible causal-inference pipeline studying whether early online engagement is associated with course success in OULAD, with DAG-based adjustment, doubly robust estimation, and diagnostics.',
-    recruiterPitch:
-      'Strong research plus data-science signal with explicit identification logic, reproducible estimation stages, and honest handling of overlap, robustness, and observational limits.',
+    projectSummary:
+      'This causal inference project centers on identification, diagnostics, and reproducible estimation so the final claim stays transparent and assumption-aware.',
     problem:
       'Observational education data can suggest strong patterns, but without identification logic and diagnostics it is easy to overstate what engagement signals really imply.',
     approach:
@@ -428,8 +428,8 @@ const projects: Project[] = [
     repoUrl: githubRepo('Energy-Efficiency-Regression-and-Statistical-Analysis'),
     shortDescription:
       'Regression-focused energy-efficiency study that compares linear and nonlinear models, emphasizes diagnostics, and interprets building-design effects on heating and cooling load.',
-    recruiterPitch:
-      'Good statistical-modeling signal: goes beyond fit metrics into coefficient interpretation, multicollinearity checks, influence diagnostics, and model refinement.',
+    projectSummary:
+      'This regression study emphasizes diagnostics, model interpretation, and iterative refinement across heating and cooling load prediction.',
     problem:
       'Regression projects are easy to present as a leaderboard, but useful data-science signal comes from diagnostics, interpretability, and honest model refinement.',
     approach:
@@ -472,8 +472,8 @@ const projects: Project[] = [
     repoUrl: githubRepo('Application-Fraud-Detection-Model'),
     shortDescription:
       'Supervised application-fraud model with velocity, recency, and cross-entity linkage features, wrapper-based feature selection, XGBoost evaluation, and ROI analysis.',
-    recruiterPitch:
-      'Strong risk-modeling project with business-aware metrics, temporal validation, and fraud-ring style feature engineering across identity entities.',
+    projectSummary:
+      'This application fraud project focuses on linkage and temporal features, disciplined feature selection, and review-band tradeoffs around a deployable model.',
     problem:
       'Application fraud is driven by entity reuse, timing, and network-like patterns that are easy to miss without purpose-built feature engineering and temporal validation.',
     approach:
@@ -521,8 +521,8 @@ const projects: Project[] = [
     repoUrl: githubRepo('NYC-Property-Fraud-Detection'),
     shortDescription:
       'Unsupervised property-fraud analytics pipeline for NYC assessment data using engineered valuation ratios, PCA-space distance scoring, autoencoders, and ensemble ranking.',
-    recruiterPitch:
-      'Shows anomaly-detection depth on messy public data, with domain-led feature design and multiple evidence layers instead of a single black-box score.',
+    projectSummary:
+      'This unsupervised fraud project uses engineered ratios, PCA-space distance, and autoencoder signals to prioritize anomalies when labels are unavailable.',
     problem:
       'Property fraud review often lacks labeled examples, which makes anomaly prioritization more dependent on domain-informed features and multiple scoring views.',
     approach:
@@ -570,8 +570,8 @@ const projects: Project[] = [
     repoUrl: githubRepo('ML-Projects'),
     shortDescription:
       'Collection-style machine-learning repository kept in the portfolio for breadth, positioned as earlier exploratory work rather than a single flagship system.',
-    recruiterPitch:
-      'Useful coverage signal for completeness: keeps earlier ML work visible without overstating the depth or maturity of the public evidence.',
+    projectSummary:
+      'This repository stays in the portfolio as earlier exploratory ML work, included for breadth without overstating the public evidence available.',
     problem:
       'Older or smaller ML experiments still matter for portfolio completeness, but they should be framed carefully when the public evidence trail is thin.',
     approach:
@@ -602,14 +602,14 @@ const projects: Project[] = [
     repoUrl: githubRepo('London-Crime-Analytics-Neo4J-PostgreSQL'),
     shortDescription:
       'Hybrid graph-and-relational crime analytics project that pairs PostgreSQL star-schema reporting with Neo4j relationship analysis for criminal-network discovery.',
-    recruiterPitch:
-      'Good analytics and data-architecture story: shows dimensional modeling, ETL orchestration, and graph reasoning in one portfolio piece.',
+    projectSummary:
+      'This project combines a PostgreSQL warehouse with Neo4j graph analysis so aggregate reporting and relationship discovery can live in the same workflow.',
     problem:
       'Crime analytics needs both aggregate reporting and relationship-level analysis, which makes a single storage model feel limiting for the full workflow.',
     approach:
       'Modeled a relational warehouse for reporting, then built a Python ETL bridge into Neo4j so graph analysis could complement event and borough-level aggregation.',
     impact:
-      'Demonstrates polyglot persistence in a way that is easy for recruiters to understand: the storage model changes with the question being asked.',
+      'Demonstrates polyglot persistence by changing the storage model to match the question being asked.',
     bullets: [
       'Modeled a PostgreSQL warehouse with staging, fact, and dimension tables to support fast borough-level and event-level reporting.',
       'Built a Python ETL bridge that transforms warehouse records into a Neo4j graph of criminals, crime groups, events, and boroughs.',
@@ -641,8 +641,8 @@ const projects: Project[] = [
     repoUrl: githubRepo('Texas-Weather-Data-Analysis'),
     shortDescription:
       'Distributed climate-analysis pipeline that uses Spark for large-scale ETL, statistical testing, seasonal analysis, and Koppen-zone classification across Texas weather data.',
-    recruiterPitch:
-      'Shows strong data-processing range: handles wide packed records at scale, blends Spark with classical analysis, and closes the loop with supervised climate classification.',
+    projectSummary:
+      'This project combines distributed ETL, climate analysis, and supervised modeling on Texas weather data using Spark-based processing and downstream Python analysis.',
     problem:
       'Large climate records need both distributed ETL and downstream statistical interpretation before they become useful for regional comparisons or predictive modeling.',
     approach:
@@ -673,15 +673,15 @@ const projects: Project[] = [
     repoName: 'shreyashreddyk.github.io',
     repoUrl: githubRepo('shreyashreddyk.github.io'),
     shortDescription:
-      'Static React portfolio site that packages AI, data, and analytics projects into a recruiter-ready narrative with typed content, accessible UI, and GitHub Pages deployment.',
-    recruiterPitch:
-      'Useful frontend and product-packaging signal: turns technical work into a polished, accessible, data-driven portfolio instead of a plain repository list.',
+      'Static React portfolio site that packages AI, data science, and analytics projects into a typed, accessible GitHub Pages experience.',
+    projectSummary:
+      'This site packages AI, data science, and analytics work into a static portfolio experience with typed content, accessible UI, and GitHub Pages deployment.',
     problem:
-      'Strong technical work still needs a clear public presentation layer so recruiters can understand scope, impact, and credibility quickly.',
+      'Strong technical work still benefits from a clear public presentation layer that makes scope, impact, and credibility easy to understand.',
     approach:
       'Built a static React, Vite, TypeScript, and Tailwind site with typed project data, HashRouter-safe routing, and public-safe content that can deploy directly to GitHub Pages.',
     impact:
-      'Improves how the broader portfolio reads by turning scattered repos into a structured, searchable, recruiter-facing project experience.',
+      'Improves how the broader portfolio reads by turning scattered repos into a structured, searchable project experience.',
     bullets: [
       'Built a static portfolio experience around React, Vite, TypeScript, Tailwind CSS, Framer Motion, and HashRouter for GitHub Pages compatibility.',
       'Structured public content in typed data files so project narratives, highlights, and links stay consistent across the site.',

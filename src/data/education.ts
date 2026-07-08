@@ -67,11 +67,11 @@ export const educationEntries: EducationEntry[] = [
     location: 'San Diego, CA',
     dates: '2024 – 2026',
     summary:
-      'Graduate data science training that adds modern machine learning, scalable systems, optimization, and statistical depth to production-oriented AI and data engineering work.',
+      'Graduate data science training that adds machine learning, scalable systems, optimization, and statistical depth to AI engineering and production data work.',
     highlights: [
       'Cumulative GPA of 3.941/4.0 in the M.S. Data Science program.',
       'Advanced to candidacy on October 17, 2025.',
-      'Coursework spans machine learning, scalable data systems, statistical models, optimization, recommender systems, efficient AI, and data science programming.',
+      'Coursework spans machine learning, scalable systems, probabilistic modeling, fraud analytics, recommender systems, and efficient AI.',
     ],
     courseworkByTheme: [
       {
@@ -90,7 +90,7 @@ export const educationEntries: EducationEntry[] = [
         title: 'Systems and Data Engineering',
         courses: [
           'Scalable Data Systems',
-          'Data Management for Data Science',
+          'Data Mgt for Data Science',
           'Data Science Programming',
           'Algorithms for Data Science',
           'Mobile & Ubiquitous Computing',
@@ -122,26 +122,27 @@ export const educationEntries: EducationEntry[] = [
     location: 'Hyderabad, India',
     dates: '2019 – 2023',
     summary:
-      'Engineering training grounded in mathematical rigor, systems thinking, and hands-on applied learning through Practice School, with strong preparation for analytics, optimization, and technical product work.',
+      'Engineering training grounded in mathematical rigor, systems thinking, and applied learning through Practice School, with strong preparation for analytics, optimization, and technical product work.',
     highlights: [
       'Graduated with a CGPA of 9.20/10 and Distinction.',
       'Completed Practice School I and Practice School II as part of the degree program.',
-      'Coursework combined machine learning and data science foundations with probability, optimization, CAD, manufacturing, and core engineering systems.',
+      'Coursework combined machine learning and data science foundations with probability, optimization, finance, and core engineering systems.',
     ],
     courseworkByTheme: [
       {
         title: 'AI/ML and Data Science',
-        courses: ['Machine Learning', 'Foundations of Data Science'],
+        courses: ['Machine Learning', 'Foundations of Data Science', 'Business Analysis & Valuation'],
       },
       {
         title: 'Systems and Data Engineering',
-        courses: [],
+        courses: ['Computer Programming', 'Laboratory Project'],
       },
       {
         title: 'Statistics / Optimization',
         courses: [
           'Probability & Statistics',
           'Engineering Optimization',
+          'Derivatives & Risk Management',
           'Mathematics I',
           'Mathematics II',
           'Mathematics III',
@@ -163,7 +164,8 @@ export const educationEntries: EducationEntry[] = [
           'Mechanisms and Machines',
           'Vibrations and Control',
           'Workshop Practice',
-          'Computer Programming',
+          'Practice School I',
+          'Practice School II',
         ],
       },
     ],
@@ -179,22 +181,22 @@ export const courseworkThemeDescriptions: Record<CourseworkThemeTitle, string> =
   'Systems and Data Engineering':
     'Scalable systems, data management, programming, algorithms, and applied systems work that support production-grade AI and analytics.',
   'Statistics / Optimization':
-    'Probability, statistical modeling, and optimization coursework that supports evaluation, experimentation, and quantitative decision-making.',
+    'Probability, statistical modeling, optimization, and quantitative finance coursework that supports evaluation, experimentation, and decision-making.',
   'Engineering Foundations':
     'Core engineering, design, manufacturing, and hands-on technical training that strengthen systems intuition and implementation discipline.',
 };
 
 export const whyEducationMatters = [
   {
-    title: 'UCSD adds modern AI and data systems depth',
+    title: 'UCSD adds modern AI and data science depth',
     description:
-      'The graduate program directly supports AI engineering and data engineering work through machine learning, scalable data systems, optimization, recommender systems, and rigorous statistics.',
-    supportingPoints: ['Machine learning', 'Scalable data systems', 'Optimization', 'Recommender systems'],
+      'The graduate program connects machine learning, scalable systems, optimization, recommender systems, and statistical modeling in a way that directly supports AI engineering and data science work.',
+    supportingPoints: ['Machine learning', 'Scalable systems', 'Optimization', 'Recommender systems'],
   },
   {
     title: 'BITS adds engineering rigor and applied systems thinking',
     description:
-      'The B.E. foundation contributes mathematical discipline, design and manufacturing systems exposure, and hands-on Practice School training that translates well to production data and AI roles.',
-    supportingPoints: ['Probability and optimization', 'CAD and manufacturing systems', 'Practice School I & II'],
+      'The B.E. foundation contributes mathematical discipline, design and manufacturing systems exposure, and Practice School experience that translate well to production data and AI roles.',
+    supportingPoints: ['Probability and optimization', 'Finance coursework', 'Practice School I & II'],
   },
 ];

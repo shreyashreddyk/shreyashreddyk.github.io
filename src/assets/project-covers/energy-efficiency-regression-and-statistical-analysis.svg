@@ -3,7 +3,7 @@
   <rect width="1600" height="900" rx="48" fill="url(#bg)" />
   <circle cx="1290" cy="220" r="210" fill="#FDE68A" fill-opacity="0.14" />
   <circle cx="300" cy="740" r="240" fill="#86EFAC" fill-opacity="0.14" />
-  <rect x="116" y="120" width="370" height="48" rx="24" fill="rgba(255,255,255,0.14)" />
+  <rect x="116" y="120" width="482" height="48" rx="24" fill="rgba(255,255,255,0.14)" />
   <text x="154" y="151" fill="#F8FAFC" font-family="'IBM Plex Sans', sans-serif" font-size="24" font-weight="600">Research / Statistical Modeling</text>
   <text x="116" y="300" fill="#F8FAFC" font-family="'Space Grotesk', sans-serif" font-size="76" font-weight="700">Energy Efficiency</text>
   <text x="116" y="392" fill="#F8FAFC" font-family="'Space Grotesk', sans-serif" font-size="76" font-weight="700">Regression +</text>

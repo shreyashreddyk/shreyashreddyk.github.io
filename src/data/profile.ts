@@ -16,26 +16,25 @@ export type SkillGroup = {
 
 export const siteMetadata = {
   name: 'Shreyash Kondakindi',
-  role: 'AI Engineer · Data Systems',
+  role: 'AI Engineer · Data Science',
   location: 'San Diego, California',
   email: 'kshreyashreddy@gmail.com',
   githubUrl: 'https://github.com/shreyashreddyk',
-  linkedinUrl: 'https://linkedin.com/in/shreyashreddyk',
-  resumeUrl: undefined,
+  linkedinUrl: 'https://www.linkedin.com/in/shreyashreddyk',
+  resumeUrl: '/resume.pdf',
 };
 
 export const hero = {
-  eyebrow: 'Shreyash Kondakindi',
-  title: 'AI Engineer building LLM and data systems for analytics-heavy products.',
+  title: 'AI Engineer building LLM, data science, and production systems for analytics-heavy products.',
   summary:
-    'I build retrieval pipelines, evaluation workflows, scalable data infrastructure, and analytics applications across finance, fraud, and healthcare. My work blends AI engineering, data engineering, and applied modeling with a strong bias toward production-ready systems.',
+    'I build retrieval pipelines, evaluation workflows, distributed data platforms, and analytics applications across finance, fraud, healthcare, and university operations. My work blends AI engineering, data science, and systems execution with a strong focus on production-ready delivery.',
   primaryCta: {
     label: 'View Projects',
     href: '/projects',
   },
   secondaryCta: {
     label: 'View Resume',
-    href: '/work',
+    href: siteMetadata.resumeUrl,
   },
   tertiaryCta: {
     label: 'GitHub',
@@ -45,13 +44,13 @@ export const hero = {
 
 export const strengths = [
   'AI systems work spanning retrieval, evaluation, serving, and deployment workflows.',
-  'Data engineering experience across analytics pipelines, cloud warehouses, streaming systems, and BI delivery.',
+  'Data science and data engineering experience across analytics pipelines, cloud warehouses, streaming systems, and BI delivery.',
   'Applied modeling experience in fraud, risk, experimentation, and statistical analysis.',
 ];
 
 export const aboutSummary = [
   'I am an M.S. Data Science candidate at UC San Diego with experience across healthcare analytics, financial research workflows, and graduate project work in AI systems, fraud modeling, and large-scale data processing.',
-  'My strongest work sits at the intersection of AI engineering, data infrastructure, and analytics, especially when a system needs reliable retrieval, scalable pipelines, or measurable model behavior.',
+  'My strongest work sits at the intersection of AI engineering, data science, and systems design, especially when a product needs reliable retrieval, scalable pipelines, or measurable model behavior.',
   'I like building products that are technically rigorous, easy to explain, and useful to both operators and end users.',
 ];
 
@@ -61,7 +60,7 @@ export const education = [
     credential: 'M.S. in Data Science',
     years: '2024–2026',
     detail:
-      'Coursework includes machine learning, scalable data systems, statistical models, probabilistic reasoning, optimization, geometry of data, and efficient AI for data science.',
+      'Coursework includes machine learning, scalable systems, statistical models, probabilistic reasoning, optimization, geometry of data, and efficient AI for data science.',
   },
   {
     school: 'Birla Institute of Technology and Science, Pilani',
@@ -84,7 +83,7 @@ export const experienceHighlights: ResumeHighlight[] = [
       'Built CV-assisted healthcare review tooling using YOLOv8, Segment Anything, and Grounding DINO to reduce manual review by 80% and shrink labeling time from 5 minutes to under 1 minute.',
   },
   {
-    title: 'J.P. Morgan & Co. · Data Intern, CIB Analytics',
+    title: 'J.P. Morgan & Co. · Data Science Intern, CIB Analytics',
     statement:
       'Engineered Python pipelines over AlphaSense, Eikon, Bloomberg, SEC XML, and broker PDFs to create analytics-ready research datasets across 15+ sectors.',
   },
@@ -120,8 +119,8 @@ export const selectedResumeBullets: ResumeHighlight[] = [
 
 export const currentFocusAreas = [
   'LLM systems',
+  'Data science',
   'Data engineering',
-  'ML',
   'Fraud / risk analytics',
   'Scalable analytics',
 ];
@@ -130,17 +129,17 @@ export const homeCapabilityCards = [
   {
     title: 'LLM and AI applications',
     description:
-      'RAG systems, evaluation harnesses, post-training workflows, and inference performance work built for more than a single demo.',
+      'I build RAG systems, evaluation harnesses, post-training workflows, and inference tooling that can stand up beyond a one-off demo.',
   },
   {
-    title: 'Data platforms and pipelines',
+    title: 'Data science systems and pipelines',
     description:
-      'Snowflake marts, Spark workflows, Kafka pipelines, and API-driven data systems designed to support downstream analytics and modeling.',
+      'My work includes Snowflake marts, Spark workflows, Kafka pipelines, and API-driven data platforms that support downstream modeling and decision-making.',
   },
   {
     title: 'Analytics in finance and risk',
     description:
-      'Hands-on work across fraud detection, financial data extraction, and business-facing analytics where technical choices need clear operational value.',
+      'I work on fraud detection, financial data extraction, and business-facing analytics where model choices and data reliability need to translate into operational value.',
   },
 ];
 
@@ -150,7 +149,7 @@ export const skillGroups: SkillGroup[] = [
     items: ['RAG', 'LLM evals', 'QLoRA / DPO', 'vLLM', 'Structured outputs', 'Fraud modeling'],
   },
   {
-    heading: 'Data Engineering',
+    heading: 'Data Platforms',
     items: ['Spark', 'Kafka', 'Airflow', 'Snowflake', 'Cassandra', 'PostgreSQL'],
   },
   {
@@ -158,7 +157,7 @@ export const skillGroups: SkillGroup[] = [
     items: ['Python', 'FastAPI', 'React', 'TypeScript', 'Supabase', 'Docker'],
   },
   {
-    heading: 'Analytics',
+    heading: 'Analytics / Data Science',
     items: ['SQL', 'Power BI', 'Tableau', 'Causal inference', 'Risk analytics', 'Feature engineering'],
   },
   {
@@ -171,14 +170,14 @@ export const timelineTeasers = [
   {
     title: 'Work experience',
     description:
-      'Healthcare analytics, financial data workflows, and delivery-focused experience across AI, BI, and data systems.',
+      'Healthcare analytics, financial data workflows, university research, and delivery-focused work across AI products, BI, and production data platforms.',
     href: '/work',
     ctaLabel: 'View Work',
   },
   {
     title: 'Education and foundations',
     description:
-      'UC San Diego data science coursework and project work in machine learning, scalable systems, statistics, and optimization.',
+      'UC San Diego data science coursework and BITS engineering training across machine learning, scalable systems, statistics, and optimization.',
     href: '/education',
     ctaLabel: 'View Education',
   },
@@ -203,4 +202,4 @@ export const contactLinks: ContactLink[] = [
 ];
 
 export const availabilityNote =
-  'Open to AI engineering, data engineering, analytics engineering, and applied data science roles where strong systems execution matters.';
+  'Open to AI engineering, data science, analytics engineering, and applied ML roles where strong systems execution and production-minded delivery matter.';
