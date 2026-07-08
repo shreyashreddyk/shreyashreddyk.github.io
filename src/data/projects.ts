@@ -8,7 +8,6 @@ import mlProjectsCover from '../assets/project-covers/ml-projects.svg';
 import noiseAdaptiveSpectralEmbeddingCover from '../assets/project-covers/noise-adaptive-spectral-embedding.svg';
 import nycPropertyFraudDetectionCover from '../assets/project-covers/nyc-property-fraud-detection.svg';
 import ouladCausalInferenceCover from '../assets/project-covers/oulad-causal-inference.svg';
-import shreyashPortfolioCover from '../assets/project-covers/shreyashreddyk-portfolio-site.svg';
 import prosodyCover from '../assets/project-covers/prosody.svg';
 import secFilingIntelligenceCopilotCover from '../assets/project-covers/sec-filing-intelligence-copilot.svg';
 import texasWeatherDataAnalysisCover from '../assets/project-covers/texas-weather-data-analysis.svg';
@@ -151,7 +150,7 @@ const projects: Project[] = [
         kind: 'docs',
       },
     ],
-    relatedSlugs: ['sec-filing-intelligence-copilot', 'shreyashreddyk-portfolio-site', 'json-extraction-qlora-dpo'],
+    relatedSlugs: ['sec-filing-intelligence-copilot', 'vllm-serving-performance-lab', 'json-extraction-qlora-dpo'],
     sourceEvidenceNotes: [
       'README sections on product preview, current production surface, architecture, persistence model, and realtime transport status.',
       'README references committed screenshots under artifacts/readme and deployment notes under infra/cloudrun.',
@@ -288,7 +287,7 @@ const projects: Project[] = [
         kind: 'artifact',
       },
     ],
-    relatedSlugs: ['london-crime-analytics-neo4j-postgresql', 'texas-weather-data-analysis', 'shreyashreddyk-portfolio-site'],
+    relatedSlugs: ['london-crime-analytics-neo4j-postgresql', 'texas-weather-data-analysis', 'sec-filing-intelligence-copilot'],
     sourceEvidenceNotes: [
       'README overview, technology stack, architecture diagram, project structure, and operating instructions.',
       'README explicitly names the Docker Compose stack and service topology used in the pipeline.',
@@ -569,25 +568,25 @@ const projects: Project[] = [
     repoName: 'ML-Projects',
     repoUrl: githubRepo('ML-Projects'),
     shortDescription:
-      'Collection-style machine-learning repository kept in the portfolio for breadth, positioned as earlier exploratory work rather than a single flagship system.',
+      'Collection-style machine-learning repository that groups earlier experiments, modeling exercises, and smaller implementations in one place.',
     projectSummary:
-      'This repository stays in the portfolio as earlier exploratory ML work, included for breadth without overstating the public evidence available.',
+      'This repository brings together earlier machine-learning work across exploratory modeling, notebook-based experimentation, and smaller implementation studies.',
     problem:
-      'Older or smaller ML experiments still matter for portfolio completeness, but they should be framed carefully when the public evidence trail is thin.',
+      'Smaller machine-learning experiments are easier to lose when they are spread across separate notebooks or lightweight repos.',
     approach:
-      'Included the repository as a conservative portfolio entry, using only the repo name and visible GitHub metadata because the connector did not surface a readable README or stronger artifact trail during this pass.',
+      'Grouped earlier machine-learning exercises into a single repository that keeps modeling experiments and implementation practice together.',
     impact:
-      'Keeps every public repository represented on the Projects page while clearly distinguishing exploratory breadth from stronger flagship work.',
+      'Creates one place for earlier ML work while keeping the project descriptions conservative where the public artifact trail is limited.',
     bullets: [
-      'Maintained a public home for earlier machine-learning work instead of leaving older experimentation invisible in the portfolio.',
-      'Positioned the repo as exploratory breadth rather than a flagship production or research system.',
+      'Collected earlier machine-learning experiments in one repository spanning exploratory modeling work and smaller implementation studies.',
+      'Used the repo to organize iterative ML practice across different problem types, methods, and notebook-based workflows.',
       'Kept every claim conservative because the available public evidence in this pass was limited to the repository name and metadata.',
     ],
-    tech: ['Machine learning', 'Exploratory modeling', 'Portfolio breadth'],
+    tech: ['Machine learning', 'Exploratory modeling', 'Notebook workflows'],
     category: 'Machine Learning',
     featured: false,
     coverImage: mlProjectsCover,
-    highlights: ['Earlier ML breadth', 'Conservative evidence', 'Public repo coverage'],
+    highlights: ['Earlier ML experiments', 'Exploratory modeling', 'Notebook workflows'],
     links: [],
     relatedSlugs: ['noise-adaptive-spectral-embedding', 'energy-efficiency-regression-and-statistical-analysis', 'texas-weather-data-analysis'],
     sourceEvidenceNotes: [
@@ -665,44 +664,6 @@ const projects: Project[] = [
       'README project overview, machine-learning section, technical architecture, and key skills sections.',
       'The README is the primary public evidence source and does not surface report or image files directly.',
       inferredTechNote,
-    ],
-  },
-  {
-    slug: 'shreyashreddyk-portfolio-site',
-    title: 'ShreyashK Portfolio Site',
-    repoName: 'shreyashreddyk.github.io',
-    repoUrl: githubRepo('shreyashreddyk.github.io'),
-    shortDescription:
-      'Static React portfolio site that packages AI, data science, and analytics projects into a typed, accessible GitHub Pages experience.',
-    projectSummary:
-      'This site packages AI, data science, and analytics work into a static portfolio experience with typed content, accessible UI, and GitHub Pages deployment.',
-    problem:
-      'Strong technical work still benefits from a clear public presentation layer that makes scope, impact, and credibility easy to understand.',
-    approach:
-      'Built a static React, Vite, TypeScript, and Tailwind site with typed project data, HashRouter-safe routing, and shareable content that can deploy directly to GitHub Pages.',
-    impact:
-      'Improves how the broader portfolio reads by turning scattered repos into a structured, searchable project experience.',
-    bullets: [
-      'Built a static portfolio experience around React, Vite, TypeScript, Tailwind CSS, Framer Motion, and HashRouter for GitHub Pages compatibility.',
-      'Structured public content in typed data files so project narratives, highlights, and links stay consistent across the site.',
-      'Focused the frontend on accessible navigation, polished motion, and concise portfolio storytelling instead of exposing raw source documents.',
-    ],
-    tech: ['React', 'Vite', 'TypeScript', 'Tailwind CSS', 'Framer Motion', 'React Router'],
-    category: 'Data Visualization / Analytics',
-    featured: false,
-    coverImage: shreyashPortfolioCover,
-    highlights: ['Static GitHub Pages site', 'Typed project data', 'Accessible frontend'],
-    links: [
-      {
-        label: 'Live Site',
-        url: 'https://shreyashreddyk.github.io',
-        kind: 'demo',
-      },
-    ],
-    relatedSlugs: ['prosody', 'api-data-streaming', 'sec-filing-intelligence-copilot'],
-    sourceEvidenceNotes: [
-      'README documents the stack, content model, quality checks, and GitHub Pages deployment workflow.',
-      'Project descriptions are based on the repository README and local site structure in this workspace.',
     ],
   },
 ];

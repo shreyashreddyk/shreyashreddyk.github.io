@@ -123,13 +123,13 @@ export function Layout({ children }: PropsWithChildren) {
               </p>
             </div>
             <div className="flex flex-wrap items-center gap-3">
-              <IconLink href={siteMetadata.githubUrl} label="GitHub profile">
+              <IconLink href={siteMetadata.githubUrl} label="GitHub">
                 <Github size={20} className="text-accent" />
               </IconLink>
-              <IconLink href={siteMetadata.linkedinUrl} label="LinkedIn profile">
+              <IconLink href={siteMetadata.linkedinUrl} label="LinkedIn">
                 <Linkedin size={20} className="text-accent" />
               </IconLink>
-              <IconLink href={`mailto:${siteMetadata.email}`} label="Email Shreyash">
+              <IconLink href={`mailto:${siteMetadata.email}`} label="Email">
                 <Mail size={20} className="text-accent" />
               </IconLink>
               <ButtonLink href={siteMetadata.resumeUrl} variant="secondary" className="px-4 py-2.5 text-sm">

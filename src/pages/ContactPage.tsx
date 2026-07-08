@@ -1,6 +1,5 @@
 import { motion } from 'framer-motion';
 import { ArrowUpRight, FileText, Mail } from 'lucide-react';
-import { Badge } from '../components/Badge';
 import { ButtonLink } from '../components/ButtonLink';
 import { PageTransition } from '../components/PageTransition';
 import { SEO } from '../components/SEO';
@@ -52,7 +51,6 @@ export function ContactPage() {
           </div>
         </div>
         <div className="surface-panel p-8">
-          <Badge variant="accent">Resume</Badge>
           <div className="mt-5 inline-flex rounded-2xl border border-accent/20 bg-accent/10 p-3 text-accent">
             <FileText size={22} />
           </div>
