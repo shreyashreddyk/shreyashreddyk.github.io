@@ -118,8 +118,7 @@ export function ProjectsPage() {
             className="mt-8 grid gap-5 md:grid-cols-2 xl:grid-cols-3"
             variants={createStaggerVariants(reducedMotion)}
             initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, amount: 0.08 }}
+            animate="visible"
           >
             {filteredProjects.map((project) => (
               <motion.div key={project.slug} variants={createStaggerChildVariants(reducedMotion)}>

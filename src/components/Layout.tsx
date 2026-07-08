@@ -41,10 +41,10 @@ export function Layout({ children }: PropsWithChildren) {
       >
         Skip to content
       </a>
-      <Container className="flex min-h-screen flex-col pb-10 pt-5">
+      <Container className="flex min-h-screen min-w-0 flex-col pb-10 pt-5">
         <header className="sticky top-4 z-40">
           <div className="surface-panel-strong px-4 py-4 md:px-6">
-            <div className="flex items-center justify-between gap-4">
+            <div className="flex min-w-0 items-center justify-between gap-4">
               <Link
                 to="/"
                 className="focus-ring min-w-0 flex-1 rounded-full px-1 py-0.5 pr-3"
@@ -117,7 +117,7 @@ export function Layout({ children }: PropsWithChildren) {
             </nav>
           </div>
         </header>
-        <main id="content" className="flex-1 pt-8">
+        <main id="content" className="min-w-0 flex-1 pt-8">
           {children}
         </main>
         <footer className="mt-14 border-t border-border/70 pt-6">

@@ -68,8 +68,7 @@ export function WorkPage() {
           className="mt-8 grid gap-5"
           variants={createStaggerVariants(reducedMotion)}
           initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, amount: 0.16 }}
+          animate="visible"
         >
           {workEntries.map((entry) => (
             <motion.div key={`${entry.company}-${entry.role}`} variants={createStaggerChildVariants(reducedMotion)}>
@@ -90,8 +89,7 @@ export function WorkPage() {
           className="mt-8 grid gap-5 lg:grid-cols-2"
           variants={createStaggerVariants(reducedMotion)}
           initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, amount: 0.18 }}
+          animate="visible"
         >
           {experienceThemes.map((theme) => (
             <motion.article

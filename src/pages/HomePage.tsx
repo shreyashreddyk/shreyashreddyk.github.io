@@ -83,8 +83,7 @@ export function HomePage() {
               className="mt-4 flex flex-wrap gap-2"
               variants={createStaggerVariants(reducedMotion)}
               initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true, amount: 0.3 }}
+              animate="visible"
               aria-label="Current focus areas"
             >
               {currentFocusAreas.map((item) => (
@@ -146,8 +145,7 @@ export function HomePage() {
           className="mt-8 grid gap-5 lg:grid-cols-2 xl:grid-cols-5"
           variants={createStaggerVariants(reducedMotion)}
           initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, amount: 0.18 }}
+          animate="visible"
         >
           {skillGroups.map((group) => (
             <motion.article
@@ -179,8 +177,7 @@ export function HomePage() {
           className="mt-8 grid gap-5 lg:grid-cols-2"
           variants={createStaggerVariants(reducedMotion)}
           initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, amount: 0.18 }}
+          animate="visible"
         >
           {timelineTeasers.map((item) => (
             <motion.article

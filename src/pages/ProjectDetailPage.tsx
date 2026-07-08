@@ -123,8 +123,7 @@ export function ProjectDetailPage() {
           className="mt-8 grid gap-5 lg:grid-cols-3"
           variants={createStaggerVariants(reducedMotion)}
           initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, amount: 0.18 }}
+          animate="visible"
         >
           {detailSections.map((section) => (
             <motion.article
@@ -149,8 +148,7 @@ export function ProjectDetailPage() {
           className="mt-8 grid gap-4"
           variants={createStaggerVariants(reducedMotion)}
           initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, amount: 0.18 }}
+          animate="visible"
         >
           {project.bullets.map((bullet) => (
             <motion.li

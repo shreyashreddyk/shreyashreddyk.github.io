@@ -29,13 +29,13 @@ export function ProjectCard({ project, variant = 'default' }: ProjectCardProps) 
     >
       <ProjectCover src={project.coverImage} title={project.title} category={project.category} />
 
-      <div className="mt-5 flex items-start justify-between gap-4">
-        <div className="min-w-0">
+      <div className="mt-5 flex flex-wrap items-start justify-between gap-3">
+        <div className="min-w-0 flex-1">
           <p className="text-sm font-medium uppercase tracking-[0.2em] text-accent">{project.category}</p>
           <h3 className="mt-3 text-2xl font-semibold text-text">{project.title}</h3>
         </div>
         {project.featured ? (
-          <span className="inline-flex shrink-0 items-center gap-2 rounded-full border border-accent/25 bg-accent/[0.12] px-3 py-1 text-xs font-semibold text-accent">
+          <span className="inline-flex max-w-full shrink-0 items-center gap-2 rounded-full border border-accent/25 bg-accent/[0.12] px-3 py-1 text-xs font-semibold text-accent">
             <Sparkles size={14} />
             Featured
           </span>

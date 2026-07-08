@@ -65,8 +65,7 @@ export function EducationPage() {
           className="mt-8 grid gap-5"
           variants={createStaggerVariants(reducedMotion)}
           initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, amount: 0.16 }}
+          animate="visible"
         >
           {educationEntries.map((entry) => (
             <motion.div key={entry.institution} variants={createStaggerChildVariants(reducedMotion)}>
@@ -102,8 +101,7 @@ export function EducationPage() {
           className="mt-8 grid gap-5 lg:grid-cols-2"
           variants={createStaggerVariants(reducedMotion)}
           initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, amount: 0.18 }}
+          animate="visible"
         >
           {Object.entries(courseworkThemeDescriptions).map(([title, description]) => (
             <motion.article
