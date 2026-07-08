@@ -1,24 +1,25 @@
 import { Badge } from './Badge';
-import { getTechLogo } from '../lib/techLogos';
+import { getTechLogoEntry } from '../lib/techLogos';
 
 type TechBadgeProps = {
   label: string;
 };
 
 export function TechBadge({ label }: TechBadgeProps) {
-  const Icon = getTechLogo(label);
+  const logoEntry = getTechLogoEntry(label);
 
-  if (!Icon) {
+  if (!logoEntry) {
     return <Badge variant="neutral">{label}</Badge>;
   }
 
   return (
-    <Badge variant="neutral" className="relative justify-center overflow-hidden">
-      <Icon aria-hidden="true" focusable="false" className="absolute h-[1.05rem] w-[1.05rem] text-text" />
-      <span className="sr-only">{label}</span>
-      <span aria-hidden="true" className="opacity-0">
-        {label}
+    <Badge variant="neutral" className="gap-2 pr-3">
+      <span aria-hidden="true" className="inline-flex shrink-0 items-center gap-1.5">
+        {logoEntry.icons.map((Icon, index) => (
+          <Icon key={`${label}-${index}`} focusable="false" className="h-[0.95rem] w-[0.95rem] shrink-0 text-text" />
+        ))}
       </span>
+      <span>{label}</span>
     </Badge>
   );
 }

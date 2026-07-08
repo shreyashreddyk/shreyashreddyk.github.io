@@ -1,8 +1,11 @@
 import type { IconType } from 'react-icons';
+import { AiFillOpenAI } from 'react-icons/ai';
+import { IoLogoTableau } from 'react-icons/io5';
 import {
   SiApacheairflow,
   SiApachecassandra,
   SiApachekafka,
+  SiApachespark,
   SiDocker,
   SiFastapi,
   SiGithubactions,
@@ -12,6 +15,7 @@ import {
   SiLangchain,
   SiLanggraph,
   SiMatillion,
+  SiNeo4J,
   SiNumpy,
   SiPandas,
   SiPostgresql,
@@ -31,42 +35,56 @@ import {
   SiVllm,
 } from 'react-icons/si';
 
+type TechLogoEntry = {
+  icons: IconType[];
+};
+
 function normalizeTechLabel(value: string) {
   return value.trim().toLowerCase().replace(/\s+/g, ' ');
 }
 
-const techLogoMap = new Map<string, IconType>([
-  ['airflow', SiApacheairflow],
-  ['cassandra', SiApachecassandra],
-  ['docker', SiDocker],
-  ['fastapi', SiFastapi],
-  ['github actions', SiGithubactions],
-  ['google colab', SiGooglecolab],
-  ['grafana', SiGrafana],
-  ['jupyter', SiJupyter],
-  ['kafka', SiApachekafka],
-  ['langchain', SiLangchain],
-  ['langgraph', SiLanggraph],
-  ['matillion', SiMatillion],
-  ['numpy', SiNumpy],
-  ['pandas', SiPandas],
-  ['postgresql', SiPostgresql],
-  ['prometheus', SiPrometheus],
-  ['pydantic', SiPydantic],
-  ['pytest', SiPytest],
-  ['python', SiPython],
-  ['react', SiReact],
-  ['scikit-learn', SiScikitlearn],
-  ['scipy', SiScipy],
-  ['snowflake', SiSnowflake],
-  ['streamlit', SiStreamlit],
-  ['supabase', SiSupabase],
-  ['typescript', SiTypescript],
-  ['typer', SiTyper],
-  ['vite', SiVite],
-  ['vllm', SiVllm],
+const techLogoMap = new Map<string, TechLogoEntry>([
+  ['airflow', { icons: [SiApacheairflow] }],
+  ['cassandra', { icons: [SiApachecassandra] }],
+  ['docker', { icons: [SiDocker] }],
+  ['docker compose', { icons: [SiDocker] }],
+  ['fastapi', { icons: [SiFastapi] }],
+  ['github actions', { icons: [SiGithubactions] }],
+  ['google colab', { icons: [SiGooglecolab] }],
+  ['grafana', { icons: [SiGrafana] }],
+  ['jupyter', { icons: [SiJupyter] }],
+  ['kafka', { icons: [SiApachekafka] }],
+  ['langchain', { icons: [SiLangchain] }],
+  ['langgraph', { icons: [SiLanggraph] }],
+  ['matillion', { icons: [SiMatillion] }],
+  ['neo4j', { icons: [SiNeo4J] }],
+  ['numpy', { icons: [SiNumpy] }],
+  ['openai', { icons: [AiFillOpenAI] }],
+  ['pandas', { icons: [SiPandas] }],
+  ['postgresql', { icons: [SiPostgresql] }],
+  ['prometheus', { icons: [SiPrometheus] }],
+  ['prometheus / grafana', { icons: [SiPrometheus, SiGrafana] }],
+  ['pydantic', { icons: [SiPydantic] }],
+  ['pytest', { icons: [SiPytest] }],
+  ['pyspark', { icons: [SiApachespark] }],
+  ['python', { icons: [SiPython] }],
+  ['react', { icons: [SiReact] }],
+  ['scikit-learn', { icons: [SiScikitlearn] }],
+  ['scipy', { icons: [SiScipy] }],
+  ['snowflake', { icons: [SiSnowflake] }],
+  ['spark', { icons: [SiApachespark] }],
+  ['spark dataframes', { icons: [SiApachespark] }],
+  ['spark rdd', { icons: [SiApachespark] }],
+  ['spark streaming', { icons: [SiApachespark] }],
+  ['streamlit', { icons: [SiStreamlit] }],
+  ['supabase', { icons: [SiSupabase] }],
+  ['tableau', { icons: [IoLogoTableau] }],
+  ['typescript', { icons: [SiTypescript] }],
+  ['typer', { icons: [SiTyper] }],
+  ['vite', { icons: [SiVite] }],
+  ['vllm', { icons: [SiVllm] }],
 ]);
 
-export function getTechLogo(label: string) {
+export function getTechLogoEntry(label: string) {
   return techLogoMap.get(normalizeTechLabel(label));
 }
