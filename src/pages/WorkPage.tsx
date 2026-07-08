@@ -46,8 +46,8 @@ export function WorkPage() {
           <SectionHeading
             level={1}
             eyebrow="Work"
-            title="Experience across AI products, data science, and production systems."
-            description="The common thread is systems execution: AI workflows, research-backed inference work, cloud and warehouse delivery, and analytics products built for real operators and stakeholders."
+            title="I build across AI products, data science, and production systems."
+            description="Across these roles, I kept coming back to the same kind of work: shipping AI workflows, improving inference and evaluation systems, building reliable data platforms, and delivering analytics that people could actually use."
           />
 
           <div className="mt-8 flex flex-wrap gap-2" aria-label="Work positioning">
@@ -97,8 +97,8 @@ export function WorkPage() {
         <SectionHeading
           id="experience-heading"
           eyebrow="Timeline"
-          title="Work experience aligned to AI systems, data platforms, and measurable analytics delivery."
-          description="Each role highlights production ownership, grounded metrics, and systems that supported downstream decisions."
+          title="I’ve focused my work on AI systems, data platforms, and analytics with clear downstream impact."
+          description="This timeline highlights the production work I owned, the outcomes I can support with evidence, and the systems I built to help teams make decisions faster and with more confidence."
         />
         <motion.div
           className="mt-8 grid gap-5"
@@ -119,8 +119,8 @@ export function WorkPage() {
         <SectionHeading
           id="themes-heading"
           eyebrow="Experience Themes"
-          title="The work clusters around four recurring strengths."
-          description="This is the higher-level view across the timeline: AI systems thinking, reliable data movement, measurable analytics, and cross-functional delivery."
+          title="Four patterns show up again and again in my work."
+          description="At a high level, I keep leaning into AI systems thinking, reliable data movement, measurable analytics delivery, and cross-functional execution."
         />
         <motion.div
           className="mt-8 grid gap-5 lg:grid-cols-2"
@@ -162,8 +162,8 @@ export function WorkPage() {
           <SectionHeading
             id="next-step-heading"
             eyebrow="Next Step"
-            title="Interested in AI, data science, or analytics work with strong systems execution."
-            description="The best fit is work where model behavior, data reliability, and stakeholder-facing delivery all matter. That includes LLM systems, ML-ready platforms, experimentation-heavy analytics, and production data products."
+            title="I’m looking for AI, data science, or analytics work where strong systems execution matters."
+            description="The best fit for me is work where model behavior, data reliability, and stakeholder-facing delivery all matter at the same time. That includes LLM systems, ML-ready platforms, experimentation-heavy analytics, and production data products."
           />
           <div className="mt-8 flex flex-wrap gap-3">
             <ButtonLink href="/projects">
