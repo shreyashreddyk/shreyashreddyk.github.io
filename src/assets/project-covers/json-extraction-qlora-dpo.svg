@@ -6,7 +6,7 @@
   <rect x="116" y="120" width="290" height="48" rx="24" fill="rgba(255,255,255,0.14)" />
   <text x="154" y="151" fill="#F8FAFC" font-family="'IBM Plex Sans', sans-serif" font-size="24" font-weight="600">AI / LLM Systems</text>
   <text x="116" y="302" fill="#F8FAFC" font-family="'Space Grotesk', sans-serif" font-size="84" font-weight="700">JSON Extraction</text>
-  <text x="116" y="400" fill="#F8FAFC" font-family="'Space Grotesk', sans-serif" font-size="84" font-weight="700">with QLoRA + DPO</text>
+  <text x="116" y="400" fill="#F8FAFC" font-family="'Space Grotesk', sans-serif" font-size="84" font-weight="700">with QLORA + DPO</text>
   <text x="118" y="490" fill="#E5EEF8" font-family="'IBM Plex Sans', sans-serif" font-size="30">Schema contracts • post-training stages • reproducible benchmark artifacts</text>
   <rect x="116" y="610" width="330" height="64" rx="20" fill="rgba(255,255,255,0.1)" />
   <text x="148" y="652" fill="#F8FAFC" font-family="'IBM Plex Sans', sans-serif" font-size="24">Micro F1: 0.3030 → 0.7730</text>

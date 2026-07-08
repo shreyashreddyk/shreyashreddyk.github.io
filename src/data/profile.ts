@@ -63,7 +63,7 @@ export const education = [
       'Coursework includes machine learning, scalable systems, statistical models, probabilistic reasoning, optimization, geometry of data, and efficient AI for data science.',
   },
   {
-    school: 'Birla Institute of Technology and Science, Pilani',
+    school: 'BITS Pilani',
     credential: 'B.E. in Mechanical Engineering, Minor in Finance',
     years: '2019–2023',
     detail:
@@ -146,7 +146,7 @@ export const homeCapabilityCards = [
 export const skillGroups: SkillGroup[] = [
   {
     heading: 'AI / ML',
-    items: ['RAG', 'LLM evals', 'QLoRA / DPO', 'vLLM', 'Structured outputs', 'Fraud modeling'],
+    items: ['RAG', 'QLORA / DPO', 'LLM evals', 'vLLM', 'Structured outputs', 'Fraud modeling'],
   },
   {
     heading: 'Data Platforms',
@@ -177,7 +177,7 @@ export const timelineTeasers = [
   {
     title: 'Education and foundations',
     description:
-      'UC San Diego data science coursework and BITS engineering training across machine learning, scalable systems, statistics, and optimization.',
+      'UC San Diego data science coursework and BITS Pilani training across machine learning, scalable systems, statistics, and optimization.',
     href: '/education',
     ctaLabel: 'View Education',
   },

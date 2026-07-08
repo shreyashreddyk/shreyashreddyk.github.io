@@ -21,42 +21,7 @@ export type EducationEntry = {
   courseworkByTheme: CourseworkTheme[];
   gpa?: string;
   honors?: string[];
-  notes?: string[];
 };
-
-export type AcademicHighlight = {
-  label: string;
-  value: string;
-  description: string;
-};
-
-export const academicHighlights: AcademicHighlight[] = [
-  {
-    label: 'UCSD GPA',
-    value: '3.941/4.0',
-    description: 'Transcript-backed cumulative GPA in the M.S. Data Science program.',
-  },
-  {
-    label: 'BITS CGPA',
-    value: '9.20/10',
-    description: 'Final cumulative grade point average in the B.E. Mechanical program.',
-  },
-  {
-    label: 'Honors',
-    value: 'Distinction',
-    description: 'Recorded on the BITS Pilani Hyderabad academic transcript upon degree completion.',
-  },
-  {
-    label: 'UCSD Milestone',
-    value: 'Advanced to candidacy',
-    description: 'Advanced to candidacy on October 17, 2025 in the graduate Data Science program.',
-  },
-  {
-    label: 'Applied Training',
-    value: 'Practice School I & II',
-    description: 'BITS degree included Practice School I and Practice School II as hands-on academic training.',
-  },
-];
 
 export const educationEntries: EducationEntry[] = [
   {
@@ -67,11 +32,11 @@ export const educationEntries: EducationEntry[] = [
     location: 'San Diego, CA',
     dates: '2024 – 2026',
     summary:
-      'Graduate data science training that adds machine learning, scalable systems, optimization, and statistical depth to AI engineering and production data work.',
+      'M.S. in Data Science focused on machine learning, scalable systems, statistical modeling, optimization, and modern AI workflows.',
     highlights: [
-      'Cumulative GPA of 3.941/4.0 in the M.S. Data Science program.',
-      'Advanced to candidacy on October 17, 2025.',
-      'Coursework spans machine learning, scalable systems, probabilistic modeling, fraud analytics, recommender systems, and efficient AI.',
+      'GPA: 3.941/4.0.',
+      'Advanced coursework across machine learning, scalable data systems, fraud analytics, recommender systems, and efficient AI.',
+      'Strong foundation in probabilistic reasoning, statistical models, and optimization for applied modeling and evaluation work.',
     ],
     courseworkByTheme: [
       {
@@ -112,20 +77,19 @@ export const educationEntries: EducationEntry[] = [
       },
     ],
     gpa: '3.941/4.0',
-    notes: ['Advanced to candidacy on October 17, 2025.'],
   },
   {
-    institution: 'Birla Institute of Technology & Science, Pilani, Hyderabad Campus',
-    institutionLabel: 'BITS Pilani Hyderabad',
+    institution: 'BITS Pilani, Hyderabad Campus',
+    institutionLabel: 'BITS Pilani',
     credential: 'B.E.',
-    program: 'Mechanical Engineering (with Practice School)',
+    program: 'Mechanical Engineering · Minor in Finance · Practice School',
     location: 'Hyderabad, India',
     dates: '2019 – 2023',
     summary:
-      'Engineering training grounded in mathematical rigor, systems thinking, and applied learning through Practice School, with strong preparation for analytics, optimization, and technical product work.',
+      'Engineering degree shaped by mathematical rigor, systems thinking, finance coursework, and applied training through Practice School.',
     highlights: [
-      'Graduated with a CGPA of 9.20/10 and Distinction.',
-      'Completed Practice School I and Practice School II as part of the degree program.',
+      'CGPA: 9.20/10.',
+      'Graduated with Distinction.',
       'Coursework combined machine learning and data science foundations with probability, optimization, finance, and core engineering systems.',
     ],
     courseworkByTheme: [
@@ -171,7 +135,6 @@ export const educationEntries: EducationEntry[] = [
     ],
     gpa: '9.20/10',
     honors: ['Distinction'],
-    notes: ['Practice School I and Practice School II completed.'],
   },
 ];
 
@@ -181,22 +144,7 @@ export const courseworkThemeDescriptions: Record<CourseworkThemeTitle, string> =
   'Systems and Data Engineering':
     'Scalable systems, data management, programming, algorithms, and applied systems work that support production-grade AI and analytics.',
   'Statistics / Optimization':
-    'Probability, statistical modeling, optimization, and quantitative finance coursework that supports evaluation, experimentation, and decision-making.',
+    'Probability, statistical modeling, optimization, and quantitative finance coursework that support evaluation, experimentation, and decision-making.',
   'Engineering Foundations':
     'Core engineering, design, manufacturing, and hands-on technical training that strengthen systems intuition and implementation discipline.',
 };
-
-export const whyEducationMatters = [
-  {
-    title: 'UCSD adds modern AI and data science depth',
-    description:
-      'The graduate program connects machine learning, scalable systems, optimization, recommender systems, and statistical modeling in a way that directly supports AI engineering and data science work.',
-    supportingPoints: ['Machine learning', 'Scalable systems', 'Optimization', 'Recommender systems'],
-  },
-  {
-    title: 'BITS adds engineering rigor and applied systems thinking',
-    description:
-      'The B.E. foundation contributes mathematical discipline, design and manufacturing systems exposure, and Practice School experience that translate well to production data and AI roles.',
-    supportingPoints: ['Probability and optimization', 'Finance coursework', 'Practice School I & II'],
-  },
-];

@@ -132,7 +132,7 @@ const projects: Project[] = [
     bullets: [
       'Built a persistent coaching workspace for uploads, transcripts, summaries, flashcards, and session telemetry using React, FastAPI, and Supabase.',
       'Designed a split Cloud Run architecture with separate web and agent services, JWT validation, storage boundaries, and CI/CD workflows.',
-      'Scoped production claims carefully by feature-gating the local Pipecat WebRTC loop while keeping the deployable workspace and generation surfaces public-safe.',
+      'Scoped production claims carefully by feature-gating the local Pipecat WebRTC loop while keeping the deployable workspace and generation surfaces honest.',
     ],
     tech: ['React', 'TypeScript', 'Vite', 'FastAPI', 'Supabase', 'OpenAI', 'Cloud Run'],
     category: 'AI / LLM Systems',
@@ -160,17 +160,17 @@ const projects: Project[] = [
   },
   {
     slug: 'json-extraction-qlora-dpo',
-    title: 'JSON Extraction with QLoRA + DPO',
+    title: 'JSON Extraction with QLORA + DPO',
     repoName: 'json-extraction-qlora-dpo',
     repoUrl: githubRepo('json-extraction-qlora-dpo'),
     shortDescription:
-      'Schema-constrained support-ticket extraction system spanning baseline evaluation, QLoRA SFT, DPO post-training, validation contracts, and resumable vLLM benchmarking.',
+      'Schema-constrained support-ticket extraction system spanning baseline evaluation, QLORA SFT, DPO post-training, validation contracts, and resumable vLLM benchmarking.',
     projectSummary:
       'This project tracks structured extraction quality from baseline through SFT and DPO, with separate validity and semantic metrics plus saved artifacts for each stage.',
     problem:
       'Structured extraction projects often hide behind single metrics, making it hard to tell whether a model improved validity, schema adherence, or actual semantic quality.',
     approach:
-      'Designed a schema-first training and evaluation pipeline covering baseline measurement, QLoRA supervised finetuning, DPO preference optimization, contract validation, and serving benchmarks.',
+      'Designed a schema-first training and evaluation pipeline covering baseline measurement, QLORA supervised finetuning, DPO preference optimization, contract validation, and serving benchmarks.',
     impact:
       'Produced measurable post-training gains, saved artifacts for each stage, and clear latency-quality tradeoff evidence across training and serving.',
     bullets: [
@@ -182,7 +182,7 @@ const projects: Project[] = [
     category: 'AI / LLM Systems',
     featured: true,
     coverImage: jsonExtractionQloraDpoCover,
-    highlights: ['QLoRA plus DPO', 'Schema-first evaluation', 'Benchmark artifacts'],
+    highlights: ['QLORA + DPO', 'Schema-first evaluation', 'Benchmark artifacts'],
     links: [
       {
         label: 'Final Report',
@@ -679,13 +679,13 @@ const projects: Project[] = [
     problem:
       'Strong technical work still benefits from a clear public presentation layer that makes scope, impact, and credibility easy to understand.',
     approach:
-      'Built a static React, Vite, TypeScript, and Tailwind site with typed project data, HashRouter-safe routing, and public-safe content that can deploy directly to GitHub Pages.',
+      'Built a static React, Vite, TypeScript, and Tailwind site with typed project data, HashRouter-safe routing, and shareable content that can deploy directly to GitHub Pages.',
     impact:
       'Improves how the broader portfolio reads by turning scattered repos into a structured, searchable project experience.',
     bullets: [
       'Built a static portfolio experience around React, Vite, TypeScript, Tailwind CSS, Framer Motion, and HashRouter for GitHub Pages compatibility.',
       'Structured public content in typed data files so project narratives, highlights, and links stay consistent across the site.',
-      'Focused the frontend on accessible navigation, polished motion, and public-safe portfolio storytelling instead of exposing raw source documents.',
+      'Focused the frontend on accessible navigation, polished motion, and concise portfolio storytelling instead of exposing raw source documents.',
     ],
     tech: ['React', 'Vite', 'TypeScript', 'Tailwind CSS', 'Framer Motion', 'React Router'],
     category: 'Data Visualization / Analytics',

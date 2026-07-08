@@ -15,11 +15,12 @@ function IconLink({
   return (
     <ButtonLink
       href={href}
-      variant="ghost"
-      className="h-10 w-10 rounded-full border border-border/70 bg-white/5 p-0 text-muted hover:border-accent/40 hover:text-text"
+      variant="secondary"
+      className="gap-2.5 px-4 py-2.5 text-sm text-text hover:text-text"
       aria-label={label}
     >
       {children}
+      <span>{label}</span>
     </ButtonLink>
   );
 }
@@ -123,13 +124,13 @@ export function Layout({ children }: PropsWithChildren) {
             </div>
             <div className="flex flex-wrap items-center gap-3">
               <IconLink href={siteMetadata.githubUrl} label="GitHub profile">
-                <Github size={18} />
+                <Github size={20} className="text-accent" />
               </IconLink>
               <IconLink href={siteMetadata.linkedinUrl} label="LinkedIn profile">
-                <Linkedin size={18} />
+                <Linkedin size={20} className="text-accent" />
               </IconLink>
               <IconLink href={`mailto:${siteMetadata.email}`} label="Email Shreyash">
-                <Mail size={18} />
+                <Mail size={20} className="text-accent" />
               </IconLink>
               <ButtonLink href={siteMetadata.resumeUrl} variant="secondary" className="px-4 py-2.5 text-sm">
                 <FileText size={16} />

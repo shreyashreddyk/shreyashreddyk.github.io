@@ -116,7 +116,7 @@ export function ProjectDetailPage() {
         <SectionHeading
           id="project-story-heading"
           title="What the project solves and how it was built."
-          description="Each section stays grounded in the public evidence surfaced in the repository."
+          description="Each section covers the problem, implementation approach, and outcome at a glance."
         />
 
         <motion.div
@@ -143,7 +143,7 @@ export function ProjectDetailPage() {
         <SectionHeading
           id="resume-bullets-heading"
           title="Project highlights"
-          description="Outcome-oriented bullets pulled from the strongest public evidence available for this repository."
+          description="Outcome-oriented bullets drawn from the work and artifacts in the repository."
         />
         <motion.ul
           className="mt-8 grid gap-4"
@@ -169,7 +169,7 @@ export function ProjectDetailPage() {
         <SectionHeading
           id="tech-stack-heading"
           title="Tech stack"
-          description="Primary tools, platforms, and methods surfaced in the public repo evidence."
+          description="Primary tools, platforms, and methods used in the project."
         />
         <ul className="mt-6 flex flex-wrap gap-2" aria-label={`${project.title} technology stack`}>
           {project.tech.map((item) => (
