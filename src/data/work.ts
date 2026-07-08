@@ -17,20 +17,6 @@ export type ExperienceTheme = {
   supportingPoints: string[];
 };
 
-export type ResumeCta = {
-  mode: 'download' | 'request' | 'hidden';
-  label: string;
-  href?: string;
-  helperText: string;
-};
-
-export const resumeCta: ResumeCta = {
-  mode: 'download',
-  label: 'Open resume PDF',
-  href: '/resume.pdf',
-  helperText: 'Public resume PDF with current experience, projects, and contact details.',
-};
-
 export const workEntries: WorkEntry[] = [
   {
     company: 'University of California, San Diego',

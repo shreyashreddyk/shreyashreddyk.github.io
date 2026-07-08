@@ -28,6 +28,6 @@ export const routes: AppRoute[] = [
   {
     href: '/contact',
     label: 'Contact',
-    description: 'Contact details, resume, and current interests.',
+    description: 'Contact details and current interests.',
   },
 ];

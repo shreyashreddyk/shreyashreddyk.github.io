@@ -22,7 +22,7 @@ export function ContactPage() {
           level={1}
           eyebrow="Contact"
           title="Open to AI, data science, and analytics opportunities."
-          description="Email is the fastest path for role conversations, project follow-ups, and collaborations. GitHub, LinkedIn, and the public resume are linked here as well."
+          description="Email is the fastest path for role conversations, project follow-ups, and collaborations. GitHub and LinkedIn are linked here as well."
         />
       </motion.section>
 
@@ -54,13 +54,10 @@ export function ContactPage() {
           <div className="mt-5 inline-flex rounded-2xl border border-accent/20 bg-accent/10 p-3 text-accent">
             <FileText size={22} />
           </div>
-          <h2 className="mt-5 text-3xl font-semibold">Public resume PDF</h2>
-          <p className="mt-4 text-base leading-7 text-muted">
-            The same resume linked from the footer is available here for a quick open or download.
-          </p>
+          <h2 className="mt-5 text-3xl font-semibold">Quick links</h2>
           <div className="mt-6 flex flex-wrap gap-3">
             <ButtonLink href={siteMetadata.resumeUrl}>
-              Open resume
+              Resume
               <ArrowUpRight size={16} />
             </ButtonLink>
             <ButtonLink href="/work" variant="secondary">

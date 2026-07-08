@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import { ArrowRight, FileText, Mail } from 'lucide-react';
+import { ArrowRight, Mail } from 'lucide-react';
 import { Badge } from '../components/Badge';
 import { ButtonLink } from '../components/ButtonLink';
 import { PageTransition } from '../components/PageTransition';
@@ -7,7 +7,7 @@ import { SEO } from '../components/SEO';
 import { SectionHeading } from '../components/SectionHeading';
 import { WorkTimelineEntry } from '../components/WorkTimelineEntry';
 import { siteMetadata } from '../data/profile';
-import { experienceThemes, resumeCta, workEntries } from '../data/work';
+import { experienceThemes, workEntries } from '../data/work';
 import {
   createHeroGlowProps,
   createRevealProps,
@@ -27,11 +27,8 @@ export function WorkPage() {
         path="/work"
       />
 
-      <section className="grid gap-6 lg:grid-cols-[1.15fr_0.85fr] lg:items-stretch">
-        <motion.div
-          className="surface-panel-strong relative overflow-hidden p-8 sm:p-10"
-          {...createRevealProps(reducedMotion)}
-        >
+      <section>
+        <motion.div className="surface-panel-strong relative overflow-hidden p-8 sm:p-10" {...createRevealProps(reducedMotion)}>
           <motion.div
             aria-hidden="true"
             className="absolute -right-12 -top-12 h-40 w-40 rounded-full bg-accent/[0.16] blur-3xl"
@@ -58,39 +55,6 @@ export function WorkPage() {
             ))}
           </div>
         </motion.div>
-
-        <motion.aside
-          className="surface-panel relative overflow-hidden p-7"
-          {...createRevealProps(reducedMotion, 0.08)}
-          aria-labelledby="resume-cta-heading"
-        >
-          <div
-            aria-hidden="true"
-            className="absolute inset-x-6 top-0 h-px bg-gradient-to-r from-accent/0 via-accent/50 to-accent/0"
-          />
-          <div className="inline-flex rounded-2xl border border-accent/20 bg-accent/10 p-3 text-accent">
-            <FileText size={22} />
-          </div>
-          <h2 id="resume-cta-heading" className="mt-5 text-2xl font-semibold">
-            Resume
-          </h2>
-          <p className="mt-3 text-base leading-7 text-muted">
-            The public resume PDF mirrors the experience highlights on this page and links directly from the site footer.
-          </p>
-          <div className="mt-6 flex flex-wrap gap-3">
-            {resumeCta.mode === 'download' && resumeCta.href ? (
-              <ButtonLink href={resumeCta.href}>
-                {resumeCta.label}
-                <ArrowRight size={16} />
-              </ButtonLink>
-            ) : (
-              <span className="inline-flex items-center rounded-full border border-border/80 bg-white/5 px-4 py-2.5 text-sm font-medium text-text">
-                {resumeCta.label}
-              </span>
-            )}
-          </div>
-          <p className="mt-4 text-sm leading-6 text-muted">{resumeCta.helperText}</p>
-        </motion.aside>
       </section>
 
       <section className="section-spacing" aria-labelledby="experience-heading">
