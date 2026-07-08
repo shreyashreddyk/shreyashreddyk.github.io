@@ -42,39 +42,27 @@ export function createRevealProps(reducedMotion: boolean, delay = 0): MotionProp
 }
 
 export function createStaggerVariants(reducedMotion: boolean): Variants {
-  if (reducedMotion) {
-    return {
-      hidden: { opacity: 1 },
-      visible: { opacity: 1 },
-    };
-  }
-
   return {
-    hidden: { opacity: 0 },
+    hidden: { opacity: 1 },
     visible: {
       opacity: 1,
-      transition: {
-        staggerChildren: 0.08,
-        delayChildren: 0.05,
-      },
+      transition: reducedMotion
+        ? { duration: 0 }
+        : {
+            staggerChildren: 0.08,
+            delayChildren: 0.05,
+          },
     },
   };
 }
 
 export function createStaggerChildVariants(reducedMotion: boolean): Variants {
-  if (reducedMotion) {
-    return {
-      hidden: { opacity: 1, y: 0 },
-      visible: { opacity: 1, y: 0 },
-    };
-  }
-
   return {
-    hidden: { opacity: 0, y: 14 },
+    hidden: { opacity: 1, y: 0 },
     visible: {
       opacity: 1,
       y: 0,
-      transition: { duration: 0.4, ease: EASE },
+      transition: reducedMotion ? { duration: 0 } : { duration: 0.4, ease: EASE },
     },
   };
 }
