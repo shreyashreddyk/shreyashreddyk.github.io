@@ -84,7 +84,7 @@ export function ProjectsPage() {
                   type="button"
                   onClick={() => setActiveCategory(category)}
                   className={cn(
-                    'focus-ring inline-flex items-center gap-2 rounded-full border px-4 py-2 text-sm font-semibold uppercase tracking-[0.12em] transition',
+                    'focus-ring inline-flex min-w-0 max-w-full flex-wrap items-center gap-2 rounded-full border px-4 py-2 text-left text-sm font-semibold uppercase tracking-[0.12em] transition',
                     isActive
                       ? 'border-accent/40 bg-accent/[0.14] text-accent'
                       : 'border-border/70 bg-white/5 text-muted hover:border-accent/40 hover:text-text',
