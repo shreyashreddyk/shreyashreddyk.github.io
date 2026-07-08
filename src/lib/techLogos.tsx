@@ -1,13 +1,17 @@
 import type { IconType } from 'react-icons';
 import { AiFillOpenAI } from 'react-icons/ai';
 import { IoLogoTableau } from 'react-icons/io5';
+import { PiMicrosoftExcelLogo } from 'react-icons/pi';
 import {
   SiApacheairflow,
   SiApachecassandra,
   SiApachekafka,
+  SiApacheparquet,
   SiApachespark,
   SiDocker,
   SiFastapi,
+  SiGooglecloudcomposer,
+  SiGoogledataproc,
   SiGithubactions,
   SiGooglecolab,
   SiGrafana,
@@ -48,9 +52,12 @@ const techLogoMap = new Map<string, TechLogoEntry>([
   ['cassandra', { icons: [SiApachecassandra] }],
   ['docker', { icons: [SiDocker] }],
   ['docker compose', { icons: [SiDocker] }],
+  ['excel/vba', { icons: [PiMicrosoftExcelLogo] }],
   ['fastapi', { icons: [SiFastapi] }],
+  ['gcp dataproc', { icons: [SiGoogledataproc] }],
   ['github actions', { icons: [SiGithubactions] }],
   ['google colab', { icons: [SiGooglecolab] }],
+  ['cloud composer', { icons: [SiGooglecloudcomposer] }],
   ['grafana', { icons: [SiGrafana] }],
   ['jupyter', { icons: [SiJupyter] }],
   ['kafka', { icons: [SiApachekafka] }],
@@ -61,6 +68,7 @@ const techLogoMap = new Map<string, TechLogoEntry>([
   ['numpy', { icons: [SiNumpy] }],
   ['openai', { icons: [AiFillOpenAI] }],
   ['pandas', { icons: [SiPandas] }],
+  ['parquet', { icons: [SiApacheparquet] }],
   ['postgresql', { icons: [SiPostgresql] }],
   ['prometheus', { icons: [SiPrometheus] }],
   ['prometheus / grafana', { icons: [SiPrometheus, SiGrafana] }],
@@ -75,6 +83,7 @@ const techLogoMap = new Map<string, TechLogoEntry>([
   ['spark', { icons: [SiApachespark] }],
   ['spark dataframes', { icons: [SiApachespark] }],
   ['spark rdd', { icons: [SiApachespark] }],
+  ['spark sql', { icons: [SiApachespark] }],
   ['spark streaming', { icons: [SiApachespark] }],
   ['streamlit', { icons: [SiStreamlit] }],
   ['supabase', { icons: [SiSupabase] }],

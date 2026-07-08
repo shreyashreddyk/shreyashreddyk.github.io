@@ -1,4 +1,5 @@
 import { Badge } from './Badge';
+import { TechBadge } from './TechBadge';
 import { cn } from '../lib/utils';
 import type { WorkEntry } from '../data/work';
 
@@ -48,9 +49,7 @@ export function WorkTimelineEntry({ entry, className }: WorkTimelineEntryProps) 
 
           <div className="mt-5 flex flex-wrap gap-2" aria-label={`${entry.company} skills`}>
             {entry.skills.map((skill) => (
-              <Badge key={skill} variant="neutral">
-                {skill}
-              </Badge>
+              <TechBadge key={skill} label={skill} />
             ))}
           </div>
         </div>
