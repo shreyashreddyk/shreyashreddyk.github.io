@@ -1,15 +1,15 @@
 import { motion } from 'framer-motion';
 import { ArrowLeft, ArrowRight, ArrowUpRight } from 'lucide-react';
+import { useParams } from 'react-router-dom';
 import { PageTransition } from '../components/PageTransition';
 import { SEO } from '../components/SEO';
-import { Badge } from '../components/Badge';
 import { ButtonLink } from '../components/ButtonLink';
 import { ProjectCover } from '../components/ProjectCover';
 import { SectionHeading } from '../components/SectionHeading';
+import { TechBadge } from '../components/TechBadge';
 import { projectsBySlug } from '../data/projects';
 import { createRevealProps, createStaggerChildVariants, createStaggerVariants, useMotionPreference } from '../lib/motion';
 import { getProjectHref } from '../lib/utils';
-import { useParams } from 'react-router-dom';
 
 const detailSections = [
   { key: 'problem', title: 'Problem' },
@@ -174,7 +174,7 @@ export function ProjectDetailPage() {
         <ul className="mt-6 flex flex-wrap gap-2" aria-label={`${project.title} technology stack`}>
           {project.tech.map((item) => (
             <li key={item}>
-              <Badge variant="neutral">{item}</Badge>
+              <TechBadge label={item} />
             </li>
           ))}
         </ul>

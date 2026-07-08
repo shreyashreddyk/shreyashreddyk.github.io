@@ -6,6 +6,7 @@ import { ProjectCard } from '../components/ProjectCard';
 import { PageTransition } from '../components/PageTransition';
 import { SEO } from '../components/SEO';
 import { SectionHeading } from '../components/SectionHeading';
+import { TechBadge } from '../components/TechBadge';
 import { hero, currentFocusAreas, homeCapabilityCards, skillGroups, siteMetadata, timelineTeasers } from '../data/profile';
 import { homeFeaturedProjects } from '../data/projects';
 import {
@@ -158,7 +159,7 @@ export function HomePage() {
               <ul className="mt-4 flex flex-wrap gap-2" aria-label={`${group.heading} skills`}>
                 {group.items.map((item) => (
                   <li key={item}>
-                    <Badge variant="neutral">{item}</Badge>
+                    <TechBadge label={item} />
                   </li>
                 ))}
               </ul>

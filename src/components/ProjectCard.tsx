@@ -6,6 +6,7 @@ import { cn, getProjectHref } from '../lib/utils';
 import { Badge } from './Badge';
 import { ButtonLink } from './ButtonLink';
 import { ProjectCover } from './ProjectCover';
+import { TechBadge } from './TechBadge';
 
 type ProjectCardProps = {
   project: Project;
@@ -62,7 +63,7 @@ export function ProjectCard({ project, variant = 'default' }: ProjectCardProps) 
       <ul className="mt-5 flex flex-wrap gap-2" aria-label={`${project.title} technology stack`}>
         {project.tech.map((item) => (
           <li key={item}>
-            <Badge variant="neutral">{item}</Badge>
+            <TechBadge label={item} />
           </li>
         ))}
       </ul>

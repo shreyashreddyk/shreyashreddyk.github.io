@@ -146,7 +146,7 @@ export const homeCapabilityCards = [
 export const skillGroups: SkillGroup[] = [
   {
     heading: 'AI / ML',
-    items: ['RAG', 'QLORA / DPO', 'LLM evals', 'vLLM', 'Structured outputs', 'Fraud modeling'],
+    items: ['RAG', 'LangChain', 'LangGraph', 'QLORA / DPO', 'LLM evals', 'vLLM', 'Structured outputs', 'Fraud modeling'],
   },
   {
     heading: 'Data Platforms',
