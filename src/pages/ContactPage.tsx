@@ -38,14 +38,14 @@ export function ContactPage() {
                 key={link.label}
                 href={link.href}
                 variant="secondary"
-                className="justify-between rounded-card px-5 py-4 text-left"
+                className="items-start justify-between gap-3 rounded-card px-5 py-4 text-left"
                 aria-label={`${link.label}: ${link.value}`}
               >
-                <div>
+                <div className="min-w-0">
                   <p className="text-sm font-semibold uppercase tracking-[0.18em] text-accent">{link.label}</p>
-                  <p className="mt-2 text-base text-text">{link.value}</p>
+                  <p className="mt-2 break-all text-base text-text">{link.value}</p>
                 </div>
-                <ArrowUpRight size={18} className="text-muted" />
+                <ArrowUpRight size={18} className="shrink-0 text-muted" />
               </ButtonLink>
             ))}
           </div>

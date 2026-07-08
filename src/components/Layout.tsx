@@ -45,9 +45,15 @@ export function Layout({ children }: PropsWithChildren) {
         <header className="sticky top-4 z-40">
           <div className="surface-panel-strong px-4 py-4 md:px-6">
             <div className="flex items-center justify-between gap-4">
-              <Link to="/" className="focus-ring rounded-full px-1 py-0.5 pr-3" aria-label="Go to homepage">
-                <p className="text-base font-semibold text-text">{siteMetadata.name}</p>
-                <p className="text-sm text-muted">{siteMetadata.role}</p>
+              <Link
+                to="/"
+                className="focus-ring min-w-0 flex-1 rounded-full px-1 py-0.5 pr-3"
+                aria-label="Go to homepage"
+              >
+                <p className="text-base font-semibold leading-tight text-text">{siteMetadata.name}</p>
+                <p className="mt-1 max-w-[11rem] text-xs leading-5 text-muted sm:max-w-none sm:text-sm">
+                  {siteMetadata.role}
+                </p>
               </Link>
               <button
                 type="button"
@@ -116,7 +122,7 @@ export function Layout({ children }: PropsWithChildren) {
         </main>
         <footer className="mt-14 border-t border-border/70 pt-6">
           <div className="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
-            <div>
+            <div className="min-w-0">
               <p className="text-sm font-medium text-text">{siteMetadata.name} · AI engineering, data science, and analytics.</p>
               <p className="mt-2 text-sm text-muted">
                 LLM systems, scalable pipelines, and analytics products across finance, fraud, healthcare, and education.
