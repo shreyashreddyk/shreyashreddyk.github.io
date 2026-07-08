@@ -29,16 +29,14 @@ export function createRevealProps(reducedMotion: boolean, delay = 0): MotionProp
   if (reducedMotion) {
     return {
       initial: false,
-      whileInView: { opacity: 1 },
-      viewport: { once: true, amount: 0.2 },
+      animate: { opacity: 1 },
       transition: { duration: 0 },
     };
   }
 
   return {
     initial: { opacity: 0, y: 22 },
-    whileInView: { opacity: 1, y: 0 },
-    viewport: { once: true, amount: 0.25 },
+    animate: { opacity: 1, y: 0 },
     transition: { duration: 0.45, delay, ease: EASE },
   };
 }
