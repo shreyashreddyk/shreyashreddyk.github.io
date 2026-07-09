@@ -1,7 +1,9 @@
 import type { IconType } from 'react-icons';
 import { AiFillOpenAI } from 'react-icons/ai';
+import { GrOracle } from 'react-icons/gr';
 import { IoLogoTableau } from 'react-icons/io5';
 import { PiMicrosoftExcelLogo } from 'react-icons/pi';
+import { TbBrandAzure } from 'react-icons/tb';
 import {
   SiApacheairflow,
   SiApachecassandra,
@@ -11,6 +13,7 @@ import {
   SiDocker,
   SiFastapi,
   SiGooglecloudcomposer,
+  SiGooglecloud,
   SiGoogledataproc,
   SiGithubactions,
   SiGooglecolab,
@@ -37,6 +40,7 @@ import {
   SiTyper,
   SiVite,
   SiVllm,
+  SiYolo,
 } from 'react-icons/si';
 
 type TechLogoEntry = {
@@ -49,15 +53,18 @@ function normalizeTechLabel(value: string) {
 
 const techLogoMap = new Map<string, TechLogoEntry>([
   ['airflow', { icons: [SiApacheairflow] }],
+  ['azure sql', { icons: [TbBrandAzure] }],
   ['cassandra', { icons: [SiApachecassandra] }],
   ['docker', { icons: [SiDocker] }],
   ['docker compose', { icons: [SiDocker] }],
   ['excel/vba', { icons: [PiMicrosoftExcelLogo] }],
   ['fastapi', { icons: [SiFastapi] }],
+  ['gke', { icons: [SiGooglecloud] }],
   ['gcp dataproc', { icons: [SiGoogledataproc] }],
   ['github actions', { icons: [SiGithubactions] }],
   ['google colab', { icons: [SiGooglecolab] }],
   ['cloud composer', { icons: [SiGooglecloudcomposer] }],
+  ['cloud run', { icons: [SiGooglecloud] }],
   ['grafana', { icons: [SiGrafana] }],
   ['jupyter', { icons: [SiJupyter] }],
   ['kafka', { icons: [SiApachekafka] }],
@@ -67,6 +74,7 @@ const techLogoMap = new Map<string, TechLogoEntry>([
   ['neo4j', { icons: [SiNeo4J] }],
   ['numpy', { icons: [SiNumpy] }],
   ['openai', { icons: [AiFillOpenAI] }],
+  ['oracle ai', { icons: [GrOracle] }],
   ['pandas', { icons: [SiPandas] }],
   ['parquet', { icons: [SiApacheparquet] }],
   ['postgresql', { icons: [SiPostgresql] }],
@@ -92,6 +100,7 @@ const techLogoMap = new Map<string, TechLogoEntry>([
   ['typer', { icons: [SiTyper] }],
   ['vite', { icons: [SiVite] }],
   ['vllm', { icons: [SiVllm] }],
+  ['yolov8', { icons: [SiYolo] }],
 ]);
 
 export function getTechLogoEntry(label: string) {
