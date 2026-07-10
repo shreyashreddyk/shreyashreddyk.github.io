@@ -6,6 +6,10 @@ export type WorkEntry = {
   summary: string;
   bullets: string[];
   skills: string[];
+  links?: Array<{
+    label: string;
+    url: string;
+  }>;
   note?: string;
   awards?: string[];
   sourceTags?: string[];
@@ -30,6 +34,7 @@ export const workEntries: WorkEntry[] = [
       'Complemented the research focus with structured extraction post-training using SFT, QLoRA, DPO, Pydantic validation, and evaluation harnesses.',
       'Benchmarked vLLM serving on NVIDIA L4 across mixed prompt workloads and eliminated token-limit failures with dynamic context budgeting.',
     ],
+    links: [{ label: 'Read manuscript', url: '/llm-serving-under-slos-survey.pdf' }],
     skills: ['LLM Serving', 'vLLM', 'Scheduling', 'SLOs', 'Post-training', 'Evaluation'],
     sourceTags: ['ai-engineering', 'data-science', 'research'],
   },

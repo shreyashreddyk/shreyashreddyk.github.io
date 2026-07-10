@@ -1,7 +1,9 @@
 import { Badge } from './Badge';
+import { ButtonLink } from './ButtonLink';
 import { TechBadge } from './TechBadge';
 import { cn } from '../lib/utils';
 import type { WorkEntry } from '../data/work';
+import { FileText } from 'lucide-react';
 
 type WorkTimelineEntryProps = {
   entry: WorkEntry;
@@ -29,6 +31,17 @@ export function WorkTimelineEntry({ entry, className }: WorkTimelineEntryProps) 
         <div className="min-w-0">
           <h3 className="text-2xl font-semibold">{entry.role}</h3>
           <p className="mt-3 text-base leading-7 text-muted">{entry.summary}</p>
+
+          {entry.links?.length ? (
+            <div className="mt-5 flex flex-wrap gap-3" aria-label={`${entry.company} related documents`}>
+              {entry.links.map((link) => (
+                <ButtonLink key={link.url} href={link.url} variant="secondary" className="px-3 py-2 text-sm">
+                  <FileText size={16} />
+                  {link.label}
+                </ButtonLink>
+              ))}
+            </div>
+          ) : null}
 
           <ul className="mt-5 grid gap-3" aria-label={`${entry.company} highlights`}>
             {entry.bullets.map((bullet) => (
