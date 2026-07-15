@@ -147,7 +147,7 @@ export function HomePage() {
               </Link>
             </div>
             <ul className="flex flex-col divide-y divide-black/8 dark:divide-white/8">
-              {workEntries.slice(0, 4).map((entry, i) => {
+              {workEntries.map((entry, i) => {
                 const entryId = `work-${i}`;
                 const isDimmed = hoveredEntryId !== null && hoveredEntryId !== entryId;
                 const entryTags = entry.skills;

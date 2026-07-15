@@ -536,37 +536,7 @@ const projects: Project[] = [
       inferredTechNote,
     ],
   },
-  {
-    slug: 'ml-projects',
-    title: 'ML Projects Collection',
-    repoName: 'ML-Projects',
-    repoUrl: githubRepo('ML-Projects'),
-    shortDescription:
-      'Collection-style machine-learning repository that groups earlier experiments, modeling exercises, and smaller implementations in one place.',
-    projectSummary:
-      'This repository brings together earlier machine-learning work across exploratory modeling, notebook-based experimentation, and smaller implementation studies.',
-    problem:
-      'Smaller machine-learning experiments are easier to lose when they are spread across separate notebooks or lightweight repos.',
-    approach:
-      'Grouped earlier machine-learning exercises into a single repository that keeps modeling experiments and implementation practice together.',
-    impact:
-      'Creates one place for earlier ML work while keeping the project descriptions conservative where the public artifact trail is limited.',
-    bullets: [
-      'Collected earlier machine-learning experiments in one repository spanning exploratory modeling work and smaller implementation studies.',
-      'Used the repo to organize iterative ML practice across different problem types, methods, and notebook-based workflows.',
-      'Kept every claim conservative because the available public evidence in this pass was limited to the repository name and metadata.',
-    ],
-    tech: ['Machine learning', 'Exploratory modeling', 'Notebook workflows'],
-    category: 'Machine Learning',
-    featured: false,
-    highlights: ['Earlier ML experiments', 'Exploratory modeling', 'Notebook workflows'],
-    links: [],
-    relatedSlugs: ['noise-adaptive-spectral-embedding', 'energy-efficiency-regression-and-statistical-analysis', 'texas-weather-data-analysis'],
-    sourceEvidenceNotes: [
-      'GitHub repository metadata was available through the plugin, but README content did not resolve during this audit pass.',
-      'Descriptions were intentionally limited to repo naming and visible metadata to avoid inventing project specifics.',
-    ],
-  },
+
   {
     slug: 'london-crime-analytics-neo4j-postgresql',
     title: 'London Crime Analytics: Neo4j + PostgreSQL',
@@ -641,7 +611,18 @@ const projects: Project[] = [
 
 export const projectCategories = Object.keys(projectCategoryPriority) as ProjectCategory[];
 
+const explicitOrder = ['prosody', 'sec-filing-intelligence-copilot', 'json-extraction-qlora-dpo'];
+
 export const allProjects = [...projects].sort((left, right) => {
+  const leftIdx = explicitOrder.indexOf(left.slug);
+  const rightIdx = explicitOrder.indexOf(right.slug);
+
+  if (leftIdx !== -1 && rightIdx !== -1) {
+    return leftIdx - rightIdx;
+  }
+  if (leftIdx !== -1) return -1;
+  if (rightIdx !== -1) return 1;
+
   const categoryDelta = projectCategoryPriority[left.category] - projectCategoryPriority[right.category];
 
   if (categoryDelta !== 0) {
