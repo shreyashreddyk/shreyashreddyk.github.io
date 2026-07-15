@@ -218,7 +218,7 @@ export function HomePage() {
                   >
                     <Link
                       to={`/projects/${project.slug}`}
-                      className="block -mx-3 px-3 py-1 rounded-md hover:bg-black/5 dark:hover:bg-white/5 transition-colors duration-150"
+                      className="block text-current"
                     >
                       <div className="flex items-baseline justify-between gap-4">
                         <div className="flex items-baseline gap-3 min-w-0">
