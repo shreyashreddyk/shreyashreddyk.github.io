@@ -52,10 +52,10 @@ export function HomePage() {
                 src="/avatar.jpg"
                 alt={siteMetadata.name}
                 onError={() => setAvatarFailed(true)}
-                className="w-14 h-14 rounded-full object-cover ring-2 ring-black/10 dark:ring-white/10"
+                className="w-24 h-24 rounded-full object-cover ring-2 ring-black/10 dark:ring-white/10"
               />
             ) : (
-              <div className="w-14 h-14 rounded-full flex items-center justify-center bg-stone-200 dark:bg-stone-850 text-stone-600 dark:text-stone-300 font-bold text-sm tracking-wide border border-black/10 dark:border-white/10">
+              <div className="w-24 h-24 rounded-full flex items-center justify-center bg-stone-200 dark:bg-stone-850 text-stone-600 dark:text-stone-300 font-bold text-xl tracking-wide border border-black/10 dark:border-white/10">
                 SK
               </div>
             )}
