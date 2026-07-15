@@ -1,151 +1,66 @@
-import { FileText, Github, Linkedin, Mail, Menu, X } from 'lucide-react';
 import { useEffect, useState, type PropsWithChildren } from 'react';
-import { Link, NavLink, useLocation } from 'react-router-dom';
-import { siteMetadata } from '../data/profile';
-import { routes } from '../lib/routes';
-import { cn } from '../lib/utils';
-import { ButtonLink } from './ButtonLink';
-import { Container } from './Container';
-
-function IconLink({
-  href,
-  label,
-  children,
-}: PropsWithChildren<{ href: string; label: string }>) {
-  return (
-    <ButtonLink
-      href={href}
-      variant="secondary"
-      className="gap-2.5 px-4 py-2.5 text-sm text-text hover:text-text"
-      aria-label={label}
-    >
-      {children}
-      <span>{label}</span>
-    </ButtonLink>
-  );
-}
+import { Header } from './Header';
+import { Footer, type Theme } from './Footer';
 
 export function Layout({ children }: PropsWithChildren) {
-  const [isOpen, setIsOpen] = useState(false);
-  const location = useLocation();
+  const [theme, setTheme] = useState<Theme>(() => {
+    return (localStorage.getItem('theme') as Theme) || 'system';
+  });
 
+  // Handle Theme switching and system preference listening
   useEffect(() => {
-    setIsOpen(false);
-  }, [location.pathname]);
+    const root = window.document.documentElement;
+
+    const applyTheme = (isDark: boolean) => {
+      if (isDark) {
+        root.classList.add('dark');
+      } else {
+        root.classList.remove('dark');
+      }
+    };
+
+    if (theme === 'system') {
+      const mediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
+      applyTheme(mediaQuery.matches);
+
+      const listener = (e: MediaQueryListEvent) => {
+        applyTheme(e.matches);
+      };
+      mediaQuery.addEventListener('change', listener);
+      root.setAttribute('data-theme', 'system');
+      return () => mediaQuery.removeEventListener('change', listener);
+    } else {
+      applyTheme(theme === 'dark');
+      root.setAttribute('data-theme', theme);
+    }
+
+    localStorage.setItem('theme', theme);
+  }, [theme]);
+
+  // Handle Scroll detection for floating elements
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY > 50) {
+        window.document.documentElement.classList.add('scrolled');
+      } else {
+        window.document.documentElement.classList.remove('scrolled');
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    // Initial trigger
+    handleScroll();
+
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
   return (
-    <div className="mesh-shell min-h-screen text-text">
-      <a
-        href="#content"
-        className="focus-ring absolute left-4 top-4 z-50 -translate-y-20 rounded-full border border-accent/40 bg-surface-strong px-4 py-2 text-sm font-medium text-text transition focus:translate-y-0"
-      >
-        Skip to content
-      </a>
-      <Container className="flex min-h-screen min-w-0 flex-col pb-10 pt-5">
-        <header className="sticky top-4 z-40">
-          <div className="surface-panel-strong px-4 py-4 md:px-6">
-            <div className="flex min-w-0 items-center justify-between gap-4">
-              <Link
-                to="/"
-                className="focus-ring min-w-0 flex-1 rounded-full px-1 py-0.5 pr-3"
-                aria-label="Go to homepage"
-              >
-                <p className="text-base font-semibold leading-tight text-text">{siteMetadata.name}</p>
-                <p className="mt-1 max-w-[11rem] text-xs leading-5 text-muted sm:max-w-none sm:text-sm">
-                  {siteMetadata.role}
-                </p>
-              </Link>
-              <button
-                type="button"
-                className="focus-ring inline-flex h-11 w-11 items-center justify-center rounded-full border border-border/80 bg-white/5 text-text transition hover:border-accent/60 hover:text-accent md:hidden"
-                aria-expanded={isOpen}
-                aria-controls="mobile-navigation"
-                aria-label={isOpen ? 'Close navigation menu' : 'Open navigation menu'}
-                onClick={() => setIsOpen((value) => !value)}
-              >
-                {isOpen ? <X size={20} /> : <Menu size={20} />}
-              </button>
-              <nav aria-label="Primary" className="hidden md:block">
-                <ul className="flex items-center gap-2">
-                  {routes.map((route) => (
-                    <li key={route.href}>
-                      <NavLink
-                        to={route.href}
-                        end={route.href === '/'}
-                        className={({ isActive }) =>
-                          cn(
-                            'focus-ring rounded-full border px-4 py-2 text-sm font-medium transition',
-                            isActive
-                              ? 'border-accent/40 bg-accent text-slate-950 shadow-lift'
-                              : 'border-transparent text-muted hover:border-white/10 hover:bg-white/5 hover:text-text',
-                          )
-                        }
-                      >
-                        {route.label}
-                      </NavLink>
-                    </li>
-                  ))}
-                </ul>
-              </nav>
-            </div>
-            <nav
-              id="mobile-navigation"
-              aria-label="Mobile"
-              className={cn('md:hidden', isOpen ? 'mt-4 block' : 'hidden')}
-            >
-              <ul className="grid gap-2 border-t border-border/70 pt-4">
-                {routes.map((route) => (
-                  <li key={route.href}>
-                    <NavLink
-                      to={route.href}
-                      end={route.href === '/'}
-                      className={({ isActive }) =>
-                        cn(
-                          'focus-ring block rounded-card border px-4 py-3 text-sm transition',
-                          isActive
-                            ? 'border-accent/40 bg-accent text-slate-950 shadow-lift'
-                            : 'border-transparent bg-white/5 text-muted hover:border-accent/20 hover:bg-accent-soft/70 hover:text-text',
-                        )
-                      }
-                    >
-                      <span className="block font-medium">{route.label}</span>
-                      <span className="mt-1 block text-xs opacity-80">{route.description}</span>
-                    </NavLink>
-                  </li>
-                ))}
-              </ul>
-            </nav>
-          </div>
-        </header>
-        <main id="content" className="min-w-0 flex-1 pt-8">
-          {children}
-        </main>
-        <footer className="mt-14 border-t border-border/70 pt-6">
-          <div className="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
-            <div className="min-w-0">
-              <p className="text-sm font-medium text-text">{siteMetadata.name} · AI engineering, data science, and analytics.</p>
-              <p className="mt-2 text-sm text-muted">
-                LLM systems, scalable pipelines, and analytics products across finance, fraud, healthcare, and education.
-              </p>
-            </div>
-            <div className="flex flex-wrap items-center gap-3">
-              <IconLink href={siteMetadata.githubUrl} label="GitHub">
-                <Github size={20} className="text-accent" />
-              </IconLink>
-              <IconLink href={siteMetadata.linkedinUrl} label="LinkedIn">
-                <Linkedin size={20} className="text-accent" />
-              </IconLink>
-              <IconLink href={`mailto:${siteMetadata.email}`} label="Email">
-                <Mail size={20} className="text-accent" />
-              </IconLink>
-              <ButtonLink href={siteMetadata.resumeUrl} variant="secondary" className="px-4 py-2.5 text-sm">
-                <FileText size={16} />
-                Resume
-              </ButtonLink>
-            </div>
-          </div>
-        </footer>
-      </Container>
+    <div className="flex flex-col min-h-screen">
+      <Header />
+      <main id="content" className="flex-grow">
+        {children}
+      </main>
+      <Footer currentTheme={theme} onChangeTheme={setTheme} />
     </div>
   );
 }

@@ -1,210 +1,138 @@
-import { motion } from 'framer-motion';
-import { ArrowLeft, ArrowRight, ArrowUpRight } from 'lucide-react';
 import { useParams } from 'react-router-dom';
-import { PageTransition } from '../components/PageTransition';
 import { SEO } from '../components/SEO';
-import { ButtonLink } from '../components/ButtonLink';
-import { ProjectCover } from '../components/ProjectCover';
-import { SectionHeading } from '../components/SectionHeading';
-import { TechBadge } from '../components/TechBadge';
+import { BackToPrev } from '../components/BackToPrev';
+import { ArrowCard } from '../components/ArrowCard';
 import { projectsBySlug } from '../data/projects';
-import { createRevealProps, createStaggerChildVariants, createStaggerVariants, useMotionPreference } from '../lib/motion';
-import { getProjectHref } from '../lib/utils';
-
-const detailSections = [
-  { key: 'problem', title: 'Problem' },
-  { key: 'approach', title: 'Approach' },
-  { key: 'impact', title: 'Impact' },
-] as const;
 
 export function ProjectDetailPage() {
-  const reducedMotion = useMotionPreference();
   const { slug } = useParams();
   const project = slug ? projectsBySlug[slug] : undefined;
 
   if (!project) {
     return (
-      <PageTransition ariaLabel="Project not found page">
-      <SEO
-          title="Project Not Found"
-          description="Requested project detail page could not be found in the portfolio."
-          path="/projects"
-        />
-        <section className="surface-panel-strong p-8 sm:p-10">
-          <SectionHeading
-            level={1}
-            eyebrow="Projects"
-            title="Project not found."
-            description="The link may be outdated, the slug may be invalid, or the project may no longer be included in this public portfolio."
-          />
-          <div className="mt-6 flex flex-wrap gap-3">
-            <ButtonLink href="/projects">
-              Back to Projects
-              <ArrowLeft size={16} />
-            </ButtonLink>
-            <ButtonLink href="/" variant="secondary">
-              Portfolio Home
-              <ArrowRight size={16} />
-            </ButtonLink>
-          </div>
-        </section>
-      </PageTransition>
+      <div className="mx-auto max-w-screen-sm px-5 py-32">
+        <SEO title="Project Not Found" description="Requested project detail page could not be found." />
+        <div className="space-y-4">
+          <BackToPrev href="/projects">Back to projects</BackToPrev>
+          <div className="font-semibold text-black dark:text-white mt-10">Project not found</div>
+          <p className="text-sm opacity-60">The project you are looking for does not exist or may have been moved.</p>
+        </div>
+      </div>
     );
   }
+
+  // Calculate dynamic reading time based on total word count
+  const calculateReadingTime = () => {
+    const text = [
+      project.projectSummary,
+      project.problem,
+      project.approach,
+      project.impact,
+      ...project.bullets,
+    ].join(' ');
+    const wordCount = text.trim().split(/\s+/).length;
+    const minutes = Math.ceil(wordCount / 200);
+    return `${minutes} min read`;
+  };
+
+  const readingTimeText = calculateReadingTime();
 
   const relatedProjects = project.relatedSlugs
     .map((relatedSlug) => projectsBySlug[relatedSlug])
     .filter(Boolean);
 
   return (
-    <PageTransition ariaLabel={`${project.title} project detail page`}>
+    <div className="mx-auto max-w-screen-sm px-5 py-32 animate show">
       <SEO
         title={project.title}
         description={project.shortDescription}
-        path={`/projects/${project.slug}`}
         image={project.coverImage}
         type="article"
       />
 
-      <section>
-        <ButtonLink href="/projects" variant="ghost" className="px-0 pb-2 pt-0 text-sm">
-          <ArrowLeft size={16} />
-          Back to Projects
-        </ButtonLink>
+      <div>
+        <BackToPrev href="/projects">Back to projects</BackToPrev>
+      </div>
 
-        <motion.div className="mt-4" {...createRevealProps(reducedMotion)}>
-          <p className="text-sm font-medium uppercase tracking-[0.22em] text-accent">{project.category}</p>
-          <h1 className="mt-4 text-4xl font-semibold text-text sm:text-5xl">{project.title}</h1>
-          <p className="mt-5 max-w-3xl text-lg leading-8 text-muted">{project.shortDescription}</p>
-        </motion.div>
-      </section>
-
-      <motion.section className="section-spacing" {...createRevealProps(reducedMotion, 0.05)}>
-        <ProjectCover
-          src={project.coverImage}
-          title={project.title}
-          category={project.category}
-          className="surface-panel-strong"
-          imageClassName="aspect-[16/8] w-full object-cover"
-        />
-      </motion.section>
-
-      <motion.section className="section-spacing surface-panel-strong p-7 sm:p-8" {...createRevealProps(reducedMotion, 0.08)}>
-        <p className="text-sm font-semibold uppercase tracking-[0.2em] text-accent">Project Summary</p>
-        <p className="mt-4 text-lg leading-8 text-text">{project.projectSummary}</p>
-
-        <div className="mt-6 flex flex-wrap gap-3">
-          <ButtonLink href={project.repoUrl} aria-label={`Open ${project.title} on GitHub`}>
-            GitHub Repo
-            <ArrowUpRight size={16} />
-          </ButtonLink>
-          {project.links.map((link) => (
-            <ButtonLink
-              key={`${link.kind}-${link.label}`}
-              href={link.url}
-              variant="secondary"
-              aria-label={`Open ${link.label} for ${project.title}`}
-            >
-              {link.label}
-              <ArrowUpRight size={16} />
-            </ButtonLink>
-          ))}
+      <div className="space-y-1 my-10">
+        <div className="flex items-center gap-1.5 text-xs font-medium uppercase tracking-wider opacity-50">
+          <span>{project.category}</span>
+          <span>&bull;</span>
+          <span>{readingTimeText}</span>
         </div>
-      </motion.section>
-
-      <section className="section-spacing" aria-labelledby="project-story-heading">
-        <SectionHeading
-          id="project-story-heading"
-          title="What the project solves and how it was built."
-          description="Each section covers the problem, implementation approach, and outcome at a glance."
-        />
-
-        <motion.div
-          className="mt-8 grid gap-5 lg:grid-cols-3"
-          variants={createStaggerVariants(reducedMotion)}
-          initial="hidden"
-          animate="visible"
-        >
-          {detailSections.map((section) => (
-            <motion.article
-              key={section.key}
-              variants={createStaggerChildVariants(reducedMotion)}
-              className="surface-panel p-6"
+        <h1 className="text-2xl font-semibold text-black dark:text-white mt-2">
+          {project.title}
+        </h1>
+        
+        <nav className="flex flex-wrap gap-1.5 text-sm font-medium mt-3">
+          {project.repoUrl && (
+            <a
+              href={project.repoUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-block decoration-black/15 dark:decoration-white/30 hover:decoration-black/25 hover:dark:decoration-white/50 text-current hover:text-black hover:dark:text-white transition-colors duration-300 ease-in-out underline underline-offset-2"
             >
-              <h2 className="text-2xl font-semibold text-text">{section.title}</h2>
-              <p className="mt-4 text-base leading-7 text-muted">{project[section.key]}</p>
-            </motion.article>
+              repo
+            </a>
+          )}
+          {project.links.map((link) => (
+            <span key={`${link.kind}-${link.label}`} className="flex gap-1.5">
+              <span className="opacity-30">/</span>
+              <a
+                href={link.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-block decoration-black/15 dark:decoration-white/30 hover:decoration-black/25 hover:dark:decoration-white/50 text-current hover:text-black hover:dark:text-white transition-colors duration-300 ease-in-out underline underline-offset-2"
+              >
+                {link.label.toLowerCase()}
+              </a>
+            </span>
           ))}
-        </motion.div>
-      </section>
+        </nav>
+      </div>
 
-      <section className="section-spacing" aria-labelledby="resume-bullets-heading">
-        <SectionHeading
-          id="resume-bullets-heading"
-          title="Project highlights"
-          description="Outcome-oriented bullets drawn from the work and artifacts in the repository."
-        />
-        <motion.ul
-          className="mt-8 grid gap-4"
-          variants={createStaggerVariants(reducedMotion)}
-          initial="hidden"
-          animate="visible"
-        >
+      <article className="prose dark:prose-invert prose-headings:font-semibold prose-p:font-serif prose-headings:text-black prose-headings:dark:text-white text-black/70 dark:text-white/80">
+        <h2>Overview</h2>
+        <p>{project.projectSummary}</p>
+
+        <h2>Key Achievements</h2>
+        <ul>
           {project.bullets.map((bullet) => (
-            <motion.li
-              key={bullet}
-              variants={createStaggerChildVariants(reducedMotion)}
-              className="surface-panel flex gap-4 px-5 py-5 text-base leading-7 text-muted"
-            >
-              <span aria-hidden="true" className="mt-2 h-2.5 w-2.5 shrink-0 rounded-full bg-accent" />
-              <span>{bullet}</span>
-            </motion.li>
-          ))}
-        </motion.ul>
-      </section>
-
-      <section className="section-spacing" aria-labelledby="tech-stack-heading">
-        <SectionHeading
-          id="tech-stack-heading"
-          title="Tech stack"
-          description="Primary tools, platforms, and methods used in the project."
-        />
-        <ul className="mt-6 flex flex-wrap gap-2" aria-label={`${project.title} technology stack`}>
-          {project.tech.map((item) => (
-            <li key={item}>
-              <TechBadge label={item} />
-            </li>
+            <li key={bullet}>{bullet}</li>
           ))}
         </ul>
-      </section>
 
-      <section className="section-spacing" aria-labelledby="related-projects-heading">
-        <SectionHeading
-          id="related-projects-heading"
-          title="Related projects"
-          description="Neighboring work that reinforces similar skills, systems patterns, or problem areas."
-        />
+        <h2>The Problem</h2>
+        <p>{project.problem}</p>
 
-        <div className="mt-8 grid gap-5 lg:grid-cols-3">
-          {relatedProjects.map((relatedProject) => (
-            <article key={relatedProject.slug} className="surface-panel p-5">
-              <p className="text-sm font-medium uppercase tracking-[0.18em] text-accent">{relatedProject.category}</p>
-              <h3 className="mt-3 text-xl font-semibold text-text">{relatedProject.title}</h3>
-              <p className="mt-3 text-sm leading-6 text-muted">{relatedProject.shortDescription}</p>
-              <div className="mt-5 flex flex-wrap gap-3">
-                <ButtonLink href={getProjectHref(relatedProject.slug)} variant="secondary">
-                  View Project
-                  <ArrowRight size={16} />
-                </ButtonLink>
-                <ButtonLink href={relatedProject.repoUrl} variant="ghost">
-                  GitHub
-                  <ArrowUpRight size={16} />
-                </ButtonLink>
-              </div>
-            </article>
-          ))}
+        <h2>Approach & Implementation</h2>
+        <p>{project.approach}</p>
+
+        <h2>Impact & Outcomes</h2>
+        <p>{project.impact}</p>
+
+        <h2>Technologies</h2>
+        <p className="font-mono text-sm opacity-70 leading-relaxed">
+          {project.tech.join(' · ')}
+        </p>
+      </article>
+
+      {relatedProjects.length > 0 && (
+        <div className="mt-20 space-y-6">
+          <p className="section-label">Related Projects</p>
+          <ul className="flex flex-col gap-4">
+            {relatedProjects.map((relatedProject) => (
+              <li key={relatedProject.slug}>
+                <ArrowCard
+                  title={relatedProject.title}
+                  description={relatedProject.shortDescription}
+                  href={`/projects/${relatedProject.slug}`}
+                />
+              </li>
+            ))}
+          </ul>
         </div>
-      </section>
-    </PageTransition>
+      )}
+    </div>
   );
 }

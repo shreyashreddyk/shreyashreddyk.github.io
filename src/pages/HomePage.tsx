@@ -1,232 +1,260 @@
-import { motion } from 'framer-motion';
-import { ArrowRight, Bot, ChartColumn, ServerCog } from 'lucide-react';
-import { Badge } from '../components/Badge';
-import { ButtonLink } from '../components/ButtonLink';
-import { ProjectCard } from '../components/ProjectCard';
-import { PageTransition } from '../components/PageTransition';
+import { useState } from 'react';
+import { Link } from 'react-router-dom';
 import { SEO } from '../components/SEO';
-import { SectionHeading } from '../components/SectionHeading';
-import { TechBadge } from '../components/TechBadge';
-import { hero, currentFocusAreas, homeCapabilityCards, skillGroups, siteMetadata, timelineTeasers } from '../data/profile';
+import { siteMetadata, skillGroups, contactLinks } from '../data/profile';
 import { homeFeaturedProjects } from '../data/projects';
-import {
-  createHeroGlowProps,
-  createRevealProps,
-  createStaggerChildVariants,
-  createStaggerVariants,
-  useMotionPreference,
-} from '../lib/motion';
-
-const capabilityIcons = [Bot, ServerCog, ChartColumn];
+import { workEntries } from '../data/work';
+import { cn } from '../lib/utils';
 
 export function HomePage() {
-  const reducedMotion = useMotionPreference();
+  const [hoveredTags, setHoveredTags] = useState<string[]>([]);
+  const [hoveredEntryId, setHoveredEntryId] = useState<string | null>(null);
+  const [avatarFailed, setAvatarFailed] = useState(false);
+
+  // Flatten skills from profile groups to render in the sidebar
+  const allSkills = skillGroups.flatMap((group) => group.items);
+
+  // Normalize comparison to match tags robustly
+  const cleanString = (str: string) => str.toLowerCase().replace(/[^a-z0-9]/g, '');
+  
+  const isSkillMatch = (skill: string, tags: string[]) => {
+    const cleanSkill = cleanString(skill);
+    return tags.some((tag) => {
+      const cleanTag = cleanString(tag);
+      return cleanTag.includes(cleanSkill) || cleanSkill.includes(cleanTag);
+    });
+  };
+
+  const handleMouseEnter = (id: string, tags: string[]) => {
+    setHoveredEntryId(id);
+    setHoveredTags(tags);
+  };
+
+  const handleMouseLeave = () => {
+    setHoveredEntryId(null);
+    setHoveredTags([]);
+  };
 
   return (
-    <PageTransition ariaLabel="Homepage">
+    <div className="mx-auto max-w-5xl px-5 py-32">
       <SEO
         title="Home"
-        description="Shreyash Kondakindi is an AI engineer building LLM systems, data science workflows, and analytics products across finance, fraud, healthcare, and education."
+        description="Portfolio of Shreyash Kondakindi, AI Engineer and Data Scientist specializing in LLM systems, scalable data pipelines, fraud modeling, and analytics products."
       />
 
-      <section className="grid gap-6 lg:grid-cols-[1.15fr_0.85fr] lg:items-stretch">
-        <motion.div
-          className="surface-panel-strong relative overflow-hidden p-8 sm:p-10"
-          {...createRevealProps(reducedMotion)}
-        >
-          <motion.div
-            aria-hidden="true"
-            className="absolute -right-12 -top-12 h-40 w-40 rounded-full bg-accent/[0.16] blur-3xl"
-            {...createHeroGlowProps(reducedMotion)}
-          />
-          <motion.div
-            aria-hidden="true"
-            className="absolute bottom-0 left-0 h-32 w-32 rounded-full bg-cyan-400/10 blur-3xl"
-            {...createHeroGlowProps(reducedMotion)}
-          />
-
-          <p className="mt-5 text-sm font-semibold uppercase tracking-[0.22em] text-accent/90">
-            {siteMetadata.role}
-          </p>
-          <h1 className="mt-4 max-w-4xl text-5xl font-semibold sm:text-6xl">{hero.title}</h1>
-          <p className="mt-6 max-w-2xl text-lg leading-8 text-muted">{hero.summary}</p>
-
-          <div className="mt-8 flex flex-wrap gap-3">
-            <ButtonLink href={hero.primaryCta.href} className="px-5 py-3">
-              {hero.primaryCta.label}
-              <ArrowRight size={16} />
-            </ButtonLink>
-            <ButtonLink href={hero.secondaryCta.href} variant="secondary" className="px-5 py-3">
-              {hero.secondaryCta.label}
-            </ButtonLink>
-            <ButtonLink href={hero.tertiaryCta.href} variant="secondary" className="px-5 py-3">
-              {hero.tertiaryCta.label}
-            </ButtonLink>
-          </div>
-
-          <motion.div
-            className="mt-8 rounded-card border border-white/10 bg-white/[0.04] p-4"
-            {...createRevealProps(reducedMotion, 0.08)}
-          >
-            <div className="flex items-center gap-3">
-              <motion.span
-                aria-hidden="true"
-                className="h-2.5 w-2.5 rounded-full bg-emerald-300"
-                animate={reducedMotion ? { opacity: 1, scale: 1 } : { opacity: [0.65, 1, 0.65], scale: [1, 1.25, 1] }}
-                transition={reducedMotion ? { duration: 0 } : { duration: 2.4, repeat: Infinity, ease: 'easeInOut' }}
+      <div className="grid grid-cols-1 md:grid-cols-[220px_1fr] gap-10 md:gap-14">
+        {/* LEFT COLUMN — sticky sidebar */}
+        <aside className="md:sticky md:top-24 md:self-start space-y-8 animate show">
+          {/* Identity */}
+          <div className="flex flex-col gap-3">
+            {!avatarFailed ? (
+              <img
+                src="/avatar.jpg"
+                alt={siteMetadata.name}
+                onError={() => setAvatarFailed(true)}
+                className="w-14 h-14 rounded-full object-cover ring-2 ring-black/10 dark:ring-white/10"
               />
-              <p className="text-xs font-semibold uppercase tracking-[0.22em] text-accent">
-                Current focus
+            ) : (
+              <div className="w-14 h-14 rounded-full flex items-center justify-center bg-stone-200 dark:bg-stone-850 text-stone-600 dark:text-stone-300 font-bold text-sm tracking-wide border border-black/10 dark:border-white/10">
+                SK
+              </div>
+            )}
+            <div>
+              <h1 className="text-base font-bold tracking-tight text-black dark:text-white">
+                {siteMetadata.name}
+              </h1>
+              <p className="text-xs opacity-50 mt-0.5 leading-relaxed">
+                AI Engineer<br />Data Science · Systems
               </p>
             </div>
-            <motion.ul
-              className="mt-4 flex flex-wrap gap-2"
-              variants={createStaggerVariants(reducedMotion)}
-              initial="hidden"
-              animate="visible"
-              aria-label="Current focus areas"
+            <a
+              href={siteMetadata.resumeUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-block w-fit px-3 py-1 rounded border border-black/20 dark:border-white/20 text-xs font-medium hover:bg-black hover:text-white dark:hover:bg-white dark:hover:text-black transition-colors duration-200"
             >
-              {currentFocusAreas.map((item) => (
-                <motion.li key={item} variants={createStaggerChildVariants(reducedMotion)}>
-                  <Badge variant="soft" className="border-accent/20 bg-accent/[0.08] text-text">
-                    {item}
-                  </Badge>
-                </motion.li>
-              ))}
-            </motion.ul>
-          </motion.div>
-        </motion.div>
-
-        <motion.div className="grid gap-5" {...createRevealProps(reducedMotion, 0.08)}>
-          {homeCapabilityCards.map(({ title, description }, index) => {
-            const Icon = capabilityIcons[index] ?? Bot;
-
-            return (
-              <article key={title} className="surface-panel p-6">
-                <div className="inline-flex rounded-2xl border border-accent/20 bg-accent/10 p-3 text-accent">
-                  <Icon size={22} />
-                </div>
-                <h2 className="mt-5 text-2xl font-semibold">{title}</h2>
-                <p className="mt-3 text-base leading-7 text-muted">{description}</p>
-              </article>
-            );
-          })}
-        </motion.div>
-      </section>
-
-      <section className="section-spacing" aria-labelledby="featured-heading">
-        <div className="flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
-          <SectionHeading
-            id="featured-heading"
-            eyebrow="Featured Projects"
-            title="Selected work in AI systems, data science, and analytics."
-            description="A cross-section of projects spanning LLM applications, streaming data platforms, fraud modeling, and statistical analysis."
-          />
-          <ButtonLink href="/projects" variant="secondary" className="self-start">
-            See all projects
-            <ArrowRight size={16} />
-          </ButtonLink>
-        </div>
-        <div className="mt-8 grid gap-6 xl:grid-cols-2">
-          {homeFeaturedProjects.slice(0, 6).map((project) => (
-            <ProjectCard key={project.slug} project={project} variant="featured" />
-          ))}
-        </div>
-      </section>
-
-      <section className="section-spacing" aria-labelledby="skills-heading">
-        <SectionHeading
-          id="skills-heading"
-          eyebrow="Skills Snapshot"
-          title="A stack shaped around AI delivery, data science, and systems execution."
-          description="The emphasis stays on tools and workflows that show up repeatedly across projects and experience."
-        />
-        <motion.div
-          className="mt-8 grid gap-5 lg:grid-cols-2 xl:grid-cols-5"
-          variants={createStaggerVariants(reducedMotion)}
-          initial="hidden"
-          animate="visible"
-        >
-          {skillGroups.map((group) => (
-            <motion.article
-              key={group.heading}
-              variants={createStaggerChildVariants(reducedMotion)}
-              className="surface-panel p-5"
-            >
-              <h2 className="text-lg font-semibold">{group.heading}</h2>
-              <ul className="mt-4 flex flex-wrap gap-2" aria-label={`${group.heading} skills`}>
-                {group.items.map((item) => (
-                  <li key={item}>
-                    <TechBadge label={item} />
-                  </li>
-                ))}
-              </ul>
-            </motion.article>
-          ))}
-        </motion.div>
-      </section>
-
-      <section className="section-spacing" aria-labelledby="timeline-heading">
-        <SectionHeading
-          id="timeline-heading"
-          eyebrow="Timeline"
-          title="More context on experience and training."
-          description="The work and education pages add the timeline behind the projects without slowing down the homepage story."
-        />
-        <motion.div
-          className="mt-8 grid gap-5 lg:grid-cols-2"
-          variants={createStaggerVariants(reducedMotion)}
-          initial="hidden"
-          animate="visible"
-        >
-          {timelineTeasers.map((item) => (
-            <motion.article
-              key={item.title}
-              variants={createStaggerChildVariants(reducedMotion)}
-              className="surface-panel-strong p-7"
-            >
-              <p className="text-sm font-semibold uppercase tracking-[0.18em] text-accent">{item.title}</p>
-              <p className="mt-4 text-base leading-7 text-muted">{item.description}</p>
-              <div className="mt-6">
-                <ButtonLink href={item.href} variant="secondary">
-                  {item.ctaLabel}
-                  <ArrowRight size={16} />
-                </ButtonLink>
-              </div>
-            </motion.article>
-          ))}
-        </motion.div>
-      </section>
-
-      <section className="section-spacing" aria-labelledby="contact-cta-heading">
-        <motion.div
-          className="surface-panel-strong relative overflow-hidden p-8 sm:p-10"
-          {...createRevealProps(reducedMotion)}
-        >
-          <motion.div
-            aria-hidden="true"
-            className="absolute right-0 top-0 h-28 w-28 rounded-full bg-accent/[0.14] blur-3xl"
-            {...createHeroGlowProps(reducedMotion)}
-          />
-        <SectionHeading
-          id="contact-cta-heading"
-          eyebrow="Contact"
-          title="Open to AI, data science, and analytics roles that need strong systems execution."
-          description="I am open to conversations about AI engineering, data science, analytics engineering, and applied ML roles, especially where LLM systems, scalable pipelines, and business-facing analytics all matter."
-        />
-          <div className="mt-8 flex flex-wrap gap-3">
-            <ButtonLink href={`mailto:${siteMetadata.email}`} className="px-5 py-3">
-              Email Me
-            </ButtonLink>
-            <ButtonLink href="/contact" variant="secondary" className="px-5 py-3">
-              Contact Details
-            </ButtonLink>
-            <ButtonLink href={siteMetadata.githubUrl} variant="secondary" className="px-5 py-3">
-              GitHub
-            </ButtonLink>
+              Resume ↗
+            </a>
           </div>
-        </motion.div>
-      </section>
-    </PageTransition>
+
+          {/* Skills */}
+          <div className="space-y-3">
+            <p className="section-label">Skills</p>
+            <ul className="flex flex-wrap gap-1.5">
+              {allSkills.map((skill) => {
+                const isActive = hoveredTags.length > 0 && isSkillMatch(skill, hoveredTags);
+                const isDimmed = hoveredTags.length > 0 && !isActive;
+
+                return (
+                  <li
+                    key={skill}
+                    className={cn(
+                      'skill-chip px-2.5 py-0.5 rounded border border-black/15 dark:border-white/20 text-xs transition-all duration-200 cursor-default',
+                      isActive && 'bg-black text-white border-black dark:bg-white dark:text-black dark:border-white opacity-100 scale-105',
+                      isDimmed && 'opacity-20'
+                    )}
+                  >
+                    {skill}
+                  </li>
+                );
+              })}
+            </ul>
+          </div>
+
+          {/* Connect */}
+          <div className="space-y-2">
+            <p className="section-label">Connect</p>
+            <ul className="flex flex-col gap-1.5">
+              {contactLinks.map((link) => (
+                <li key={link.label}>
+                  <a
+                    href={link.href}
+                    target={link.label !== 'Email' ? '_blank' : undefined}
+                    rel="noopener noreferrer"
+                    className="inline-block text-xs decoration-black/15 dark:decoration-white/30 hover:decoration-black/25 hover:dark:decoration-white/50 text-current hover:text-black hover:dark:text-white transition-colors duration-300 ease-in-out underline underline-offset-2"
+                  >
+                    {link.label.toLowerCase()}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </aside>
+
+        {/* RIGHT COLUMN — scrollable content */}
+        <main className="min-w-0 space-y-20 py-2">
+          {/* About */}
+          <section className="space-y-4">
+            <article className="space-y-4">
+              <p className="animate show">
+                I build retrieval pipelines, evaluation workflows, distributed data platforms, and analytics applications across finance, fraud, healthcare, and university operations. My work blends AI engineering, data science, and systems execution with a strong focus on production-ready delivery.
+              </p>
+              <p className="animate show">
+                I focus on building products that are technically rigorous, easy to explain, and highly performant. That means developing evaluation-gated retrieval pipelines, benchmarking throughput and tail-latency for serving architectures like vLLM, and designing persistent database storage systems.
+              </p>
+            </article>
+          </section>
+
+          {/* Work Experience */}
+          <section className="animate show space-y-6">
+            <div className="flex items-center justify-between">
+              <h5 className="section-label">Work Experience</h5>
+              <Link
+                to="/work"
+                className="text-xs decoration-black/15 dark:decoration-white/30 hover:decoration-black/25 hover:dark:decoration-white/50 text-current hover:text-black hover:dark:text-white transition-colors duration-300 ease-in-out underline underline-offset-2"
+              >
+                See all
+              </Link>
+            </div>
+            <ul className="flex flex-col divide-y divide-black/8 dark:divide-white/8">
+              {workEntries.slice(0, 4).map((entry, i) => {
+                const entryId = `work-${i}`;
+                const isDimmed = hoveredEntryId !== null && hoveredEntryId !== entryId;
+                const entryTags = entry.skills;
+
+                return (
+                  <li
+                    key={entryId}
+                    onMouseEnter={() => handleMouseEnter(entryId, entryTags)}
+                    onMouseLeave={handleMouseLeave}
+                    className={cn(
+                      'work-entry group py-5 cursor-default transition-all duration-200',
+                      isDimmed && 'opacity-30'
+                    )}
+                  >
+                    <div className="flex flex-col sm:flex-row sm:items-baseline sm:justify-between gap-1 sm:gap-4">
+                      <div className="flex items-baseline gap-3 min-w-0">
+                        <span className="entry-number font-mono text-sm opacity-20 shrink-0 transition-all duration-200 group-hover:opacity-60 group-hover:scale-110">
+                          {String(i + 1).padStart(2, '0')}
+                        </span>
+                        <span className="entry-title font-bold text-black/80 dark:text-white/80 transition-all duration-200 group-hover:text-black group-hover:dark:text-white group-hover:scale-[1.01]">
+                          {entry.company}
+                        </span>
+                        <span className="text-sm opacity-40 truncate italic hidden sm:inline">{entry.role}</span>
+                      </div>
+                      <span className="text-xs font-mono opacity-30 whitespace-nowrap shrink-0 self-start sm:self-auto">
+                        {entry.dates}
+                      </span>
+                    </div>
+                    {/* Mobile role label */}
+                    <div className="text-xs opacity-40 italic sm:hidden ml-8 mt-0.5">
+                      {entry.role}
+                    </div>
+                    <p className="mt-2 text-sm ml-8 leading-relaxed opacity-60">
+                      {entry.summary}
+                    </p>
+                  </li>
+                );
+              })}
+            </ul>
+          </section>
+
+          {/* Recent Projects */}
+          <section className="animate show space-y-6">
+            <div className="flex items-center justify-between">
+              <h5 className="section-label">Recent Projects</h5>
+              <Link
+                to="/projects"
+                className="text-xs decoration-black/15 dark:decoration-white/30 hover:decoration-black/25 hover:dark:decoration-white/50 text-current hover:text-black hover:dark:text-white transition-colors duration-300 ease-in-out underline underline-offset-2"
+              >
+                See all
+              </Link>
+            </div>
+            <ul className="flex flex-col divide-y divide-black/8 dark:divide-white/8">
+              {homeFeaturedProjects.slice(0, 3).map((project, i) => {
+                const entryId = `project-${project.slug}`;
+                const isDimmed = hoveredEntryId !== null && hoveredEntryId !== entryId;
+                const entryTags = project.tech;
+
+                return (
+                  <li
+                    key={entryId}
+                    onMouseEnter={() => handleMouseEnter(entryId, entryTags)}
+                    onMouseLeave={handleMouseLeave}
+                    className={cn(
+                      'project-entry group py-5 transition-all duration-200',
+                      isDimmed && 'opacity-30'
+                    )}
+                  >
+                    <Link
+                      to={`/projects/${project.slug}`}
+                      className="block -mx-3 px-3 py-1 rounded-md hover:bg-black/5 dark:hover:bg-white/5 transition-colors duration-150"
+                    >
+                      <div className="flex items-baseline justify-between gap-4">
+                        <div className="flex items-baseline gap-3 min-w-0">
+                          <span className="entry-number font-mono text-sm opacity-20 shrink-0 transition-all duration-200 group-hover:opacity-60 group-hover:scale-110">
+                            {String(i + 1).padStart(2, '0')}
+                          </span>
+                          <span className="entry-title font-bold text-black/80 dark:text-white/80 truncate transition-all duration-200 group-hover:text-black group-hover:dark:text-white group-hover:scale-[1.01]">
+                            {project.title}
+                          </span>
+                        </div>
+                        <div className="flex items-center gap-3 shrink-0">
+                          {project.repoUrl && (
+                            <a
+                              href={project.repoUrl}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="text-xs font-mono opacity-30 hover:opacity-75 whitespace-nowrap transition-opacity"
+                              onClick={(e) => e.stopPropagation()}
+                            >
+                              GitHub ↗
+                            </a>
+                          )}
+                          <span className="text-xs font-mono opacity-20 group-hover:opacity-60 transition-opacity">→</span>
+                        </div>
+                      </div>
+                      <p className="mt-1.5 text-sm opacity-50 ml-8 leading-relaxed italic">
+                        {project.shortDescription}
+                      </p>
+                    </Link>
+                  </li>
+                );
+              })}
+            </ul>
+          </section>
+        </main>
+      </div>
+    </div>
   );
 }

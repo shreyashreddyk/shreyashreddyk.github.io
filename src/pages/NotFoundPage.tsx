@@ -1,35 +1,26 @@
-import { ArrowLeft, Home } from 'lucide-react';
-import { ButtonLink } from '../components/ButtonLink';
-import { PageTransition } from '../components/PageTransition';
 import { SEO } from '../components/SEO';
-import { SectionHeading } from '../components/SectionHeading';
+import { BackToPrev } from '../components/BackToPrev';
 
 export function NotFoundPage() {
   return (
-    <PageTransition ariaLabel="Not found page">
+    <div className="mx-auto max-w-screen-sm px-5 py-32 animate show">
       <SEO
         title="Page Not Found"
-        description="The requested page could not be found in this portfolio."
+        description="The requested page could not be found."
         path="/404"
       />
-      <section className="surface-panel-strong relative overflow-hidden p-8 sm:p-10">
-        <SectionHeading
-          level={1}
-          eyebrow="404"
-          title="This page could not be found."
-          description="The link may be outdated, the route may be invalid, or the page may have moved inside the portfolio."
-        />
-        <div className="mt-8 flex flex-wrap gap-3">
-          <ButtonLink href="/">
-            <Home size={16} />
-            Back to Home
-          </ButtonLink>
-          <ButtonLink href="/projects" variant="secondary">
-            <ArrowLeft size={16} />
-            Browse Projects
-          </ButtonLink>
+
+      <div className="space-y-10">
+        <div className="font-semibold text-black dark:text-white">
+          404
         </div>
-      </section>
-    </PageTransition>
+        <article className="prose dark:prose-invert prose-p:font-serif prose-headings:font-semibold prose-headings:text-black prose-headings:dark:text-white text-black/70 dark:text-white/80">
+          <p>This page could not be found. The link may be outdated or the page may have been moved.</p>
+        </article>
+        <div>
+          <BackToPrev href="/">Back to home</BackToPrev>
+        </div>
+      </div>
+    </div>
   );
 }
