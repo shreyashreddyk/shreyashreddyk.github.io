@@ -19,7 +19,7 @@ export function BackToTop() {
       <svg
         xmlns="http://www.w3.org/2000/svg"
         viewBox="0 0 24 24"
-        className="absolute top-1/2 left-2 -translate-y-1/2 size-4 stroke-2 fill-none stroke-current -rotate-90 group-hover:-translate-y-[60%] transition-transform duration-300 ease-in-out"
+        className="absolute top-1/2 left-2 -translate-y-1/2 size-4 stroke-2 fill-none stroke-current group-hover:-translate-y-[60%] transition-transform duration-300 ease-in-out"
       >
         <line
           x1="12"
