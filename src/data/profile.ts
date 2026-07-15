@@ -162,7 +162,7 @@ export const skillGroups: SkillGroup[] = [
   },
   {
     heading: 'Tools',
-    items: ['GitHub Actions', 'Prometheus / Grafana', 'Matillion', 'CatBoost', 'XGBoost', 'Chroma'],
+    items: ['GitHub Actions', 'Prometheus / Grafana', 'Matillion', 'Chroma'],
   },
 ];
 

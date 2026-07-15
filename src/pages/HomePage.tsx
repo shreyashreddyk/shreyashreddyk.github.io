@@ -90,8 +90,8 @@ export function HomePage() {
                     key={skill}
                     className={cn(
                       'skill-chip px-2.5 py-0.5 rounded border border-black/15 dark:border-white/20 text-xs transition-all duration-200 cursor-default',
-                      isActive && 'bg-black text-white border-black dark:bg-white dark:text-black dark:border-white opacity-100 scale-105',
-                      isDimmed && 'opacity-20'
+                      isActive && 'skill-active',
+                      isDimmed && 'skill-dim'
                     )}
                   >
                     {skill}
@@ -159,7 +159,7 @@ export function HomePage() {
                     onMouseLeave={handleMouseLeave}
                     className={cn(
                       'work-entry group py-5 cursor-default transition-all duration-200',
-                      isDimmed && 'opacity-30'
+                      isDimmed && 'entry-dim'
                     )}
                   >
                     <div className="flex flex-col sm:flex-row sm:items-baseline sm:justify-between gap-1 sm:gap-4">
@@ -213,7 +213,7 @@ export function HomePage() {
                     onMouseLeave={handleMouseLeave}
                     className={cn(
                       'project-entry group py-5 transition-all duration-200',
-                      isDimmed && 'opacity-30'
+                      isDimmed && 'entry-dim'
                     )}
                   >
                     <Link
