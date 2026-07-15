@@ -1,17 +1,3 @@
-import apiDataStreamingCover from '../assets/project-covers/api-data-streaming.svg';
-import applicationFraudDetectionModelCover from '../assets/project-covers/application-fraud-detection-model.svg';
-import creditCardTransactionFraudAnalyticsCover from '../assets/project-covers/credit-card-transaction-fraud-analytics.svg';
-import energyEfficiencyRegressionCover from '../assets/project-covers/energy-efficiency-regression-and-statistical-analysis.svg';
-import jsonExtractionQloraDpoCover from '../assets/project-covers/json-extraction-qlora-dpo.svg';
-import londonCrimeAnalyticsCover from '../assets/project-covers/london-crime-analytics-neo4j-postgresql.svg';
-import mlProjectsCover from '../assets/project-covers/ml-projects.svg';
-import noiseAdaptiveSpectralEmbeddingCover from '../assets/project-covers/noise-adaptive-spectral-embedding.svg';
-import nycPropertyFraudDetectionCover from '../assets/project-covers/nyc-property-fraud-detection.svg';
-import ouladCausalInferenceCover from '../assets/project-covers/oulad-causal-inference.svg';
-import prosodyCover from '../assets/project-covers/prosody.svg';
-import secFilingIntelligenceCopilotCover from '../assets/project-covers/sec-filing-intelligence-copilot.svg';
-import texasWeatherDataAnalysisCover from '../assets/project-covers/texas-weather-data-analysis.svg';
-import vllmServingPerformanceLabCover from '../assets/project-covers/vllm-serving-performance-lab.svg';
 
 export type ProjectCategory =
   | 'AI / LLM Systems'
@@ -41,7 +27,6 @@ export type Project = {
   tech: string[];
   category: ProjectCategory;
   featured: boolean;
-  coverImage: string;
   highlights: string[];
   links: ProjectLink[];
   relatedSlugs: string[];
@@ -87,7 +72,6 @@ const projects: Project[] = [
     tech: ['Python', 'FastAPI', 'Streamlit', 'LangChain', 'Chroma', 'Sentence Transformers', 'Docker', 'GKE', 'Grafana'],
     category: 'AI / LLM Systems',
     featured: true,
-    coverImage: secFilingIntelligenceCopilotCover,
     highlights: ['Hybrid retrieval', 'Eval-gated RAG', 'GKE plus Grafana evidence'],
     links: [
       {
@@ -136,7 +120,6 @@ const projects: Project[] = [
     tech: ['React', 'TypeScript', 'Vite', 'FastAPI', 'LangGraph', 'Supabase', 'OpenAI', 'Cloud Run'],
     category: 'AI / LLM Systems',
     featured: true,
-    coverImage: prosodyCover,
     highlights: ['Authenticated AI product', 'Cloud Run split services', 'Supabase persistence'],
     links: [
       {
@@ -180,7 +163,6 @@ const projects: Project[] = [
     tech: ['Python', 'Transformers', 'TRL', 'PEFT', 'bitsandbytes', 'Pydantic', 'vLLM'],
     category: 'AI / LLM Systems',
     featured: true,
-    coverImage: jsonExtractionQloraDpoCover,
     highlights: ['QLORA + DPO', 'Schema-first evaluation', 'Benchmark artifacts'],
     links: [
       {
@@ -229,7 +211,6 @@ const projects: Project[] = [
     tech: ['Python', 'vLLM', 'Google Colab', 'Benchmarking', 'Latency Analysis', 'Matplotlib'],
     category: 'AI / LLM Systems',
     featured: true,
-    coverImage: vllmServingPerformanceLabCover,
     highlights: ['Tail-latency focus', 'Fair scheduling sweeps', 'Artifact-backed results'],
     links: [
       {
@@ -278,7 +259,6 @@ const projects: Project[] = [
     tech: ['Python', 'Kafka', 'Spark Streaming', 'Cassandra', 'Airflow', 'Docker Compose', 'PostgreSQL'],
     category: 'Data Engineering',
     featured: true,
-    coverImage: apiDataStreamingCover,
     highlights: ['Kafka to Spark pipeline', 'Containerized stack', 'Operational runbook'],
     links: [
       {
@@ -317,7 +297,6 @@ const projects: Project[] = [
     tech: ['Python', 'NumPy', 'SciPy', 'scikit-learn', 'Typer', 'pytest', 'Matplotlib'],
     category: 'Machine Learning',
     featured: true,
-    coverImage: noiseAdaptiveSpectralEmbeddingCover,
     highlights: ['120 seeded runs', 'Diffusion maps from scratch', 'Honest failure analysis'],
     links: [
       {
@@ -361,7 +340,6 @@ const projects: Project[] = [
     tech: ['Python', 'CatBoost', 'XGBoost', 'LightGBM', 'pandas', 'scikit-learn', 'Matplotlib'],
     category: 'Fraud / Risk Analytics',
     featured: true,
-    coverImage: creditCardTransactionFraudAnalyticsCover,
     highlights: ['2,000 plus features', 'OOT validation', '$53M savings estimate'],
     links: [],
     relatedSlugs: ['application-fraud-detection-model', 'nyc-property-fraud-detection', 'oulad-causal-inference'],
@@ -394,7 +372,6 @@ const projects: Project[] = [
     tech: ['Python', 'AIPW', 'IPTW', 'Causal Discovery', 'pandas', 'pytest'],
     category: 'Research / Statistical Modeling',
     featured: true,
-    coverImage: ouladCausalInferenceCover,
     highlights: ['DAG-based adjustment', 'AIPW estimate', 'Robustness grid'],
     links: [
       {
@@ -443,7 +420,6 @@ const projects: Project[] = [
     tech: ['Python', 'statsmodels', 'scikit-learn', 'pandas', 'Matplotlib', 'Seaborn', 'Jupyter'],
     category: 'Research / Statistical Modeling',
     featured: false,
-    coverImage: energyEfficiencyRegressionCover,
     highlights: ['OLS plus nonlinear refinements', 'Diagnostics-first workflow', 'Interpretability emphasis'],
     links: [
       {
@@ -487,7 +463,6 @@ const projects: Project[] = [
     tech: ['Python', 'XGBoost', 'LightGBM', 'CatBoost', 'pandas', 'scikit-learn', 'Jupyter'],
     category: 'Fraud / Risk Analytics',
     featured: false,
-    coverImage: applicationFraudDetectionModelCover,
     highlights: ['Velocity plus linkage features', 'OOT fraud capture', '$3B savings estimate'],
     links: [
       {
@@ -536,7 +511,6 @@ const projects: Project[] = [
     tech: ['Python', 'PCA', 'Autoencoders', 'pandas', 'scikit-learn', 'Matplotlib', 'Jupyter'],
     category: 'Fraud / Risk Analytics',
     featured: false,
-    coverImage: nycPropertyFraudDetectionCover,
     highlights: ['1.07M property records', '29 engineered features', 'PCA plus autoencoder ensemble'],
     links: [
       {
@@ -585,7 +559,6 @@ const projects: Project[] = [
     tech: ['Machine learning', 'Exploratory modeling', 'Notebook workflows'],
     category: 'Machine Learning',
     featured: false,
-    coverImage: mlProjectsCover,
     highlights: ['Earlier ML experiments', 'Exploratory modeling', 'Notebook workflows'],
     links: [],
     relatedSlugs: ['noise-adaptive-spectral-embedding', 'energy-efficiency-regression-and-statistical-analysis', 'texas-weather-data-analysis'],
@@ -617,7 +590,6 @@ const projects: Project[] = [
     tech: ['PostgreSQL', 'Neo4j', 'Python', 'Cypher', 'psycopg2', 'ETL'],
     category: 'Data Visualization / Analytics',
     featured: false,
-    coverImage: londonCrimeAnalyticsCover,
     highlights: ['Star schema', 'Graph ETL bridge', 'Polyglot persistence'],
     links: [
       {
@@ -656,7 +628,6 @@ const projects: Project[] = [
     tech: ['PySpark', 'Spark DataFrames', 'Spark RDD', 'XGBoost', 'Parquet', 'Matplotlib', 'Seaborn'],
     category: 'Data Visualization / Analytics',
     featured: false,
-    coverImage: texasWeatherDataAnalysisCover,
     highlights: ['Distributed ETL', 'Seasonal climate analysis', 'Koppen classification'],
     links: [],
     relatedSlugs: ['api-data-streaming', 'energy-efficiency-regression-and-statistical-analysis', 'nyc-property-fraud-detection'],

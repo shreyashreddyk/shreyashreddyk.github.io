@@ -46,7 +46,6 @@ export function ProjectDetailPage() {
       <SEO
         title={project.title}
         description={project.shortDescription}
-        image={project.coverImage}
         type="article"
       />
 
