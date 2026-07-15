@@ -3,7 +3,7 @@ import { workEntries } from '../data/work';
 
 export function WorkPage() {
   return (
-    <div className="mx-auto max-w-screen-sm px-5 py-32 animate show">
+    <div className="mx-auto max-w-screen-sm px-5 animate show">
       <SEO
         title="Work"
         description="Detailed timeline of my professional work experience across AI products, data science, and production systems."

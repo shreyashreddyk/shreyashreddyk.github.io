@@ -16,7 +16,7 @@ export type SkillGroup = {
 
 export const siteMetadata = {
   name: 'Shreyash Kondakindi',
-  role: 'AI Engineer · Data Science',
+  role: 'AI Engineering · Data Science',
   location: 'San Diego, California',
   email: 'shreyashkondakindi16@gmail.com',
   githubUrl: 'https://github.com/shreyashreddyk',

@@ -3,7 +3,7 @@ import { BackToPrev } from '../components/BackToPrev';
 
 export function NotFoundPage() {
   return (
-    <div className="mx-auto max-w-screen-sm px-5 py-32 animate show">
+    <div className="mx-auto max-w-screen-sm px-5 animate show">
       <SEO
         title="Page Not Found"
         description="The requested page could not be found."

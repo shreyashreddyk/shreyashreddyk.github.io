@@ -3,7 +3,7 @@ import { educationEntries } from '../data/education';
 
 export function EducationPage() {
   return (
-    <div className="mx-auto max-w-screen-sm px-5 py-32 animate show">
+    <div className="mx-auto max-w-screen-sm px-5 animate show">
       <SEO
         title="Education"
         description="Detailed background of my academic training, technical coursework, and degrees from UC San Diego and BITS Pilani."

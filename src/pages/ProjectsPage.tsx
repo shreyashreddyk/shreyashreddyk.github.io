@@ -4,7 +4,7 @@ import { allProjects } from '../data/projects';
 
 export function ProjectsPage() {
   return (
-    <div className="mx-auto max-w-screen-sm px-5 py-32">
+    <div className="mx-auto max-w-screen-sm px-5">
       <SEO
         title="Projects"
         description="A collection of my projects spanning AI systems, data engineering, fraud modeling, and analytics products, with links to repositories."

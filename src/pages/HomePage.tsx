@@ -36,7 +36,7 @@ export function HomePage() {
   };
 
   return (
-    <div className="mx-auto max-w-5xl px-5 py-32">
+    <div className="mx-auto max-w-5xl px-5">
       <SEO
         title="Home"
         description="Portfolio of Shreyash Kondakindi, AI Engineer and Data Scientist specializing in LLM systems, scalable data pipelines, fraud modeling, and analytics products."
@@ -64,7 +64,7 @@ export function HomePage() {
                 {siteMetadata.name}
               </h1>
               <p className="text-xs opacity-50 mt-0.5 leading-relaxed">
-                AI Engineer<br />Data Science · Systems
+                AI Engineering<br />Data Science · Distributed Systems
               </p>
             </div>
             <a

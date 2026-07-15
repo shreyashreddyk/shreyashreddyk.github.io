@@ -42,7 +42,7 @@ export function ProjectDetailPage() {
     .filter(Boolean);
 
   return (
-    <div className="mx-auto max-w-screen-sm px-5 py-32 animate show">
+    <div className="mx-auto max-w-screen-sm px-5 animate show">
       <SEO
         title={project.title}
         description={project.shortDescription}

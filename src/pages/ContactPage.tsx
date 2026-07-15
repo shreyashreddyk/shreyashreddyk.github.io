@@ -3,7 +3,7 @@ import { contactLinks, availabilityNote } from '../data/profile';
 
 export function ContactPage() {
   return (
-    <div className="mx-auto max-w-screen-sm px-5 py-32 animate show">
+    <div className="mx-auto max-w-screen-sm px-5 animate show">
       <SEO
         title="Contact"
         description="Contact Shreyash Kondakindi for opportunities in AI engineering, data science, and analytics systems."
