@@ -18,7 +18,7 @@ export const siteMetadata = {
   name: 'Shreyash Kondakindi',
   role: 'AI Engineer · Data Science',
   location: 'San Diego, California',
-  email: 'kshreyashreddy@gmail.com',
+  email: 'shreyashkondakindi16@gmail.com',
   githubUrl: 'https://github.com/shreyashreddyk',
   linkedinUrl: 'https://www.linkedin.com/in/shreyashreddyk',
   resumeUrl: '/resume.pdf',
